@@ -11,8 +11,8 @@ import server.zone.objects.tangible.tasks.FlagGamePulseTask;
 import system.lang.ref.Reference;
 include system.lang.Time;
 
-@json
-class FlagGame extends TangibleObject {
+ @json
+ class FlagGame extends TangibleObject {	
 	@weakReference
 	protected CreatureObject owner;
 

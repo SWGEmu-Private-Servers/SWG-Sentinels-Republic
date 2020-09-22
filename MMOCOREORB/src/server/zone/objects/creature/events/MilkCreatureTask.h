@@ -6,7 +6,6 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/transaction/TransactionLog.h"
 #include "engine/engine.h"
 
 class MilkCreatureTask : public Task {
@@ -105,13 +104,13 @@ public:
 		ManagedReference<ResourceManager*> resourceManager = player->getZoneServer()->getResourceManager();
 
 		String restype = creature->getMilkType();
-		int quantity = creature->getMilk();
+		int quantity = creature->getMilk() + (creature->getMilk() * player->getSkillMod("creature_knowledge") * 0.02);
 
 		int quantityExtracted = Math::max(quantity, 3);
 
 		ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneName());
 
-		if (resourceSpawn == nullptr) {
+		if (resourceSpawn == NULL) {
 			player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
 			return;
 		}
@@ -128,8 +127,7 @@ public:
 			quantityExtracted = int(quantityExtracted * 0.50f);
 		}
 
-		TransactionLog trx(TrxCode::HARVESTED, player, resourceSpawn);
-		resourceManager->harvestResourceToPlayer(trx, player, resourceSpawn, quantityExtracted);
+		resourceManager->harvestResourceToPlayer(player, resourceSpawn, quantityExtracted);
 
 		updateMilkState(CreatureManager::ALREADYMILKED);
 	}

@@ -21,7 +21,7 @@ protected:
 
 	SocketDestinations socketDestinations;*/
 
-	Reference<const StructureFootprint*> structureFootprint;
+	Reference<StructureFootprint*> structureFootprint;
 
 	BoolParam targetable;
 
@@ -39,6 +39,7 @@ protected:
 	int useCount;
 
 	bool sliceable;
+	int nameType; //Mindsoft added
 
 	bool invisible;
 
@@ -68,8 +69,8 @@ public:
 
 	~SharedTangibleObjectTemplate();
 
-	void readObject(LuaObject* templateData) override;
-	void readObject(IffStream* iffStream) override;
+	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
 
 	void parseFileData(IffStream* str);
 
@@ -108,7 +109,7 @@ public:
 		return level;
 	}
 
-	inline bool isInvisible() const {
+	inline bool isInvisible() {
 		return invisible;
 	}
 
@@ -116,23 +117,23 @@ public:
 		return useCount;
 	}
 
-	inline uint16 getPlayerUseMask() const {
+    inline uint16 getPlayerUseMask() const {
 		return playerUseMask;
 	}
 
-	inline unsigned int getFaction() const {
-		return faction;
-	}
+    inline unsigned int getFaction() const {
+    	return faction;
+    }
 
-	inline int getJunkDealerNeeded() const {
-		return junkDealerNeeded;
-	}
+    inline int getJunkDealerNeeded() const {
+    	return junkDealerNeeded;
+    }
 
-	inline int getJunkValue() const {
-		return junkValue;
-	}
+    inline int getJunkValue() const {
+    	return junkValue;
+    }
 
-	inline const StructureFootprint* getStructureFootprint() const {
+	inline StructureFootprint* getStructureFootprint() const {
 		return structureFootprint;
 	}
 
@@ -156,57 +157,61 @@ public:
 		return sliceable;
 	}
 
-	const Vector<short >* getNumberExperimentalProperties() const {
-		return numberExperimentalProperties;
-	}
+	inline int getNameType() const { //Mindsoft added
+    	return nameType;
+    }
 
-	const Vector<String>* getExperimentalProperties() const {
-		return experimentalProperties;
-	}
+    Vector<short >* getNumberExperimentalProperties() {
+        return numberExperimentalProperties;
+    }
 
-	const Vector<short >* getExperimentalWeights() const {
-		return experimentalWeights;
-	}
+    Vector<String>* getExperimentalProperties() {
+        return experimentalProperties;
+    }
 
-	const Vector<String>* getExperimentalGroupTitles() const {
-		return experimentalGroupTitles;
-	}
+    Vector<short >* getExperimentalWeights() {
+        return experimentalWeights;
+    }
 
-	const Vector<String>* getExperimentalSubGroupTitles() const {
-		return experimentalSubGroupTitles;
-	}
+    Vector<String>* getExperimentalGroupTitles() {
+        return experimentalGroupTitles;
+    }
 
-	const Vector<float>* getExperimentalMin() const {
-		return experimentalMin;
-	}
+    Vector<String>* getExperimentalSubGroupTitles() {
+        return experimentalSubGroupTitles;
+    }
 
-	const Vector<float>* getExperimentalMax() const {
-		return experimentalMax;
-	}
+    Vector<float>* getExperimentalMin() {
+        return experimentalMin;
+    }
 
-	const Vector<short >* getExperimentalPrecision() const {
-		return experimentalPrecision;
-	}
+    Vector<float>* getExperimentalMax() {
+        return experimentalMax;
+    }
 
-	const Vector<uint32>* getPlayerRaces() const {
-		return playerRaces;
-	}
+    Vector<short >* getExperimentalPrecision() {
+        return experimentalPrecision;
+    }
 
-	const Vector<Reference<ResourceWeight* > >* getResourceWeights() const {
-		return resourceWeights;
-	}
+    Vector<uint32>* getPlayerRaces() {
+    	return playerRaces;
+    }
 
-	const VectorMap<String, int>* getSkillMods() const {
-		return &skillMods;
-	}
+    Vector<Reference<ResourceWeight* > >* getResourceWeights() {
+    	return resourceWeights;
+    }
 
-	int getSkillMod(const String& mod) const {
-		return skillMods.get(mod);
-	}
+    VectorMap<String, int>* getSkillMods() {
+    	return &skillMods;
+    }
 
-	bool isSharedTangibleObjectTemplate() const override {
-		return true;
-	}
+    int getSkillMod(const String& mod) {
+    	return skillMods.get(mod);
+    }
+
+    bool isSharedTangibleObjectTemplate() {
+    	return true;
+    }
 };
 
 

@@ -99,7 +99,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == nullptr)
+		if (zone == NULL)
 			return;
 
 
@@ -124,22 +124,22 @@ public:
 				if (creature->isPlayerCreature() && object->getParentID() != 0 && creature->getParentID() != object->getParentID()) {
 					Reference<CellObject*> targetCell = object->getParent().get().castTo<CellObject*>();
 
-					if (targetCell != nullptr) {
+ 					if (targetCell != nullptr) {
 						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
+							ContainerPermissions* perms = targetCell->getContainerPermissions();
 
-							if (!perms->hasInheritPermissionsFromParent()) {
+ 							if (!perms->hasInheritPermissionsFromParent()) {
 								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
 									continue;
 							}
 						}
 
-						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+ 						ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
-						if (parentSceneObject != nullptr) {
+ 						if (parentSceneObject != nullptr) {
 							BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
 
-							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
+ 							if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature))
 								continue;
 						}
 					}
@@ -152,6 +152,13 @@ public:
 
 					if (!creatureTarget->isAttackableBy(creature))
 						continue;
+
+					// Check if BH target
+					if (creatureTarget->isPlayerCreature() && creature->hasBountyMissionFor(creatureTarget)) {
+						PlayerObject* ghost = creature->getPlayerObject();
+						if (!ghost->hasBhTef())
+							continue;
+					}
 
 					if (checkTarget(creature, creatureTarget, pharma->getDotType()))
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);
@@ -250,21 +257,21 @@ public:
 			return INSUFFICIENTHAM;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-		if (object == nullptr || !object->isCreatureObject() || creature == object)
+		if (object == NULL || !object->isCreatureObject() || creature == object)
 			return INVALIDTARGET;
 
 		uint64 objectId = 0;
 
 		parseModifier(arguments.toString(), objectId);
-		ManagedReference<DotPack*> dotPack = nullptr;
+		ManagedReference<DotPack*> dotPack = NULL;
 
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
-		if (inventory != nullptr) {
+		if (inventory != NULL) {
 			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
 		}
 
-		if (dotPack == nullptr)
+		if (dotPack == NULL)
 			return GENERALERROR;
 
 		PlayerManager* playerManager = server->getPlayerManager();
@@ -284,7 +291,7 @@ public:
 
 			if (targetCell != nullptr) {
 				if (!targetObject->isPlayerCreature()) {
-					auto perms = targetCell->getContainerPermissions();
+					ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 					if (!perms->hasInheritPermissionsFromParent()) {
 						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
@@ -323,7 +330,7 @@ public:
 			if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 				DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-				if (buff != nullptr) {
+				if (buff != NULL) {
 					float percent = buff->getSkillModifierValue("heal_recovery");
 
 					delay = round(delay * (100.0f - percent) / 100.0f);
@@ -393,6 +400,17 @@ public:
 
 		checkForTef(creature, creatureTarget);
 
+		// Check for if BH mission and tef
+		bool shouldGcwTef = false, shouldBhTef = false;
+		CombatManager::instance()->checkForTefs(creature, creatureTarget, &shouldGcwTef, &shouldBhTef);
+
+		if (shouldBhTef) {
+			PlayerObject* ghost = creature->getPlayerObject();
+			if (ghost != NULL) {
+				ghost->updateLastPvpCombatActionTimestamp(shouldGcwTef, shouldBhTef);
+			}
+		}
+
 		if (dotPack->isArea()) {
 			if (creatureTarget != creature)
 				clocker.release();
@@ -400,7 +418,7 @@ public:
 			handleArea(creature, creatureTarget, dotPack, dotPack->getArea());
 		}
 
-		if (dotPack != nullptr) {
+		if (dotPack != NULL) {
 			if (creatureTarget != creature)
 				clocker.release();
 

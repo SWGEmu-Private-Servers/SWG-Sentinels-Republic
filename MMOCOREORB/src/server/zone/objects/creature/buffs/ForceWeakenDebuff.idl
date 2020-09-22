@@ -57,4 +57,3 @@ class ForceWeakenDebuff extends Buff {
 
 	public native void clearBuffEvent();
 }
-

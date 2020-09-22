@@ -6,8 +6,8 @@ import server.zone.objects.creature.CreatureObject;
 include engine.log.Logger;
 
 
-@json
-class GeneratorObject extends InstallationObject {
+ @json
+ class GeneratorObject extends InstallationObject {
 	public GeneratorObject() {
 		Logger.setLoggingName("GeneratorObject");
 	}

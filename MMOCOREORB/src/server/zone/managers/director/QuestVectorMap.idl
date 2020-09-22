@@ -10,8 +10,8 @@ import system.lang.String;
 include system.util.VectorMap;
 
 @lua
-@json
-class QuestVectorMap extends ManagedObject {
+ @json
+ class QuestVectorMap extends ManagedObject {
 	protected string key;
 
 	@dereferenced

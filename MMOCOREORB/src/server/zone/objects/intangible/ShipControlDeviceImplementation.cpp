@@ -11,8 +11,65 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
-	//info("generating ship", true);
-	//return;
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (player->hasState(CreatureState::PILOTINGSHIP)) {
+		player->clearState(CreatureState::PILOTINGSHIP);
+		updateStatus(0);
+	} else if (!ghost->isAdmin()) {
+		// Player has a ship, delete it and all ships in their datapad
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+		if (datapad == NULL)
+			return;
+
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+			if (obj != NULL && obj->isShipControlDevice()) {
+				player->sendSystemMessage("Removed deactivated Ship Control device from datapad.");
+				obj->destroyObjectFromWorld(true);
+				obj->destroyObjectFromDatabase(true);
+			}
+		}
+	}
+
+	if (true) {
+		player->sendSystemMessage("Atmospheric flight is currently disabled.");
+		return;
+	}
+
+	// Stop Here
+
+	if (!isClientObject()) { //remove this segment to enable atmospheric flight.
+		player->sendSystemMessage("Atmospheric flight is currently disabled.");
+		return;
+	}
+
+	if (player->isDead() || player->isIncapacitated()) {
+		player->sendSystemMessage("You can't call a ship right now.");
+		return;
+	}
+
+	if (!isClientObject()) {
+		if (ghost != NULL && ghost->hasPvpTef()) {
+			player->sendSystemMessage("You can't call a ship while TEF.");
+			return;
+		}
+	}
+
+	if (!isASubChildOf(player))
+		return;
+
+	if (player->getParent() != NULL) {
+		player->sendSystemMessage("You can only unpack vehicles while outside."); // "@pet/pet_menu:cant_call_vehicle" - You can only unpack vehicles while Outside and not in Combat.
+		return;
+	}
 
 	ZoneServer* zoneServer = getZoneServer();
 
@@ -33,9 +90,7 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 
 	updateStatus(1);
 
-	PlayerObject* ghost = player->getPlayerObject();
-
-	if (ghost != nullptr)
+	if (ghost != NULL)
 		ghost->setTeleporting(true);
 }
 
@@ -44,7 +99,7 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == nullptr)
+	if (controlledObject == NULL)
 		return;
 
 	Locker clocker(controlledObject, player);
@@ -54,15 +109,15 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool f
 
 	Zone* zone = player->getZone();
 
-	if (zone == nullptr)
+	if (zone == NULL)
 		return;
 
 	zone->transferObject(player, -1, false);
-	
+
 	controlledObject->destroyObjectFromWorld(true);
 
 	transferObject(controlledObject, 4, true);
-	
+
 	updateStatus(0);
 }
 
@@ -71,37 +126,59 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
+	if (controlledObject == NULL)
+		return;
+
 	if (!controlledObject->isInQuadTree()) {
 		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
 	} else
-		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
-	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
+		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Land
 }
 
 bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
+	PlayerObject* ghost = player->getPlayerObject();
+	PlayerObject* ghostReceiver = receiver->getPlayerObject();
+
+	if (ghost == NULL || ghostReceiver == NULL)
+		return false;
+
+	if (player->hasState(CreatureState::PILOTINGSHIP)) {
+		player->clearState(CreatureState::PILOTINGSHIP);
+		updateStatus(0);
+	} else if (receiver->hasState(CreatureState::PILOTINGSHIP)) {
+		receiver->clearState(CreatureState::PILOTINGSHIP);
+		updateStatus(0);
+	}
+
 	ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
 
-	if (datapad == nullptr)
+	if (datapad == NULL)
 		return false;
 
-	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+	// Check if either player is an admin, if so, allow trade
+	if (ghost->isAdmin() || ghostReceiver->isAdmin()) {
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
-	int shipsInDatapad = numberInTrade;
-	int maxStoredShips = playerManager->getBaseStoredShips();
+		int shipsInDatapad = numberInTrade;
+		int maxStoredShips = playerManager->getBaseStoredShips();
 
-	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
-		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
-		if (obj != nullptr && obj->isShipControlDevice() ){
-			shipsInDatapad++;
+			if (obj != NULL && obj->isShipControlDevice() ){
+				shipsInDatapad++;
+			}
 		}
-	}
 
-	if( shipsInDatapad >= maxStoredShips){
-		player->sendSystemMessage("That person has too many ships in their datapad");
-		receiver->sendSystemMessage("You already have the maximum number of ships that you can own.");
+		if( shipsInDatapad >= maxStoredShips){
+			player->sendSystemMessage("That person has too many ships in their datapad");
+			receiver->sendSystemMessage("You already have the maximum number of ships that you can own.");
+			return false;
+		}
+
+		return true;
+	} else {
+		player->sendSystemMessage("You cannot trade a ship control device that's in your datapad.");
 		return false;
 	}
-
-	return true;
 }

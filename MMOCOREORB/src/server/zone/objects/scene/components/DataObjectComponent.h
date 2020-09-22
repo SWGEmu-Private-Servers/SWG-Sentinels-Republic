@@ -56,6 +56,10 @@ public:
 		return false;
 	}
 
+	virtual bool isDataDiskData() {
+		return false;
+	}
+
 	virtual bool isFireworkShowData() {
 		return false;
 	}

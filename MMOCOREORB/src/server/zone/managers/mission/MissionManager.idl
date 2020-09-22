@@ -60,15 +60,6 @@ class MissionManager extends Observer implements Logger {
 	unsigned long playerBountyKillBuffer;
 	unsigned long playerBountyDebuffLength;
 
-	unsigned long destroyMissionBaseDistance;
-	unsigned long destroyMissionDifficultyDistanceFactor;
-	unsigned long destroyMissionRandomDistance;
-	unsigned long destroyMissionDifficultyRandomDistance;
-	unsigned long destroyMissionBaseReward;
-	unsigned long destroyMissionDifficultyRewardFactor;
-	unsigned long destroyMissionRandomReward;
-	unsigned long destroyMissionDifficultyRandomReward;
-
 	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
 		server = srv;
 		processor = impl;
@@ -131,7 +122,6 @@ class MissionManager extends Observer implements Logger {
 	private native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 
 	@local
-	@dirty
 	public native NpcSpawnPoint getFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
 
@@ -154,6 +144,7 @@ class MissionManager extends Observer implements Logger {
 
 	public native void addPlayerToBountyList(unsigned long targetId, int reward);
 	public native void removePlayerFromBountyList(unsigned long targetId);
+	public native int getPlayerBounty(unsigned long targetId);
 	public native void updatePlayerBountyReward(unsigned long targetId, int reward);
 	public native void updatePlayerBountyOnlineStatus(unsigned long targetId, boolean status);
 	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
@@ -168,20 +159,15 @@ class MissionManager extends Observer implements Logger {
 
 	@dirty
 	public boolean hasPlayerBountyTargetInList(unsigned long targetId) {
-		synchronized(playerBountyListMutex) {
-			return playerBountyList.contains(targetId);
-		}
+		return playerBountyList.contains(targetId);
 	}
 
 	@dirty
 	public boolean hasBountyHunterInPlayerBounty(unsigned long targetId, unsigned long bhId) {
-		synchronized(playerBountyListMutex) {
-			return playerBountyList.contains(targetId) && playerBountyList.get(targetId).hasBountyHunter(bhId);
-		}
+		return playerBountyList.contains(targetId) && playerBountyList.get(targetId).hasBountyHunter(bhId);
 	}
 
 	@local
-	@dereferenced
 	public native Vector<unsigned long> getHuntersHuntingTarget(unsigned long targetId);
 
 	@local

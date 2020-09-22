@@ -27,4 +27,3 @@ public:
 };
 
 #endif //HARVESTERTAKESURVEYCOMMAND_H_
-

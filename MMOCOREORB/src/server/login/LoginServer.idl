@@ -10,7 +10,6 @@ import conf.ConfigManager;
 import server.login.LoginClient;
 import server.login.LoginProcessServerImplementation;
 import server.login.LoginHandler;
-import server.login.account.Account;
 import server.login.account.AccountManager;
 import server.login.packets.LoginClusterStatus;
 import server.login.packets.LoginEnumCluster;
@@ -19,7 +18,6 @@ import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
 
-@dirty
 class LoginServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
 
@@ -30,6 +28,8 @@ class LoginServer extends ManagedService implements Logger {
 	private transient LoginProcessServerImplementation processor;
 
 	private transient ConfigManager configManager;
+
+	private transient LoginEnumCluster enumClusterMessage;
 
 	private transient AccountManager accountManager;
 
@@ -63,6 +63,8 @@ class LoginServer extends ManagedService implements Logger {
 
 	public native void printInfo();
 
+	public native void populateGalaxyList();
+
 	@local
 	public AccountManager getAccountManager() {
 		return accountManager;
@@ -72,8 +74,10 @@ class LoginServer extends ManagedService implements Logger {
 	public native LoginClient getLoginClient(ServiceClient session);
 
 	@local
-	public native LoginEnumCluster getLoginEnumClusterMessage(Account account);
+	public LoginEnumCluster getLoginEnumClusterMessage() {
+		return (LoginEnumCluster) enumClusterMessage.clone();
+	}
 
 	@local
-	public native LoginClusterStatus getLoginClusterStatusMessage(Account account);
+	public native LoginClusterStatus getLoginClusterStatusMessage();
 }

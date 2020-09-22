@@ -72,6 +72,7 @@ namespace scene {
 		int isCreature(lua_State* L);
 		int isBuildingObject(lua_State* L);
 		int isActiveArea(lua_State* L);
+		int isGroupObject(lua_State* L); //Mindsoft added
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
@@ -97,12 +98,17 @@ namespace scene {
 		int isOwned(lua_State* L);
 		int playEffect(lua_State* L);
 		int addPendingTask(lua_State* L);
+		int hasPendingTask(lua_State* L); //Mindsoft Added
 		int cancelPendingTask(lua_State* L);
 		int getChildObject(lua_State* L);
 		int getContainerOwnerID(lua_State* L);
 		int info(lua_State* L);
 		int getPlayersInRange(lua_State* L);
 		int isInNavMesh(lua_State* L);
+		int checkLineOfSight(lua_State* L); //Mindsoft Added
+		int getFloorCollision(lua_State* L); //Mindsoft Added
+		int isInside(lua_State* L); //Mindsoft Added
+		int isCellObject(lua_State* L); //Mindsoft Added
 
 	protected:
 		SceneObject* _getRealSceneObject() {

@@ -6,8 +6,8 @@ package server.zone.objects.building.hospital;
 
 import server.zone.objects.building.BuildingObject;
 
-@json
-class HospitalBuildingObject extends BuildingObject {
+ @json
+ class HospitalBuildingObject extends BuildingObject {
 
 	public HospitalBuildingObject() {
 		Logger.setLoggingName("HospitalBuildingObject");

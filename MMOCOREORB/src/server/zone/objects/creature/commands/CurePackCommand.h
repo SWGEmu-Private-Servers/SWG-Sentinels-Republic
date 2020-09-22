@@ -51,7 +51,7 @@ public:
 
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (inventory != nullptr) {
+		if (inventory != NULL) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -69,7 +69,7 @@ public:
 			}
 		}
 
-		return nullptr;
+		return NULL;
 	}
 
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) const {
@@ -123,7 +123,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != nullptr) {
+			if (buff != NULL) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -194,7 +194,7 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == nullptr)
+		if (zone == NULL)
 			return;
 
 		// TODO: Convert this to a CombatManager::getAreaTargets() call
@@ -220,7 +220,7 @@ public:
 
 					if (targetCell != nullptr) {
 						if (object->isPlayerCreature()) {
-							auto perms = targetCell->getContainerPermissions();
+							ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 							if (!perms->hasInheritPermissionsFromParent()) {
 								if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN))
@@ -263,7 +263,7 @@ public:
 	}
 
 	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, PharmaceuticalObject* pharma) const {
-		CurePack* curePack = nullptr;
+		CurePack* curePack = NULL;
 
 		if (pharma->isCurePack())
 			curePack = cast<CurePack*>( pharma);
@@ -337,7 +337,7 @@ public:
 			return false;
 		}
 
-		if (curePack == nullptr) {
+		if (curePack == NULL) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -374,9 +374,9 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != nullptr && !object->isCreatureObject()) {
+		if (object != NULL && !object->isCreatureObject()) {
 			return INVALIDTARGET;
-		} else if (object == nullptr)
+		} else if (object == NULL)
 			object = creature;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
@@ -397,7 +397,7 @@ public:
 		} else {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != nullptr) {
+			if (inventory != NULL) {
 				curePack = inventory->getContainerObject(objectId).castTo<CurePack*>();
 			}
 		}
@@ -410,7 +410,7 @@ public:
 
 			if (targetCell != nullptr) {
 				if (!targetCreature->isPlayerCreature()) {
-					auto perms = targetCell->getContainerPermissions();
+					ContainerPermissions* perms = targetCell->getContainerPermissions();
 
 					if (perms->hasInheritPermissionsFromParent()) {
 						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
@@ -446,7 +446,7 @@ public:
 
 		deactivateConditionTreatment(creature);
 
-		if (curePack != nullptr) {
+		if (curePack != NULL) {
 			Locker locker(curePack);
 			curePack->decreaseUseCount();
 		}

@@ -4,7 +4,7 @@
 
 void ChannelForceBuffImplementation::initializeTransientMembers() {
 	BuffImplementation::initializeTransientMembers();
-	cfBuffEvent = nullptr;
+	cfBuffEvent = NULL;
 }
 
 void ChannelForceBuffImplementation::activate(bool applyModifiers) {
@@ -15,17 +15,17 @@ void ChannelForceBuffImplementation::activate(bool applyModifiers) {
 void ChannelForceBuffImplementation::deactivate(bool removeModifiers) {
 	BuffImplementation::deactivate(removeModifiers);
 
-	if (cfBuffEvent != nullptr) {
+	if (cfBuffEvent != NULL) {
 		cfBuffEvent->cancel();
-		cfBuffEvent = nullptr;
+		cfBuffEvent = NULL;
 	}
 }
 
 void ChannelForceBuffImplementation::activateRegenTick() {
-	if (cfBuffEvent == nullptr)
+	if (cfBuffEvent == NULL)
 		cfBuffEvent = new ChannelForceBuffTickEvent(_this.getReferenceUnsafeStaticCast());
 
-	auto delay = FORCE_CHANNEL_TICK_DELAY_SECONDS * 1000;
+	auto delay = FORCE_CHANNEL_TICK_DELAY_SECONDS * 500;
 	if (!cfBuffEvent->isScheduled())
 		cfBuffEvent->schedule(delay);
 	else
@@ -34,7 +34,7 @@ void ChannelForceBuffImplementation::activateRegenTick() {
 
 void ChannelForceBuffImplementation::doHamTick() {
   	ManagedReference<CreatureObject*> creo = creature.get();
-	if (creo == nullptr)
+	if (creo == NULL)
 		return;
 
 	float timeLeft = getTimeLeft();
@@ -73,5 +73,5 @@ void ChannelForceBuffImplementation::doHamTick() {
 
 	// don't reschedule if tick length >= timeLeft (not mandatory, but useful)
 	if (healMod < 1.f + std::numeric_limits<float>::epsilon())
-		!cfBuffEvent ? activateRegenTick() : cfBuffEvent->reschedule(FORCE_CHANNEL_TICK_SECONDS * 1000);
+		!cfBuffEvent ? activateRegenTick() : cfBuffEvent->reschedule(FORCE_CHANNEL_TICK_SECONDS * 500);
 }

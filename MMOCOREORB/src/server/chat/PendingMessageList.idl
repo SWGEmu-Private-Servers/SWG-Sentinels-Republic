@@ -31,4 +31,3 @@ class PendingMessageList extends ManagedObject {
         pendingMessages.add(oid);
     }
 }
-

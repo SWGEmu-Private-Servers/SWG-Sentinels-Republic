@@ -54,6 +54,25 @@
 #include "server/zone/objects/tangible/components/ForceCrystalMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/LootBoxesMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/LifedayPresentsMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/LifedayCraftedPresentsMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/LovedayCardMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DuplicatorMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/HarvesterResourceExtractorMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/InstallationBeaconMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataDiskMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataDiskAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataDiskDataComponent.h"
+#include "server/zone/objects/tangible/components/generic/DuplicatorHintMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DuplicatorHintAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/generic/DuplicatorHintDataComponent.h"
+#include "server/zone/objects/tangible/components/generic/SarlaccTrashCanMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/VitiateHolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/VendorTokenMenucomponent.h"
+#include "server/zone/objects/tangible/components/generic/HoloCostumeMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/HoloCostumeQuestMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/HoloCostumeChargeMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LightsaberObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/VehicleCustomKitObjectMenuComponent.h"
@@ -186,6 +205,25 @@ ComponentManager::ComponentManager() {
 	components.put("CloningTerminalMenuComponent", new CloningTerminalMenuComponent());
 
 	components.put("ArtCrateMenuComponent", new ArtCrateMenuComponent());
+	components.put("LootBoxesMenuComponent", new LootBoxesMenuComponent());
+	components.put("LifedayPresentsMenuComponent", new LifedayPresentsMenuComponent());
+	components.put("LifedayCraftedPresentsMenuComponent", new LifedayCraftedPresentsMenuComponent());
+	components.put("LovedayCardMenuComponent", new LovedayCardMenuComponent());
+	components.put("VitiateHolocronMenuComponent", new VitiateHolocronMenuComponent());
+	components.put("VendorTokenMenucomponent", new VendorTokenMenucomponent());
+	components.put("HoloCostumeMenuComponent", new HoloCostumeMenuComponent());
+	components.put("HoloCostumeQuestMenuComponent", new HoloCostumeQuestMenuComponent());
+	components.put("HoloCostumeChargeMenuComponent", new HoloCostumeChargeMenuComponent());
+	components.put("DuplicatorMenuComponent", new DuplicatorMenuComponent());
+	components.put("HarvesterResourceExtractorMenuComponent", new HarvesterResourceExtractorMenuComponent());
+	components.put("InstallationBeaconMenuComponent", new InstallationBeaconMenuComponent());
+	components.put("DataDiskMenuComponent", new DataDiskMenuComponent());
+	components.put("DataDiskAttributeListComponent", new DataDiskAttributeListComponent());
+	dataObjectFactory.registerObject<DataDiskDataComponent>("DataDiskDataComponent");
+	components.put("DuplicatorHintMenuComponent", new DuplicatorHintMenuComponent());
+	components.put("DuplicatorHintAttributeListComponent", new DuplicatorHintAttributeListComponent());
+	dataObjectFactory.registerObject<DuplicatorHintDataComponent>("DuplicatorHintDataComponent");
+	components.put("SarlaccTrashCanMenuComponent", new SarlaccTrashCanMenuComponent());
 
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 

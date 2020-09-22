@@ -36,7 +36,8 @@ public:
 		int forceBonus = 250 + (forceRandom);
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		if (playerObject == nullptr)
+
+		if (playerObject == NULL)
 			return GENERALERROR;
 
 		// Do not execute if the player's force bar is full.
@@ -72,11 +73,11 @@ public:
 		uint32 buffCRC = STRING_HASHCODE("channelforcebuff");
 		Reference<Buff*> buff = creature->getBuff(buffCRC);
 		int duration = ChannelForceBuff::FORCE_CHANNEL_DURATION_SECONDS;
-		if (buff == nullptr) {
+		if (buff == NULL) {
 			buff = new ChannelForceBuff(creature, buffCRC, duration);
-			
+
 			Locker locker(buff);
-			
+
 			buff->setAttributeModifier(CreatureAttribute::HEALTH, -forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::ACTION, -forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::MIND, -forceBonus);
@@ -91,14 +92,14 @@ public:
 									   buff->getAttributeModifierValue(CreatureAttribute::ACTION)-forceBonus);
 			buff->setAttributeModifier(CreatureAttribute::MIND,
 									   buff->getAttributeModifierValue(CreatureAttribute::MIND)-forceBonus);
-			
+
 			creature->addMaxHAM(CreatureAttribute::HEALTH, -forceBonus);
 			creature->addMaxHAM(CreatureAttribute::ACTION, -forceBonus);
 			creature->addMaxHAM(CreatureAttribute::MIND, -forceBonus);
-			
+
 			creature->renewBuff(buffCRC, duration);
 			Reference<ChannelForceBuff*> channelBuff = buff.castTo<ChannelForceBuff*>();
-			if (channelBuff != nullptr)
+			if (channelBuff != NULL)
 				channelBuff->activateRegenTick();
 		}
 

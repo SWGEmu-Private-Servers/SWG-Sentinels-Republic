@@ -42,7 +42,6 @@ void OrderedTaskExecutioner::run() {
 		}
 
 		taskName = task->getTaskName();
-
 		pendingTasks->runMoreOrderedTasks(strongReference);
 	}
 }

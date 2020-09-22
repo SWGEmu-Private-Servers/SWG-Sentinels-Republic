@@ -10,8 +10,8 @@ import system.util.VectorMap;
 import system.lang.Time;
 import system.util.SynchronizedVectorMap;
 
-@json
-class FrsRank extends ManagedObject {
+ @json
+ class FrsRank extends ManagedObject {
 	protected short type;
 	protected short rank;
 	protected short voteStatus;

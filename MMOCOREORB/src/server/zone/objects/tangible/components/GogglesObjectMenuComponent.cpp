@@ -39,16 +39,16 @@ int GogglesObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (selectedID == 81 || selectedID == 82) {
 
 		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
-		if (parent != nullptr && parent->isPlayerCreature()) {
+		if (parent != NULL && parent->isPlayerCreature()) {
 			player->sendSystemMessage("@error_message:equipped_goggles");
 			return 0;
 		}
-
+		
 		// Handle color change.
 
 		ZoneServer* server = player->getZoneServer();
 
-		if (server != nullptr) {
+		if (server != NULL) {
 
 			// The color index.
 			String appearanceFilename = sceneObject->getObjectTemplate()->getAppearanceFilename();

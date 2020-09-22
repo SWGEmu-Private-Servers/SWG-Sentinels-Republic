@@ -35,15 +35,18 @@ public:
 
 		ManagedReference<SceneObject*> goggles = cBox->getUsingObject().get();
 
-		if (goggles == nullptr)
+		if (goggles == NULL)
 			return;
 
 		ManagedReference<TangibleObject*> gogglesTano = goggles->asTangibleObject();
 
-		if (gogglesTano != nullptr) {
+		if (gogglesTano != NULL) {
 			Locker locker(gogglesTano, creature);
 
 			gogglesTano->setCustomizationVariable(palette, index, true);
+			// Repair item
+			gogglesTano->setConditionDamage(0);
+			creature->sendSystemMessage("You polished your goggles, they're good as new!");
 		}
 	}
 };

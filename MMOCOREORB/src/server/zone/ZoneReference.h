@@ -17,7 +17,7 @@ namespace zone {
 class Zone;
 
 class ZoneReference : public ManagedReference<Zone*> {
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 protected:
 	String zoneName;
 #endif
@@ -25,7 +25,7 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 	Zone* operator=(Zone* obj);
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 	const String& getZoneName() const {
 		return zoneName;
 	}

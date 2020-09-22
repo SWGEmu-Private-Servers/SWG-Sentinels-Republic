@@ -29,7 +29,7 @@ private:
 
 	AtomicBoolean loaded{false};
 
-	/**
+/**
 	 * Setup Lua global values.
 	 * @param luaEngine the lua instance.
 	 */

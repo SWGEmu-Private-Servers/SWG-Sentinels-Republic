@@ -20,7 +20,7 @@ public:
 		grantType = "";
 		grantName = "";
 		xpAmount = 0;
-		noRemove = false;
+		noRemove = true;
 
 	}
 
@@ -36,7 +36,7 @@ public:
 		grantName = templateData->getStringField("grantName");
 		xpType = templateData->getStringField("xpType");
 		xpAmount = templateData->getIntField("xpAmount");
-		noRemove = templateData->getBooleanField("noRemove");
+		//noRemove = templateData->getBooleanField("noRemove"); // Being able to set this to false segfaults the server.
 
 	}
 

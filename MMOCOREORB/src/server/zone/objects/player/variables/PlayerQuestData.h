@@ -207,7 +207,8 @@ public:
 		FS_DEFEND_wAIT_01                 = 193,
 		FS_DEFEND_wAIT_02                 = 194,
 		FS_CRAFTING4_QUEST_FINISH         = 195,
-		FS_CRAFT_PUZZLE_QUEST_04          = 196
+		FS_CRAFT_PUZZLE_QUEST_04          = 196,
+		//WOD_PROLOGUE_WALKABOUT		  = 197,
 	};
 
 public:

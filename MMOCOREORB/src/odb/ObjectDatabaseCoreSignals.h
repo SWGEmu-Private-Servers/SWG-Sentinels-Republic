@@ -26,4 +26,3 @@ class ODB3SignalHandler {
 
 
 #endif /* end of include guard OBJECTDATABASECORESIGNALS_H */
-

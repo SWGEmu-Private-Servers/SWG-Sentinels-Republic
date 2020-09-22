@@ -8,8 +8,8 @@ import engine.core.ManagedObject;
 import system.util.Vector;
 import system.lang.Time;
 
-@json
-class ArenaChallengeData extends ManagedObject {
+ @json
+ class ArenaChallengeData extends ManagedObject {
 	@dereferenced
 	protected Time challengeStart;
 
@@ -29,7 +29,6 @@ class ArenaChallengeData extends ManagedObject {
 		challengeStart.updateToCurrentTime();
 	}
 
-	@read
 	public unsigned long getChallengeStart() {
 		return challengeStart.getMiliTime();
 	}
@@ -43,17 +42,14 @@ class ArenaChallengeData extends ManagedObject {
 		challengeAccepterID = newID;
 	}
 
-	@read
 	public unsigned long getChallengerID() {
 		return challengerID;
 	}
 
-	@read
 	public int getChallengeRank() {
 		return challengeRank;
 	}
 
-	@read
 	public boolean isChallengeCompleted() {
 		return challengeCompleted;
 	}

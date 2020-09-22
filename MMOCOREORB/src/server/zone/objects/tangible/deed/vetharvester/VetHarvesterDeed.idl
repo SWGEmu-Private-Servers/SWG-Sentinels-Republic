@@ -8,8 +8,8 @@ import server.zone.objects.tangible.deed.Deed;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
-@json
-class VetHarvesterDeed extends Deed {
+ @json
+ class VetHarvesterDeed extends Deed {
 
 	public VetHarvesterDeed() {
 		Logger.setLoggingName("VetHarvesterDeed");

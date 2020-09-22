@@ -29,6 +29,9 @@ public:
 		if (ghost == nullptr)
 			return GENERALERROR;
 
+		creature->sendSystemMessage("You are on this Council, but we do not grant you the rank of Master.");
+		return SUCCESS;
+
 		FrsData* playerData = ghost->getFrsData();
 		int playerCouncil = playerData->getCouncilType();
 		int curPlayerRank = playerData->getRank();

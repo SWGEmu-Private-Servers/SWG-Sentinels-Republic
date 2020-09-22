@@ -252,8 +252,6 @@ class InstallationObject extends StructureObject {
 	@preLocked
 	public native void createChildObjects();
 
-	@read
+	@dirty
 	public native float getHitChance();
 }
-
-

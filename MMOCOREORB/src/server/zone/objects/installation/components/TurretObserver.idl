@@ -11,8 +11,8 @@ import engine.core.ManagedObject;
 
 include engine.log.Logger;
 
-@json
-class TurretObserver extends Observer implements Logger {
+ @json
+ class TurretObserver extends Observer implements Logger {
 
 	public TurretObserver() {
 		Logger.setLoggingName("TurretObserver");

@@ -73,6 +73,12 @@ class MissionTerminal extends Terminal {
 	public native string getTerminalName();
 
 	@dirty
+	public native string getDirectionName(int dir); // Mindsoft added
+
+	@dirty
+	public native string getLevelName(int level); // Mindsoft added
+
+	@dirty
 	public boolean isMissionTerminal() {
 		return true;
 	}

@@ -6,6 +6,7 @@
 
 #include "server/zone/QuadTreeEntry.h"
 
+
 CloseObjectsVector::CloseObjectsVector() : messageReceivers() {
 	objects.setNoDuplicateInsertPlan();
 
@@ -71,7 +72,7 @@ void CloseObjectsVector::dropReceiver(QuadTreeEntry* entry) {
 	uint32 receiverTypes = entry->registerToCloseObjectsReceivers();
 
 	if (receiverTypes && messageReceivers.size()) {
-		for (int i = 0; i < CloseObjectsVector::MAXTYPES / 2; ++i) {
+		for (int i = 0; i < CloseObjectsVector::MAXTYPES; ++i) {
 			uint32 type = 1 << i;
 
 			if (receiverTypes & type) {
@@ -171,7 +172,7 @@ const Reference<QuadTreeEntry*>& CloseObjectsVector::get(int idx) const {
 
 void CloseObjectsVector::putReceiver(QuadTreeEntry* entry, uint32 receiverTypes) {
 	if (receiverTypes) {
-		for (int i = 0; i < CloseObjectsVector::MAXTYPES / 2; ++i) {
+		for (int i = 0; i < CloseObjectsVector::MAXTYPES; ++i) {
 			uint32 type = 1 << i;
 
 			if (receiverTypes & type) {

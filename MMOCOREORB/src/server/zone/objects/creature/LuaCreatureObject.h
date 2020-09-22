@@ -30,6 +30,8 @@ namespace creature {
 
 		int _setObject(lua_State* L);
 		// Methods we will need to use
+		int getBankCredits(lua_State *L);
+		int setBankCredits(lua_State* L);
 		int setHAM(lua_State* L);
 		int setBaseHAM(lua_State* L);
 		int setMaxHAM(lua_State* L);
@@ -56,6 +58,7 @@ namespace creature {
 		int isFeigningDeath(lua_State* L);
 		int hasState(lua_State* L);
 		int setState(lua_State* L);
+		int clearState(lua_State* L);
 		int setPosture(lua_State* L);
 		int setMoodString(lua_State* L);
 		int getPosture(lua_State* L);
@@ -78,11 +81,8 @@ namespace creature {
 		int setFactionRank(lua_State* L);
 		int getFactionRank(lua_State* L);
 		int getCashCredits(lua_State* L);
-		int getBankCredits(lua_State *L);
 		int subtractCashCredits(lua_State* L);
-		int subtractBankCredits(lua_State* L);
 		int addCashCredits(lua_State* L);
-		int addBankCredits(lua_State* L);
 		int removeScreenPlayState(lua_State* L);
 		int setLootRights(lua_State* L);
 		int isGrouped(lua_State* L);
@@ -121,9 +121,28 @@ namespace creature {
 		int getHealingThreatList(lua_State* L);
 		int getSkillMod(lua_State* L);
 		int getGender(lua_State* L);
-		int isRidingMount(lua_State* L);
-		int dismount(lua_State* L);
-	private:
+		int buffStat(lua_State* L);
+		int removeBuffs(lua_State* L);
+		int emptyStomach(lua_State* L);
+		int getActivePetsSize(lua_State* L);
+		int getActivePet(lua_State* L);
+		int setAppearance(lua_State* L);
+
+		int getGroup(lua_State* L);
+		int formGroupWithCreature(lua_State* L);
+		int ungroupCreature(lua_State* L);
+		int clearDots(lua_State* L);
+		int removeBuff(lua_State* L);
+		int getActiveThreatList(lua_State* L);
+		int getThreatMap(lua_State* L);
+		int clearTargetAggro(lua_State* L);
+		int setHeight(lua_State* L);
+		int getCooldownTime(lua_State* L);
+		int getCooldownString(lua_State* L);
+		int sendCommand(lua_State* L);
+		int getPetControlDevice(lua_State* L);
+
+		private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
 	};

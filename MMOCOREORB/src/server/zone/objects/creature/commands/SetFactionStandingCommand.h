@@ -30,14 +30,14 @@ public:
 		//make sure that the target is a player
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == nullptr || !obj->isPlayerCreature() ) {
+		if (obj == NULL || !obj->isPlayerCreature() ) {
 			sendInvalidParameterMessage(creature);
 			return INVALIDTARGET;
 		}
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 
-		if ( targetCreature == nullptr ) {
+		if ( targetCreature == NULL ) {
 			sendInvalidParameterMessage(creature);
 			return GENERALERROR;
 		}
@@ -79,13 +79,13 @@ public:
 
 		PlayerObject* targetPlayer = targetCreature->getPlayerObject();
 
-		if ( targetPlayer == nullptr )
+		if ( targetPlayer == NULL )
 			return GENERALERROR;
 
 		int intCurrentFaction = targetPlayer->getFactionStanding(faction);
 		int factionDif = intCurrentFaction - factionValue;
 
-		if ( factionValue >= -5000 && factionValue <= 100000 && factionDif != 0) {
+		if ( factionValue >= -5000 && factionValue <= 250000 && factionDif != 0) {
 			if ( factionValue > intCurrentFaction)
 				targetPlayer->increaseFactionStanding(faction,factionValue-intCurrentFaction);
 			else
@@ -97,7 +97,7 @@ public:
 			if ( factionDif == 0 )
 				creature->sendSystemMessage("No faction change");
 			else
-				creature->sendSystemMessage("Invalid faction amount.  Must be between -5000 and 100k");
+				creature->sendSystemMessage("Invalid faction amount.  Must be between -5000 and 250k");
 		}
 		return SUCCESS;
 	}

@@ -64,12 +64,12 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 	}
 
 	if (loaded.compareAndSet(false, true)) {
-		auto managerName = luaEngine->getGlobalString(String("jediManagerName"));
+	auto managerName = luaEngine->getGlobalString(String("jediManagerName"));
 
-		setJediManagerName(managerName);
-	}
+	setJediManagerName(managerName);
+}
 
-	info() << Thread::getCurrentThread()->getName() <<  " loaded.";
+	info("Loaded.");
 }
 
 void JediManager::onPlayerCreated(CreatureObject* creature) {

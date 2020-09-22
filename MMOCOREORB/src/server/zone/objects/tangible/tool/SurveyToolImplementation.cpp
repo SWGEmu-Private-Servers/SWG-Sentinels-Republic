@@ -22,7 +22,7 @@ void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 
 	SurveyToolTemplate* surveyToolData = dynamic_cast<SurveyToolTemplate*>(templateData);
 
-	if (surveyToolData == nullptr) {
+	if (surveyToolData == NULL) {
 		throw Exception("invalid template for SurveyTool");
 	}
 
@@ -50,7 +50,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (selectedID == 20) { // use object
 			int range = getRange(player);
 
-			if(range <= 0 || range > 384) {
+			if(range <= 0 || range > 512) {
 				sendRangeSui(player);
 				return 0;
 			}
@@ -58,7 +58,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			Locker locker(_this.getReferenceUnsafeStaticCast());
 
 			ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
-			if(session == nullptr) {
+			if(session == NULL) {
 				session = new SurveySession(player);
 				session->initializeSession(_this.getReferenceUnsafeStaticCast());
 			}
@@ -66,7 +66,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			session->setOpenSurveyTool(_this.getReferenceUnsafeStaticCast());
 
 			ManagedReference<ResourceManager*> resourceManager = cast<ResourceManager*>(server->getZoneServer()->getResourceManager());
-			if(resourceManager == nullptr) {
+			if(resourceManager == NULL) {
 				error("null resource manager");
 				return 0;
 			}
@@ -112,6 +112,12 @@ void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {
 	if (surveyMod >= 120)
 		suiToolRangeBox->addMenuItem("384m x 5pts", 5);
 
+	if (surveyMod >= 125)
+		suiToolRangeBox->addMenuItem("448m x 5pts", 6);
+
+	if (surveyMod >= 145)
+		suiToolRangeBox->addMenuItem("512m x 5pts", 7);
+
 	suiToolRangeBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server->getZoneServer()));
 	player->getPlayerObject()->addSuiBox(suiToolRangeBox);
@@ -131,7 +137,11 @@ int SurveyToolImplementation::getRange(CreatureObject* player) {
 
 int SurveyToolImplementation::getSkillBasedRange(int skillLevel) {
 
-	if (skillLevel >= 120)
+	if (skillLevel >= 145)
+		return 512;
+	else if (skillLevel >= 125)
+		return 448;
+	else if (skillLevel >= 120)
 		return 384;
 	else if (skillLevel >= 100)
 		return 320;

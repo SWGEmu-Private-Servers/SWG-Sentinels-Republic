@@ -87,11 +87,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != nullptr) {
+		if (object != NULL) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-				if (tangibleObject != nullptr && tangibleObject->isAttackableBy(creature)) {
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.
@@ -125,11 +125,11 @@ public:
 		if (creature->isPlayerCreature() && creatureTarget->getParentID() != 0 && creature->getParentID() != creatureTarget->getParentID()) {
 			Reference<CellObject*> targetCell = creatureTarget->getParent().get().castTo<CellObject*>();
 
-			if (targetCell != nullptr) {
+ 			if (targetCell != nullptr) {
 				if (!creatureTarget->isPlayerCreature()) {
-					auto perms = targetCell->getContainerPermissions();
+					ContainerPermissions* perms = targetCell->getContainerPermissions();
 
-					if (!perms->hasInheritPermissionsFromParent()) {
+ 					if (!perms->hasInheritPermissionsFromParent()) {
 						if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
 							creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
 							return GENERALERROR;
@@ -137,19 +137,19 @@ public:
 					}
 				}
 
-				ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+ 				ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
-				if (parentSceneObject != nullptr) {
+ 				if (parentSceneObject != nullptr) {
 					BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
 
-					if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
+ 					if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
 						creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
 						return GENERALERROR;
 					}
 				}
 			}
 		}
-
+		
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.

@@ -18,7 +18,7 @@ public:
 	const static int GAME = 4;
 	const static int HONORGUARD = 5;
 
-	const static uint64 TIME_TO_LIVE = 28800000; // 8 hours
+	const static uint64 TIME_TO_LIVE = 86400000; // 24 hours
 
 	EventPerkDeedTemplate() {
 		perkType = UNKNOWN;

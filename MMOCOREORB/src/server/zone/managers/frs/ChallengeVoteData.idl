@@ -8,8 +8,8 @@ import engine.core.ManagedObject;
 import system.util.Vector;
 import system.lang.Time;
 
-@json
-class ChallengeVoteData extends ManagedObject {
+ @json
+ class ChallengeVoteData extends ManagedObject {
 	public static final short VOTING_OPEN = 1;
 	public static final short VOTING_CLOSED = 2;
 

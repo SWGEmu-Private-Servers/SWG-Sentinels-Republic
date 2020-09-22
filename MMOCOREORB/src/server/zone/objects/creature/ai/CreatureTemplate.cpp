@@ -68,6 +68,7 @@ CreatureTemplate::CreatureTemplate() {
 	containerComponentTemplate = "";
 	reactionStf = "";
 	personalityStf = "";
+	srLoot = false;
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -76,7 +77,7 @@ CreatureTemplate::~CreatureTemplate() {
 	weapons.removeAll();
 
 	delete attacks;
-	attacks = nullptr;
+	attacks = NULL;
 }
 
 void CreatureTemplate::readObject(LuaObject* templateData) {
@@ -215,4 +216,5 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	reactionStf = templateData->getStringField("reactionStf");
 	personalityStf = templateData->getStringField("personalityStf");
+	srLoot = templateData->getBooleanField("srLoot");
 }

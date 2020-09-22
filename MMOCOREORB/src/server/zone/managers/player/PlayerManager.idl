@@ -45,9 +45,6 @@ include server.zone.managers.player.XpBonusList;
 import server.zone.ZoneClientSession;
 import system.thread.Mutex;
 include engine.util.JSONSerializationType;
-import server.zone.objects.player.events.OnlinePlayerLogTask;
-import system.lang.Time;
-include server.zone.managers.player.PlayerNameIterator;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -62,17 +59,6 @@ class PlayerManager extends Observer implements Logger {
 	protected transient Mutex playerLoggerMutex;
 	protected transient int playerLoggerLines = 0;
 
-	@dereferenced
-	protected transient Mutex onlinePlayerLogMutext;
-
-	@weakReference
-	protected transient OnlinePlayerLogTask onlinePlayerLogTask;
-	protected transient int onlinePlayerLogSum = 0;
-	protected transient boolean onlinePlayersLogOnSessionChange = false;
-
-	@dereferenced
-	protected transient Time lastOnlinePlayerLogMsg;
-
 	// Used for frog/gm buffs
 	protected int performanceBuff;
 	protected int medicalBuff;
@@ -84,6 +70,7 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredDroids;
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
+	protected int baseStoredFamiliarPets;
 	protected boolean allowSameAccountPvpRatingCredit;
 	protected int onlineCharactersPerAccount;
 
@@ -116,7 +103,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 
-	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl, boolean trackOnlineUsers);
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
 
 	private native void loadLuaConfig();
@@ -519,7 +506,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @returns true if it was added
 	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
 	 */
-	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
+	public native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
 
 	public int getBaseStoredCreaturePets() {
 		return baseStoredCreaturePets;
@@ -539,6 +526,10 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getBaseStoredShips() {
 		return baseStoredShips;
+	}
+
+	public int getBaseStoredFamiliarPets() {
+		return baseStoredFamiliarPets;
 	}
 
 	public int getNumVeteranRewardMilestones(){
@@ -576,18 +567,8 @@ class PlayerManager extends Observer implements Logger {
 	public native Vector<unsigned long> getOnlinePlayerList();
 
 	@local
-	public native void logOnlinePlayers(boolean onlyWho);
+	public native void updateLeaderboards(PlayerObject player, PlayerObject target, final string event_type, final string event_extra);
 
 	@local
-	public native boolean rescheduleOnlinePlayerLogTask(int logSeconds);
-
-	public void updateOnlinePlayers() {
-		// Update just the log/who.json file based on Core3.LogOnlineOnSessionChange (default: true)
-		logOnlinePlayers(!onlinePlayersLogOnSessionChange);
-	}
-
-	public native void stopOnlinePlayerLogTask();
-
-	@local
-	public native void iteratePlayerNames(@dereferenced final PlayerNameIterator iterator);
+	public native boolean checkPlayerRaceRestrictions(ClientCreateCharacterCallback callback);
 }

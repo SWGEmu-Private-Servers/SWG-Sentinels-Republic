@@ -166,7 +166,7 @@ public:
 		//Fishing 271 - 280
 		FISHING                            = 271,
 
-		// FRS
+		//FRS
 		ENCLAVE_VOTING					   = 281,
 
 		//Medic 291 - 300
@@ -268,12 +268,18 @@ public:
 		DROID_EDIT_ASSIGNED_STRUCTURES     = 1034,
 		DROID_MAINTENANCE_RUN_LIST         = 1035,
 		DROID_ADD_STRUCTURE_AMOUNT         = 1036,
-		PET_FIX_DIALOG					   = 1037,
-		JUKEBOX_SELECTION				   = 1038,
-		SHUTTLE_BEACON					   = 1039,
-		FIELD_FACTION_CHANGE			   = 1040,
-		GOTO_LIST						   = 1041,
-		FS_EXP_CONVERT 					   = 1042
+		PET_FIX_DIALOG					   				 = 1037,
+		JUKEBOX_SELECTION				   				 = 1038,
+		SHUTTLE_BEACON					   				 = 1039,
+		FIELD_FACTION_CHANGE			   			 = 1040,
+		GOTO_LIST						   						 = 1041,
+		FS_EXP_CONVERT 					   				 = 1042,
+		HARVESTER_COMM										 = 1043,
+		INSTALLATION_BEACON								 = 1044,
+		DATADISKMESSAGE										 = 1045,
+
+		MISSION_CHOOSE_DIRECTION		   = 1050,
+		MISSION_CHOOSE_LEVEL			   = 1051
 	};
 };
 

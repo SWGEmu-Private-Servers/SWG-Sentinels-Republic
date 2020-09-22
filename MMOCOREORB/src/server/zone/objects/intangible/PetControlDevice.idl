@@ -16,8 +16,8 @@ import server.zone.objects.intangible.PetControlObserver;
 include system.util.Vector;
 include system.lang.Time;
 
-@json
-class PetControlDevice extends ControlDevice {
+ @json
+ class PetControlDevice extends ControlDevice {
 
 	PetControlObserver petControlObserver;
 

@@ -20,7 +20,6 @@ class Container extends TangibleObject {
 		Logger.setLoggingName("Container");
 
 		locked = false;
-		relocking = false;
 	}
 
 	@local
@@ -74,12 +73,12 @@ class Container extends TangibleObject {
 		locked = lock;
 	}
 
-	@read
+	@dirty
 	public int getLockChance() {
 		return 15;
 	}
 
-	@read
+	@dirty
 	public long getLockTime() {
 		return 60*30*1000;
 	}

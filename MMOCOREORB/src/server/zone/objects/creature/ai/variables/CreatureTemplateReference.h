@@ -13,7 +13,7 @@
 #include "server/zone/objects/creature/ai/CreatureTemplate.h"
 
 class CreatureTemplateReference : public Reference<CreatureTemplate*> {
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 	String templateString;
 #endif
 public:
@@ -21,8 +21,8 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 	CreatureTemplate* operator=(CreatureTemplate* obj);
 
-	friend void to_json(nlohmann::json& j, const CreatureTemplateReference& r);
-};
+		friend void to_json(nlohmann::json& j, const CreatureTemplateReference& r);
+	};
 
 
 

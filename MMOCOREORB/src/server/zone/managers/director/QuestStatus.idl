@@ -7,8 +7,8 @@ package server.zone.managers.director;
 import engine.core.ManagedObject;
 import system.lang.String;
 
-@json
-class QuestStatus extends ManagedObject {
+ @json
+ class QuestStatus extends ManagedObject {
 	protected string key;
 	protected string status;
 

@@ -11,7 +11,7 @@
 #include "server/ServerCore.h"
 
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 	zoneName.toBinaryStream(stream);
 #else
 	Zone* object = Reference<Zone*>::get();
@@ -20,15 +20,16 @@ bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {
 		object->getZoneName().toBinaryStream(stream);
 	else
 		stream->writeShort(0);
+
 #endif
 	return true;
 }
 
 bool ZoneReference::parseFromBinaryStream(ObjectInputStream* stream) {
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 	zoneName.parseFromBinaryStream(stream);
 #else
-	String zoneName;
+String zoneName;
 	zoneName.parseFromBinaryStream(stream);
 
 	Zone* obj = ServerCore::getZoneServer()->getZone(zoneName);
@@ -51,10 +52,10 @@ Zone* ZoneReference::operator= (Zone* obj) {
 }
 
 void server::zone::to_json(nlohmann::json& j, const ZoneReference& p) {
-#ifdef ODB_SERIALIZATION
+	#ifdef ODB_SERIALIZATION
 	j = p.getZoneName();
 #else
-	Zone* object = p.get();
+Zone* object = p.get();
 
 	if (object != nullptr)
 		j = object->getZoneName();
@@ -62,4 +63,3 @@ void server::zone::to_json(nlohmann::json& j, const ZoneReference& p) {
 		j = "";
 #endif
 }
-

@@ -12,11 +12,12 @@
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
 
 /**
  * Rename for clarity/convenience
  */
-using Mod = VectorMapEntry<String,int>;
+typedef VectorMapEntry<String,int> Mod;
 
 /**
  * @inf
@@ -32,7 +33,7 @@ using Mod = VectorMapEntry<String,int>;
 class ModSortingHelper : public Mod {
 public:
 	ModSortingHelper(): Mod( "", 0) {}
-	ModSortingHelper(String name, int value) : Mod(name, value) {}
+	ModSortingHelper( String name, int value ) : Mod( name, value ) {}
 
 	/**
 	 * @inf
@@ -78,10 +79,50 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 
 	//Anti Decay Kit
-	if (hasAntiDecayKit() && !isArmorObject()){
+	if(hasAntiDecayKit() && !isArmorObject()){
 		alm->insertAttribute("@veteran_new:antidecay_examine_title", "@veteran_new:antidecay_examine_text");
 	}
 
+}
+
+bool WearableObjectImplementation::hasSeaRemovalTool(CreatureObject* player, bool removeItem) {
+
+	uint32 crc;
+
+	if (player == NULL)
+		return 0;
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == NULL)
+		return false;
+
+	Locker inventoryLocker(inventory);
+
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
+
+		crc = sceno->getServerObjectCRC();
+		if (String::valueOf(crc) == "3905622464") { //Sea Removal Tool
+
+			if (sceno != NULL) {
+				if (removeItem) {
+					TangibleObject* tano = cast<TangibleObject*>(sceno.get());
+					Locker locker(sceno);
+					if (tano->getUseCount() > 1) {
+						tano->setUseCount((tano->getUseCount() - 1), true);
+					} else {
+						sceno->destroyObjectFromWorld(true);
+						sceno->destroyObjectFromDatabase(true);
+					}	
+				}
+
+				return true;
+			}
+		}
+	}
+
+	return 0;
 }
 
 void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool initialUpdate) {
@@ -90,13 +131,14 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	 * sockets				0-0(novice artisan) (Don't use)
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
-	if (initialUpdate) {
+	if(initialUpdate) {
 		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+
 	if (socketsGenerated) {
 		return;
 	}
@@ -104,13 +146,13 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	int skill = 0;
 	int luck = 0;
 
-	if (craftingValues != nullptr) {
+	if (craftingValues != NULL) {
 		ManagedReference<ManufactureSchematic*> manuSchematic = craftingValues->getManufactureSchematic();
-		if(manuSchematic != nullptr) {
+		if(manuSchematic != NULL) {
 			ManagedReference<DraftSchematic*> draftSchematic = manuSchematic->getDraftSchematic();
 			ManagedReference<CreatureObject*> player = manuSchematic->getCrafter().get();
 
-			if (player != nullptr && draftSchematic != nullptr) {
+			if (player != NULL && draftSchematic != NULL) {
 				String assemblySkill = draftSchematic->getAssemblySkill();
 				skill = player->getSkillMod(assemblySkill) * 2.5; // 0 to 250 max
 				luck = System::random(player->getSkillMod("luck")
@@ -119,7 +161,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 		}
 	}
 
-	int random = (System::random(750)) - 250; // -250 to 500
+	int random = (System::random(750)); // -250 to 500
 
 	float roll = System::random(skill + luck + random);
 
@@ -139,7 +181,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	socketsGenerated = true;
 }
 
-int WearableObjectImplementation::socketsUsed() const {
+int WearableObjectImplementation::socketsUsed() {
 	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
 	if (objectCreatedPreUsedSocketCountFix) {
 		return wearableSkillMods.size() - modsNotInSockets;
@@ -150,10 +192,12 @@ int WearableObjectImplementation::socketsUsed() const {
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		Attachment* attachment) {
+
 	if (!isASubChildOf(player))
 		return;
 
 	if (socketsLeft() > 0) {
+
 		Locker locker(player);
 
 		if (isEquipped()) {
@@ -203,8 +247,8 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 	}
 }
 
-void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) const {
-	if (creature == nullptr) {
+void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) {
+	if (creature == NULL) {
 		return;
 	}
 
@@ -213,17 +257,14 @@ void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) co
 		int value = wearableSkillMods.get(name);
 
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
-		{
 			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
-			creature->updateTerrainNegotiation();
-		}
 	}
 
 	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
-	if (creature == nullptr) {
+	if (creature == NULL) {
 		return;
 	}
 
@@ -232,10 +273,7 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 		int value = wearableSkillMods.get(name);
 
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
-		{
 			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
-			creature->updateTerrainNegotiation();
-		}
 	}
 
 	SkillModManager::instance()->verifyWearableSkillMods(creature);
@@ -243,13 +281,14 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 
 bool WearableObjectImplementation::isEquipped() {
 	ManagedReference<SceneObject*> parent = getParent().get();
-	if (parent != nullptr && parent->isPlayerCreature())
+	if (parent != NULL && parent->isPlayerCreature())
 		return true;
 
 	return false;
 }
 
 String WearableObjectImplementation::repairAttempt(int repairChance) {
+
 	String message = "@error_message:";
 
 	if(repairChance < 25) {
@@ -272,4 +311,3 @@ String WearableObjectImplementation::repairAttempt(int repairChance) {
 
 	return message;
 }
-

@@ -13,6 +13,9 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/director/ScreenPlayTask.h"
 
+#include "server/zone/managers/collision/CollisionManager.h" // Mindsoft Added
+#include "server/zone/objects/cell/CellObject.h" // Mindsoft Added
+
 const char LuaSceneObject::className[] = "LuaSceneObject";
 
 Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
@@ -58,6 +61,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isCreature", &LuaSceneObject::isCreature },
 		{ "isBuildingObject", &LuaSceneObject::isBuildingObject },
 		{ "isActiveArea", &LuaSceneObject::isActiveArea },
+		{ "isGroupObject", &LuaSceneObject::isGroupObject }, //Mindsoft Added
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
@@ -82,12 +86,17 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isOwned", &LuaSceneObject::isOwned },
 		{ "playEffect", &LuaSceneObject::playEffect },
 		{ "addPendingTask", &LuaSceneObject::addPendingTask },
+		{ "hasPendingTask", &LuaSceneObject::hasPendingTask }, //Mindsoft Added
 		{ "cancelPendingTask", &LuaSceneObject::cancelPendingTask },
 		{ "getChildObject", &LuaSceneObject::getChildObject },
 		{ "getContainerOwnerID", &LuaSceneObject::getContainerOwnerID },
 		{ "info", &LuaSceneObject::info },
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
 		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
+		{ "checkLineOfSight", &LuaSceneObject::checkLineOfSight }, //Mindsoft Added
+		{ "getFloorCollision", &LuaSceneObject::getFloorCollision }, //Mindsoft Added
+		{ "isInside", &LuaSceneObject::isInside }, //Mindsoft Added
+		{ "isCellObject", &LuaSceneObject::isCellObject }, //Mindsoft Added
 		{ 0, 0 }
 
 };
@@ -100,7 +109,7 @@ LuaSceneObject::~LuaSceneObject(){
 }
 
 int LuaSceneObject::_getObject(lua_State* L) {
-	if (realObject == nullptr)
+	if (realObject == NULL)
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, realObject.get());
@@ -167,7 +176,7 @@ int LuaSceneObject::switchZone(lua_State* L) {
 }
 
 int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
-	if (realObject != nullptr) {
+	if (realObject != NULL) {
 		String tempPath = realObject->getObjectTemplate()->getFullTemplateString();
 
 		lua_pushstring(L, tempPath.toCharArray());
@@ -194,7 +203,7 @@ int LuaSceneObject::getZoneName(lua_State* L) {
 
 	String name = "";
 
-	if (zone != nullptr) {
+	if (zone != NULL) {
 		name = zone->getZoneName();
 	}
 
@@ -323,7 +332,7 @@ int LuaSceneObject::faceObject(lua_State* L) {
 int LuaSceneObject::isFacingObject(lua_State* L) {
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
 
-	if (obj == nullptr) {
+	if (obj == NULL) {
 		lua_pushboolean(L, false);
 
 		return 1;
@@ -361,7 +370,7 @@ int LuaSceneObject::isInRangeWithObject3d(lua_State* L) {
 int LuaSceneObject::getParent(lua_State* L) {
 	SceneObject* obj = realObject->getParent().get().get();
 
-	if (obj == nullptr) {
+	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -376,7 +385,7 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getContainerObject(idx);
 
-	if (obj == nullptr) {
+	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -391,7 +400,7 @@ int LuaSceneObject::getContainerObjectById(lua_State* L) {
 
 	SceneObject* obj = realObject->getContainerObject(objectID);
 
-	if (obj != nullptr) {
+	if (obj != NULL) {
 		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	} else {
@@ -445,7 +454,7 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	String slot = lua_tostring(L, -1);
 
 	SceneObject* obj = realObject->getSlottedObject(slot);
-	if (obj == nullptr) {
+	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -580,6 +589,16 @@ int LuaSceneObject::isBuildingObject(lua_State* L) {
 
 int LuaSceneObject::isActiveArea(lua_State* L) {
 	bool val = realObject->isActiveArea();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+// Mindsoft Added
+// Returns bool true if object is groupObject false if it is not
+int LuaSceneObject::isGroupObject(lua_State* L) {
+	bool val = realObject->isGroupObject();
 
 	lua_pushboolean(L, val);
 
@@ -758,6 +777,16 @@ int LuaSceneObject::addPendingTask(lua_State* L) {
 	return 0;
 }
 
+//Mindsoft Added
+// Returns bool true if object has pendng task ("play", "task")
+int LuaSceneObject::hasPendingTask(lua_State* L) {
+    String play = lua_tostring(L, -2);
+    String key = lua_tostring(L, -1);
+    String name = play + ":" + key;
+    lua_pushboolean(L, realObject->containsPendingTask(name));
+    return 1;
+}
+
 int LuaSceneObject::cancelPendingTask(lua_State* L) {
 	String play = lua_tostring(L, -2);
 	String key = lua_tostring(L, -1);
@@ -767,7 +796,7 @@ int LuaSceneObject::cancelPendingTask(lua_State* L) {
 	if (realObject->containsPendingTask(name)) {
 		Reference<ScreenPlayTask*> task = realObject->getPendingTask(name).castTo<ScreenPlayTask*>();
 
-		if (task != nullptr && task->isScheduled()) {
+		if (task != NULL && task->isScheduled()) {
 			task->cancel();
 		}
 
@@ -782,7 +811,7 @@ int LuaSceneObject::getChildObject(lua_State* L) {
 
 	SceneObject* obj = realObject->getChildObjects()->get(index);
 
-	if (obj == nullptr) {
+	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
 		obj->_setUpdated(true);
@@ -812,19 +841,27 @@ int LuaSceneObject::getPlayersInRange(lua_State *L) {
 
 	Zone* thisZone = realObject->getZone();
 
-	if (thisZone == nullptr) {
+	if (thisZone == NULL) {
 		lua_pushnil(L);
 		return 1;
 	}
 
 	lua_newtable(L);
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> playerObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-	thisZone->getInRangePlayers(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, playerObjects);
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	thisZone->getInRangeObjects(realObject->getWorldPositionX(), realObject->getWorldPositionY(), range, closeObjects, true);
 	int numPlayers = 0;
 
-	for (int i = 0; i < playerObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(playerObjects->get(i).get());
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeObjects->get(i).get());
+
+		if (object == NULL || !object->isPlayerCreature())
+			continue;
+
+		CreatureObject* player = object->asCreatureObject();
+
+		if (player == NULL || player->isInvisible())
+			continue;
 
 		numPlayers++;
 		lua_pushlightuserdata(L, object);
@@ -838,6 +875,103 @@ int LuaSceneObject::isInNavMesh(lua_State* L) {
 	bool val = realObject->isInNavMesh();
 
 	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+// Mindsoft Added
+// Return bool true if Passed pSob and object have LOS , false if they do not have LOS
+int LuaSceneObject::checkLineOfSight(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+	if (obj == NULL)
+		return 0;
+		
+	bool retVal = CollisionManager::checkLineOfSight(realObject, obj);
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+
+// Mindsoft Added
+// Return Relative z height at objects given x,y. Interior/Exterior
+int LuaSceneObject::getFloorCollision(lua_State* L) {
+	float y = lua_tonumber(L, -1);
+	float x = lua_tonumber(L, -2);
+	float z = 0;
+
+	CellObject* cell;
+
+	if (realObject->isCellObject()){ // If method was called from a cell object search that cell
+		cell = realObject.castTo<CellObject*>();
+	}else{ // attempt to find parent cell
+		ManagedReference<SceneObject*> parent = realObject->getParent().get();
+		if ((parent == NULL) || !(parent->isCellObject())){ // if parent cell not found find world z
+			z = realObject->getZone()->getHeight(x, y);
+			lua_pushnumber(L, z);
+			return 1;
+		}
+
+		cell = parent.castTo<CellObject*>();
+	}
+
+	// get a table of all the floors found at this location in the calling/found cell
+	Vector<float>* floors = CollisionManager::getCellFloorCollision(x, y, cell);
+
+	if (floors != NULL){ // if any floors found, attempt to find the closest one
+		int floorCount = floors->size();
+		int i = 0;
+		z = realObject->getPositionZ(); // Get Objects Current Z Position
+
+		if (floorCount == 1) // if only 1 floor found no need to search for nearest
+			i = 0;
+		else{ // mulitple floors found attempt to find the one nearest to calling scene objects current z
+			int expand = 0;
+			bool notFound = true;
+			while (notFound and (expand <= 6)) { // Search from 4-10 meters from z in intervals of 1m
+				i = 0;
+				for (; i < floorCount; ++i) {
+					float f = floors->get(i);
+					if (fabs(z - f) < (4.f + expand)) { // Test if floor z falls within current range limits
+						notFound = false; // Floor was found in range , exit loop
+					} else {
+						expand += 1; // expand search range limits
+					}
+				}
+			}
+		}
+
+		if (i > floorCount-1){ // if a floor was not found within range, use first floor in tables z
+			z = floors->get(0);
+			lua_pushnumber(L, z);
+		}else{ // floor was found in range return that floors z
+			z = floors->get(i);
+			lua_pushnumber(L, z);
+		}
+
+	}else // No floor found at this location, return nil to lua
+		lua_pushnil(L);
+	
+	delete floors; // empty vector
+	floors = NULL; // free memory address
+	return 1;
+}
+
+// Mindsoft Added
+// Returns bool true if object is inside, false if outside
+int LuaSceneObject::isInside(lua_State* L) {
+	ManagedReference<SceneObject*> parent = realObject->getParent().get();
+	if (parent != NULL && parent->isCellObject())
+		lua_pushboolean(L, true);
+	else
+		lua_pushboolean(L, false);
+	return 1;
+}
+
+// Mindsoft Added
+// Returns bool true if object is a Cell Object, false if Not
+int LuaSceneObject::isCellObject(lua_State* L) {
+	lua_pushboolean(L, realObject->isCellObject());
 
 	return 1;
 }

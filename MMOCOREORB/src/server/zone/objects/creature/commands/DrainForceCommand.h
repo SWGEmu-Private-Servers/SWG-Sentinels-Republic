@@ -35,12 +35,12 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == nullptr || !object->isPlayerCreature())
+		if (object == NULL || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (targetCreature == nullptr || targetCreature->isDead() || (targetCreature->isIncapacitated() && !targetCreature->isFeigningDeath()) || !targetCreature->isAttackableBy(creature))
+		if (targetCreature == NULL || targetCreature->isDead() || (targetCreature->isIncapacitated() && !targetCreature->isFeigningDeath()) || !targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
 		if(!checkDistance(creature, targetCreature, range))
@@ -56,7 +56,7 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 		ManagedReference<PlayerObject*> playerGhost = creature->getPlayerObject();
 
-		if (targetGhost == nullptr || playerGhost == nullptr)
+		if (targetGhost == NULL || playerGhost == NULL)
 			return GENERALERROR;
 
 		CombatManager* manager = CombatManager::instance();
@@ -71,7 +71,7 @@ public:
 				return GENERALERROR;
 			}
 
-			int drain = System::random(maxDamage);
+ 			int drain = System::random(maxDamage);
 
 			int targetForce = targetGhost->getForcePower();
 			if (targetForce <= 0) {
@@ -83,12 +83,12 @@ public:
 			if (forceDrain > forceSpace)
 				forceDrain = forceSpace; //Drain only what attacker can hold in their own Force pool.
 
-			playerGhost->setForcePower(playerGhost->getForcePower() + (forceDrain - forceCost));
+			playerGhost->setForcePower(playerGhost->getForcePower() + forceDrain);
 			targetGhost->setForcePower(targetGhost->getForcePower() - forceDrain);
 
 			uint32 animCRC = getAnimationString().hashCode();
 			creature->doCombatAnimation(targetCreature, animCRC, 0x1, 0xFF);
-			manager->broadcastCombatSpam(creature, targetCreature, nullptr, forceDrain, "cbt_spam", combatSpam, 1);
+			manager->broadcastCombatSpam(creature, targetCreature, NULL, forceDrain, "cbt_spam", combatSpam, 1);
 
 			VisibilityManager::instance()->increaseVisibility(creature, visMod);
 
@@ -104,7 +104,7 @@ public:
 		float baseDuration = defaultTime * 3.0;
 		float combatHaste = object->getSkillMod("combat_haste");
 
-		if (combatHaste > 0) {
+ 		if (combatHaste > 0) {
 			return baseDuration * (1.f - (combatHaste / 100.f));
 		} else {
 			return baseDuration;

@@ -20,7 +20,7 @@ class PersistentEvent extends ManagedObject {
 	protected boolean eventExecuted;
 
 	@weakReference
-	transient protected ScreenPlayTask screenplayTask;
+	transient ScreenPlayTask screenplayTask;
 
 	@weakReference
 	protected SceneObject obj;

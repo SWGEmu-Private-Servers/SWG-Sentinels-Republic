@@ -43,7 +43,7 @@ public:
 
 			PlayerObject* ghost = player->getPlayerObject();
 
-			if (ghost == nullptr) {
+			if (ghost == NULL) {
 				return;
 			}
 
@@ -54,7 +54,7 @@ public:
 				return;
 			else if (deadRecovery && !player->isDead())
 				return;
-
+				
 			ghost->setCloning(false);
 
 			int health = player->getHAM(CreatureAttribute::HEALTH);
@@ -76,7 +76,7 @@ public:
 
 			player->setPosture(CreaturePosture::UPRIGHT);
 
-			player->notifyObservers(ObserverEventType::CREATUREREVIVED, nullptr, 0);
+			player->notifyObservers(ObserverEventType::CREATUREREVIVED, NULL, 0);
 
 			if (ghost->getForcePowerMax() > 0 && ghost->getForcePower() < ghost->getForcePowerMax()) {
 				ghost->activateForcePowerRegen();

@@ -13,6 +13,7 @@
 
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 
+
 namespace server {
 namespace zone {
 namespace objects {

@@ -5,6 +5,7 @@
 #ifndef CREATECREATURECOMMAND_H_
 #define CREATECREATURECOMMAND_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -27,11 +28,11 @@ public:
 
 		Zone* zone = creature->getZone();
 
-		if (zone == nullptr)
+		if (zone == NULL)
 			return GENERALERROR;
 
 		float posX = creature->getPositionX(), posY = creature->getPositionY(), posZ = creature->getPositionZ();
-		uint64 parID = creature->getParentID();
+		uint64 parID = creature->getParentID();uint64 dirID = creature->getDirectionAngle();//uint64 dirID = creature->getDirectionAngle(); is new
 
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 		bool baby = false;
@@ -64,7 +65,7 @@ public:
 				for (int i = 0; i < server->getZoneCount(); ++i) {
 					Zone* zone = server->getZone(i);
 
-					if (zone == nullptr)
+					if (zone == NULL)
 						continue;
 
 					int num = zone->getSpawnedAiAgents();
@@ -144,6 +145,8 @@ public:
 
 			if (tokenizer.hasMoreTokens())
 				parID = tokenizer.getLongToken();
+			if (tokenizer.hasMoreTokens())//new
+				dirID = tokenizer.getLongToken();//new
 		} else {
 			creature->sendSystemMessage("Usage: /createCreature <template> [object template | ai template | baby | event [level] [scale] ] [X] [Z] [Y] [planet] [cellID]");
 			return GENERALERROR;
@@ -153,8 +156,9 @@ public:
 
 		uint32 templ = tempName.hashCode();
 		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;
+		StringBuffer msg;//new
 
-		AiAgent* npc = nullptr;
+		AiAgent* npc = NULL;
 		if (baby)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
 		else if (event)
@@ -163,14 +167,16 @@ public:
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, parID));
 		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
-			if (npc != nullptr)
-				npc->activateLoad("");
+			if (npc != NULL)npc->activateLoad("");
+				msg << "spawnMobile(\"" << zone->getZoneName() << "\", \"" << tempName << "\", 300, " << posX << ", " << posZ << ", " << posY << ", " << dirID << ", " << parID << ")"<< endl;//new
+
+				creature->sendSystemMessage(msg.toString());//new
 		}
 
-		if (baby && npc == nullptr) {
+		if (baby && npc == NULL) {
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
 			return GENERALERROR;
-		} else if (npc == nullptr) {
+		} else if (npc == NULL) {
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 			return GENERALERROR;
 		}

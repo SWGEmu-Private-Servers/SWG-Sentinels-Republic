@@ -44,7 +44,7 @@ protected:
 
 public:
 	enum { BASE_BUFF, SINGLE_USE_BUFF };
-
+    
 	JediQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 		forceCost = 0;
 		duration = 0;
@@ -68,10 +68,10 @@ public:
 		return SUCCESS;
 	}
 
-	bool isJediQueueCommand() const {
+	bool isJediQueueCommand() {
 		return true;
 	}
-
+    
 	int doJediSelfBuffCommand(CreatureObject* creature) const {
 		// first and foremost, we need to toggle this buff off if we already have it
 		if (creature->hasBuff(buffCRC)) {
@@ -87,19 +87,19 @@ public:
 
         return doBuff(creature);
 	}
-
+    
 	int doBuff(CreatureObject* creature) const {
 		ManagedReference<Buff*> buff = createJediSelfBuff(creature);
-
+        
 		// Return if buff is NOT valid.
 		if (buff == nullptr)
 			return GENERALERROR;
-
+        
 		Locker locker(buff);
-
+        
 		// Add buff.
 		creature->addBuff(buff);
-
+        
 		// Force Cost.
 		doForceCost(creature);
 
@@ -107,7 +107,7 @@ public:
 		if (!clientEffect.isEmpty()) {
 			creature->playEffect(clientEffect, "");
 		}
-
+        
 		// Return.
 		return SUCCESS;
 	}
@@ -153,7 +153,7 @@ public:
 
 		// Create buff object.
 		ManagedReference<Buff*> buff = nullptr;
-
+        
 		if(buffClass == BASE_BUFF || singleUseEventTypes.size() == 0) {
 			buff = new Buff(creature, buffCRC, duration, BuffType::JEDI);
 		} else if(buffClass == SINGLE_USE_BUFF) {;
@@ -291,6 +291,13 @@ public:
 		playerObject->setForcePower(playerObject->getForcePower() - getFrsModifiedForceCost(creature));
 		VisibilityManager::instance()->increaseVisibility(creature, visMod);
 	}
+	
+	void doExtraForceCost(CreatureObject* creature) const {
+		//Extra Force Cost for AI
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		playerObject->setForcePower(playerObject->getForcePower() - (getFrsModifiedForceCost(creature) * 1.5));
+		VisibilityManager::instance()->increaseVisibility(creature, visMod);
+	}
 
 	void setForceCost(int fc) {
 		forceCost = fc;
@@ -311,7 +318,7 @@ public:
 	void setSpeedMod(float sm) {
 		speedMod = sm;
 	}
-
+    
 	void setBuffClass(int bt) {
 		buffClass = bt;
 	}

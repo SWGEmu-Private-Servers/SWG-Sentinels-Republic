@@ -39,27 +39,27 @@ public:
 				args.getStringToken(objectTemplate);
 
 				ManagedReference<CraftingManager*> craftingManager = creature->getZoneServer()->getCraftingManager();
-				if(craftingManager == nullptr) {
+				if(craftingManager == NULL) {
 					return GENERALERROR;
 				}
 
 				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(objectTemplate.hashCode());
 
-				if (shot == nullptr || !shot->isSharedTangibleObjectTemplate()) {
+				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
 					creature->sendSystemMessage("Templates must be tangible objects, or descendants of tangible objects, only.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == nullptr || inventory->isContainerFullRecursive()) {
+				if (inventory == NULL || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<TangibleObject*> object = (server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1)).castTo<TangibleObject*>();
 
-				if (object == nullptr) {
+				if (object == NULL) {
 					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
 					return INVALIDPARAMETERS;
 				}
@@ -117,24 +117,78 @@ public:
 
 				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-				if (inventory == nullptr || inventory->isContainerFullRecursive()) {
+				if (inventory == NULL || inventory->isContainerFullRecursive()) {
 					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
 					return INVALIDPARAMETERS;
 				}
 
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
 
-				if (lootManager == nullptr)
+				if (lootManager == NULL)
 					return INVALIDPARAMETERS;
 
-				TransactionLog trx(TrxCode::ADMINCOMMAND, creature);
-				trx.addState("commandType", commandType);
-				if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
-					trx.commit(true);
-				} else {
-					trx.abort() << "createLoot failed for lootGroup " << lootGroup << " level " << level;
+				lootManager->createLoot(inventory, lootGroup, level);
+			}else if (commandType.beginsWith("createattachment")) {
+				//Syntax exmaple /object createattachment clothing mindblast_accuracy 25
+				String attachmentType;
+				String skillMod;
+				args.getStringToken(attachmentType);
+		
+				if (attachmentType != "armor" && attachmentType != "clothing"){
+					creature->sendSystemMessage("You must specify armor or clothing.");
+					return INVALIDPARAMETERS;
 				}
-			} else if (commandType.beginsWith("createresource")) {
+
+				if (args.hasMoreTokens())
+					args.getStringToken(skillMod);
+				
+				int skillBonus = 1;
+				if (args.hasMoreTokens())
+					skillBonus = args.getIntToken();
+
+				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+				if (inventory == NULL || inventory->isContainerFullRecursive()) {
+					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
+
+				
+
+				if (lootManager == NULL)
+					return INVALIDPARAMETERS;
+					
+				Reference<LootItemTemplate*> itemTemplate = NULL;
+				LootGroupMap* lootGroupMap = LootGroupMap::instance();
+				if (attachmentType == "armor")
+					itemTemplate = lootGroupMap->getLootItemTemplate("attachment_armor");
+				else
+					itemTemplate = lootGroupMap->getLootItemTemplate("attachment_clothing");
+							
+				ManagedReference<SceneObject*> ca = lootManager->createLootAttachment(itemTemplate,skillMod, skillBonus); 
+
+				if (ca != NULL){
+					Attachment* attachment = cast<Attachment*>(ca.get());
+								
+					if (attachment != NULL){
+						Locker objLocker(attachment);
+						if (inventory->transferObject(ca, -1, true, true)) { //Transfer tape to player inventory
+							inventory->broadcastObject(ca, true);
+						} else {
+							ca->destroyObjectFromDatabase(true);
+							creature->sendSystemMessage("Unable to place Skill Attachment in player's inventory!");
+							return INVALIDPARAMETERS;
+						}
+						
+					}
+							
+				}
+
+
+			}
+			 else if (commandType.beginsWith("createresource")) {
 				String resourceName;
 				args.getStringToken(resourceName);
 
@@ -164,17 +218,17 @@ public:
 					level = args.getIntToken();
 
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
-				if (lootManager == nullptr)
+				if (lootManager == NULL)
 					return INVALIDPARAMETERS;
 
 				Zone* zone = creature->getZone();
-				if (zone == nullptr)
+				if (zone == NULL)
 					return GENERALERROR;
 
 				// Find all objects in range
 				SortedVector<QuadTreeEntry*> closeObjects;
 				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
-				if (closeObjectsVector == nullptr) {
+				if (closeObjectsVector == NULL) {
 					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 				} else {
 					closeObjectsVector->safeCopyTo(closeObjects);
@@ -190,15 +244,9 @@ public:
 						Locker tlock( targetPlayer, creature );
 
 						ManagedReference<SceneObject*> inventory = targetPlayer->getSlottedObject("inventory");
-						if (inventory != nullptr) {
-							TransactionLog trx(creature, targetPlayer, nullptr, TrxCode::ADMINCOMMAND);
-							trx.addState("commandType", commandType);
-							if (lootManager->createLoot(trx, inventory, lootGroup, level)) {
-								trx.commit(true);
+						if (inventory != NULL) {
+							if( lootManager->createLoot(inventory, lootGroup, level) )
 								targetPlayer->sendSystemMessage( "You have received a loot item!");
-							} else {
-								trx.abort() << "createLoot failed for lootGroup " << lootGroup << " level " << level;
-							}
 						}
 
 						tlock.release();
@@ -206,7 +254,7 @@ public:
 				}
 			} else if (commandType.beginsWith("checklooted")) {
 				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
-				if (lootManager == nullptr)
+				if (lootManager == NULL)
 					return INVALIDPARAMETERS;
 
 				creature->sendSystemMessage("Number of Legendaries Looted: " + String::valueOf(lootManager->getLegendaryLooted()));
@@ -219,7 +267,7 @@ public:
 				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
 				ManagedReference<CharacterBuilderTerminal*> blueFrog = ( zserv->createObject(blueFrogTemplate.hashCode(), 0)).castTo<CharacterBuilderTerminal*>();
 
-				if (blueFrog == nullptr)
+				if (blueFrog == NULL)
 					return GENERALERROR;
 
 				Locker clocker(blueFrog, creature);
@@ -233,7 +281,7 @@ public:
 				blueFrog->initializePosition(x, z, y);
 					blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
 
-				if (parent != nullptr && parent->isCellObject())
+				if (parent != NULL && parent->isCellObject())
 					parent->transferObject(blueFrog, -1);
 				else
 					creature->getZone()->transferObject(blueFrog, -1, true);
@@ -247,11 +295,13 @@ public:
 			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createloot <loottemplate> [<level>]");
 			creature->sendSystemMessage("SYNTAX: /object createarealoot <loottemplate> [<range>] [<level>]");
+			creature->sendSystemMessage("SYNTAX: /object createattachment <armor/clothing> <skillModName> [<bonus>]");
 			creature->sendSystemMessage("SYNTAX: /object checklooted");
 			creature->sendSystemMessage("SYNTAX: /object characterbuilder");
-                  
+
 			return INVALIDPARAMETERS;
 		}
+
 
 		return SUCCESS;
 	}

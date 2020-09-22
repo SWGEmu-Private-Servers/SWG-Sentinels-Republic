@@ -35,7 +35,12 @@ int DestroyStructureSessionImplementation::initializeSession() {
 	String redeed = (structureObject->isRedeedable()) ? yes : no;
 
 	StringBuffer maint;
-	maint << "@player_structure:redeed_maintenance \\#" << ((structureObject->isRedeedable()) ? "32CD32 " : "FF6347 ") << structureObject->getSurplusMaintenance() << "/" << structureObject->getRedeedCost() << "\\#.";
+	bool struct_is_redeedable = structureObject->isRedeedable();
+
+	// confirmation code will not be requested for Harvester and Generators with enough maintenance
+    bool request_confirmation_code = !(struct_is_redeedable && (structureObject->isHarvesterObject() || structureObject->isGeneratorObject()) );
+
+	maint << "@player_structure:redeed_maintenance \\#" << ((struct_is_redeedable) ? "32CD32 " : "FF6347 ") << structureObject->getSurplusMaintenance() << "/" << structureObject->getRedeedCost() << "\\#.";
 
 	StringBuffer entry;
 	entry << "@player_structure:confirm_destruction_d1 ";
@@ -49,7 +54,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 	cond << "@player_structure:redeed_condition \\#32CD32 " << (structureObject->getMaxCondition() - structureObject->getConditionDamage()) << "/" << structureObject->getMaxCondition() << "\\#.";
 
 	ManagedReference<SuiListBox*> sui = new SuiListBox(player);
-	sui->setCallback(new DestroyStructureRequestSuiCallback(creatureObject->getZoneServer()));
+	sui->setCallback(new DestroyStructureRequestSuiCallback(creatureObject->getZoneServer(), request_confirmation_code));
 	sui->setCancelButton(true, "@no");
 	sui->setOkButton(true, "@yes");
 	sui->setUsingObject(structureObject);
@@ -106,16 +111,16 @@ int DestroyStructureSessionImplementation::sendDestroyCode() {
 int DestroyStructureSessionImplementation::destroyStructure() {
 	creatureObject->sendSystemMessage("@player_structure:processing_destruction"); //Processing confirmed structure destruction...
 
-	if (structureObject == nullptr || structureObject->getZone() == nullptr)
+	if (structureObject == NULL || structureObject->getZone() == NULL)
 		return cancelSession();
 
 	if (structureObject->isGCWBase()) {
 		Zone* zone = structureObject->getZone();
-		if (zone == nullptr)
+		if (zone == NULL)
 			return cancelSession();
 
 		GCWManager* gcwMan = zone->getGCWManager();
-		if (gcwMan == nullptr)
+		if (gcwMan == NULL)
 			return cancelSession();
 
 		gcwMan->doBaseDestruction(structureObject);

@@ -10,8 +10,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.minigames.events.FishingEvent;
 
-@json
-class FishingSession extends Facade {
+ @json
+ class FishingSession extends Facade {
 	protected transient FishingEvent event;
 	protected SceneObject marker;
 

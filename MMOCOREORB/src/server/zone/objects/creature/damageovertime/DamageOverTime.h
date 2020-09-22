@@ -51,9 +51,9 @@ public:
 
 	//~DamageOverTime();
 
-	friend void to_json(nlohmann::json& j, const DamageOverTime& t);
+  friend void to_json(nlohmann::json& j, const DamageOverTime& t);
 
-	void activate();
+  void activate();
 	uint32 applyDot(CreatureObject* victim);
 	uint32 initDot(CreatureObject* victim, CreatureObject* attacker);
 	float reduceTick(float reduction);

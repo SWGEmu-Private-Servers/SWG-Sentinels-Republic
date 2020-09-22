@@ -334,6 +334,8 @@
 #include "server/zone/objects/creature/commands/StrafeShot2Command.h"
 #include "server/zone/objects/creature/commands/StructurestatusCommand.h"
 #include "server/zone/objects/creature/commands/StunAttackCommand.h"
+#include "server/zone/objects/creature/commands/npc_MindBlast1Command.h"
+#include "server/zone/objects/creature/commands/npc_MindBlast2Command.h"
 
 using namespace server::zone::managers::objectcontroller::command;
 
@@ -634,4 +636,6 @@ void CommandConfigManager::registerCommands3() {
 	commandFactory.registerCommand<StrafeShot2Command>(String("strafeShot2").toLowerCase());
 	commandFactory.registerCommand<StructurestatusCommand>(String("structurestatus").toLowerCase());
 	commandFactory.registerCommand<StunAttackCommand>(String("stunAttack").toLowerCase());
+	commandFactory.registerCommand<npc_MindBlast1Command>(String("npc_mindBlast1").toLowerCase());
+	commandFactory.registerCommand<npc_MindBlast2Command>(String("npc_mindBlast2").toLowerCase());
 }

@@ -60,6 +60,29 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature->isPlayerCreature()) {
+			CreatureObject* player = cast<CreatureObject*>(creature);
+			CreatureObject* consentOwner = cast<CreatureObject*>(targetPlayer);
+
+			PlayerObject* ghost = consentOwner->getPlayerObject();
+
+			if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
+				String sysmsg = "You cannot delegate faction to a player without their consent";
+				creature->sendSystemMessage(sysmsg); //You must have consent from your delegation target!
+				sysmsg = player->getFirstName();
+				sysmsg+= " attempted to delegate ";
+				sysmsg+= faction.toCharArray();
+				sysmsg+= " faction to you.";
+				consentOwner->sendSystemMessage(sysmsg); // let the target know
+				sysmsg = "You must type /consent ";
+				sysmsg+= player->getFirstName();
+				sysmsg+= " to allow this";
+				consentOwner->sendSystemMessage(sysmsg); // and how they can allow it
+
+				return GENERALERROR;
+			}
+		}
+
 		targetPlayerObject->increaseFactionStanding(faction, tipAmount);
 		delegator->decreaseFactionStanding(faction, charge);
 
@@ -89,14 +112,14 @@ public:
 		StringIdChatParameter params("@cmd_err:target_type_prose"); // Your target for %TO was invalid.
 		params.setTO("Delegate Faction");
 
-		if (object == nullptr) {
+		if (object == NULL) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
 		}
 
 		CreatureObject* targetCreature = dynamic_cast<CreatureObject*>(object.get());
 
-		if (targetCreature == nullptr) {
+		if (targetCreature == NULL) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
 		}
@@ -106,10 +129,10 @@ public:
 		ManagedReference<PlayerObject*> delegator = creature->getPlayerObject();
 		PlayerObject* targetPlayerObject = targetCreature->getPlayerObject();
 
-		if (targetPlayerObject == nullptr) {
+		if (targetPlayerObject == NULL) {
 			creature->sendSystemMessage(params);
 			return INVALIDTARGET;
-		} else if (delegator == nullptr)
+		} else if (delegator == NULL)
 			return GENERALERROR;
 
 		uint64 delegatorID = creature->getObjectID();

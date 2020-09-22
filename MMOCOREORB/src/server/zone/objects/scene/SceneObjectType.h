@@ -161,6 +161,7 @@ public:
 	const static int FSCSOBJECT = 0x2039;
 	const static int FSBUFFITEM = 0x203A;
 	const static int CONTRACTCRATE = 0x203B;
+	const static int SEAREMOVALFUEL = 0x203C;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
@@ -298,6 +299,7 @@ public:
 	// Not in client **********
 	const static int EVENTPERKDEED = 0x800007;
 	const static int VETHARVESTERDEED = 0x800008;
+	const static int FAMILIARPETDEED = 0x800009;
 	// ************************
 
 	const static int CLOTHING = 0x1000000;

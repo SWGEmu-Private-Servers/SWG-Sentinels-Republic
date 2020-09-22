@@ -198,6 +198,7 @@
 #include "server/zone/objects/creature/commands/FeignDeathCommand.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
 #include "server/zone/objects/creature/commands/FindFriendCommand.h"
+#include "server/zone/objects/creature/commands/FindStructuresCommand.h"
 #include "server/zone/objects/creature/commands/FindMyTrainerCommand.h"
 #include "server/zone/objects/creature/commands/FindObjectCommand.h"
 #include "server/zone/objects/creature/commands/FindPlayerCommand.h"
@@ -426,6 +427,25 @@
 #include "server/zone/objects/creature/commands/StrongPoisonCommand.h"
 #include "server/zone/objects/creature/commands/StrongDiseaseCommand.h"
 
+#include "server/zone/objects/creature/commands/SrChatCommand.h"
+#include "server/zone/objects/creature/commands/npc_ForceChokeCommand.h"
+#include "server/zone/objects/creature/commands/npc_ForceLightningCone1Command.h"
+#include "server/zone/objects/creature/commands/npc_ForceLightningCone2Command.h"
+#include "server/zone/objects/creature/commands/npc_ForceLightningSingle1Command.h"
+#include "server/zone/objects/creature/commands/npc_ForceLightningSingle2Command.h"
+#include "server/zone/objects/creature/commands/CreateEventLootCommand.h"
+#include "server/zone/objects/creature/commands/pvpCommand.h"
+#include "server/zone/objects/creature/commands/SrEventMenuCommand.h"
+#include "server/zone/objects/creature/commands/RapidFire1Command.h"
+#include "server/zone/objects/creature/commands/RapidFire2Command.h"
+#include "server/zone/objects/creature/commands/RapidFire3Command.h"
+#include "server/zone/objects/creature/commands/GeneralChatCommand.h"
+#include "server/zone/objects/creature/commands/SrStaffToolsCommand.h"
+#include "server/zone/objects/creature/commands/SpecialHeavyWeaponCone1Command.h"
+#include "server/zone/objects/creature/commands/SpecialHeavyWeaponCone2Command.h"
+#include "server/zone/objects/creature/commands/SpecialHeavyWeaponSingle1Command.h"
+#include "server/zone/objects/creature/commands/SpecialHeavyWeaponSingle2Command.h"
+
 using namespace server::zone::managers::objectcontroller::command;
 
 void CommandConfigManager::registerCommands2() {
@@ -541,6 +561,7 @@ void CommandConfigManager::registerCommands2() {
 	commandFactory.registerCommand<CsRequestCategoriesCommand>(String("csRequestCategories").toLowerCase());
 	commandFactory.registerCommand<CsSearchKnowledgeBaseCommand>(String("csSearchKnowledgeBase").toLowerCase());
 	commandFactory.registerCommand<CuiConsentResponseCommand>(String("cuiConsentResponse").toLowerCase());
+	commandFactory.registerCommand<CounterAttackCommand>(String("counterAttack").toLowerCase());
 	commandFactory.registerCommand<CureDiseaseCommand>(String("cureDisease").toLowerCase());
 	commandFactory.registerCommand<CurePoisonCommand>(String("curePoison").toLowerCase());
 	commandFactory.registerCommand<CustomizeDroidCommand>(String("customizeDroid").toLowerCase());
@@ -599,6 +620,7 @@ void CommandConfigManager::registerCommands2() {
 	commandFactory.registerCommand<FindCommand>(String("find").toLowerCase());
 	commandFactory.registerCommand<FindFriendCommand>(String("findFriend").toLowerCase());
 	commandFactory.registerCommand<FindFriendCommand>(String("findFriend").toLowerCase());
+	commandFactory.registerCommand<FindStructuresCommand>(String("findStructures").toLowerCase());
 	commandFactory.registerCommand<FindMyTrainerCommand>(String("findMyTrainer").toLowerCase());
 	commandFactory.registerCommand<FindObjectCommand>(String("findObject").toLowerCase());
 	commandFactory.registerCommand<FindPlayerCommand>(String("findPlayer").toLowerCase());
@@ -829,4 +851,23 @@ void CommandConfigManager::registerCommands2() {
 	commandFactory.registerCommand<MaxStatsCommand>(String("maxStats").toLowerCase());
 	commandFactory.registerCommand<MedicalForageCommand>(String("medicalForage").toLowerCase());
 	commandFactory.registerCommand<MeditateCommand>(String("meditate").toLowerCase());
+
+	commandFactory.registerCommand<SrChatCommand>(String("srChat").toLowerCase());
+	commandFactory.registerCommand<npc_ForceChokeCommand>(String("npc_forceChoke").toLowerCase());
+	commandFactory.registerCommand<npc_ForceLightningCone1Command>(String("npc_forceLightningCone1").toLowerCase());
+	commandFactory.registerCommand<npc_ForceLightningCone2Command>(String("npc_forceLightningCone2").toLowerCase());
+	commandFactory.registerCommand<npc_ForceLightningSingle1Command>(String("npc_forceLightningSingle1").toLowerCase());
+	commandFactory.registerCommand<npc_ForceLightningSingle2Command>(String("npc_forceLightningSingle2").toLowerCase());
+	commandFactory.registerCommand<CreateEventLootCommand>(String("createEventLoot").toLowerCase());
+	commandFactory.registerCommand<pvpCommand>(String("pvp").toLowerCase());
+	commandFactory.registerCommand<SrEventMenuCommand>(String("srEventMenu").toLowerCase());
+	commandFactory.registerCommand<RapidFire1Command>(String("rapidFire1").toLowerCase());
+	commandFactory.registerCommand<RapidFire2Command>(String("rapidFire2").toLowerCase());
+	commandFactory.registerCommand<RapidFire3Command>(String("rapidFire3").toLowerCase());
+	commandFactory.registerCommand<GeneralChatCommand>(String("generalChat").toLowerCase());
+	commandFactory.registerCommand<SrStaffToolsCommand>(String("srStaffTools").toLowerCase());
+	commandFactory.registerCommand<SpecialHeavyWeaponCone1Command>(String("specialHeavyWeaponCone1").toLowerCase());
+	commandFactory.registerCommand<SpecialHeavyWeaponCone2Command>(String("specialHeavyWeaponCone2").toLowerCase());
+	commandFactory.registerCommand<SpecialHeavyWeaponSingle1Command>(String("specialHeavyWeaponSingle1").toLowerCase());
+	commandFactory.registerCommand<SpecialHeavyWeaponSingle2Command>(String("specialHeavyWeaponSingle2").toLowerCase());
 }

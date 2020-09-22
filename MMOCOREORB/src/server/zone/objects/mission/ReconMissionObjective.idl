@@ -11,8 +11,8 @@ import server.zone.objects.area.MissionReconActiveArea;
 include engine.util.u3d.Vector3;
 include engine.log.Logger;
 
-@json
-class ReconMissionObjective extends MissionObjective {
+ @json
+ class ReconMissionObjective extends MissionObjective {
 	protected MissionReconActiveArea locationActiveArea;
 
 	public ReconMissionObjective(MissionObject mission) {

@@ -10,8 +10,8 @@ import system.lang.Long;
 include server.zone.objects.creature.buffs.BuffType;
 import server.zone.objects.creature.CreatureObject;
 
-@json
-class StateBuff extends Buff {
+ @json
+ class StateBuff extends Buff {
 	protected unsigned long stateApplied;
 
 	public StateBuff(CreatureObject creo, unsigned long buffState, int duration, unsigned long secondaryCRC = 0) {

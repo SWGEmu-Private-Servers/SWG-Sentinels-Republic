@@ -9,8 +9,8 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.CreatureObject;
 
-@json
-class FishObject extends TangibleObject {
+ @json
+ class FishObject extends TangibleObject {	
 
 	protected string player;
 	protected string zoneName;

@@ -12,8 +12,8 @@ include system.util.Vector;
 include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
 
-@json
-class LotteryDroid extends CreatureObject {
+ @json
+ class LotteryDroid extends CreatureObject {
 	@dereferenced
 	protected Time purchaseTime;
 
@@ -158,11 +158,6 @@ class LotteryDroid extends CreatureObject {
 	@preLocked
 	public void addToCreditPool(int amount) {
 		creditPool = creditPool + amount;
-	}
-
-	@read
-	public int getCreditPool() {
-		return creditPool;
 	}
 
 	@read

@@ -57,4 +57,3 @@ public:
 };
 
 #endif //STANDCOMMAND_H_
-

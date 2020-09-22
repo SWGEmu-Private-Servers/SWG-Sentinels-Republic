@@ -29,7 +29,7 @@ DamageOverTime::DamageOverTime(CreatureObject* attacker,
 		uint32 dur,
 		int secondaryStrength) {
 
-	if (attacker != nullptr)
+	if (attacker != NULL)
 		setAttackerID(attacker->getObjectID());
 
 	setType(tp);
@@ -115,7 +115,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 	uint32 power = 0;
 	ManagedReference<CreatureObject*> attacker = victim->getZoneServer()->getObject(attackerID).castTo<CreatureObject*>();
 
-	if (attacker == nullptr)
+	if (attacker == NULL)
 		attacker = victim;
 
 	switch(type) {
@@ -371,16 +371,6 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 			jediBuffDamage = rawDamage - (chokeDam *= 1.f - (forceShield / 100.f));
 			victimRef->notifyObservers(ObserverEventType::FORCESHIELD, attackerRef, jediBuffDamage);
 			CombatManager::instance()->sendMitigationCombatSpam(victimRef, nullptr, (int)jediBuffDamage, CombatManager::FORCESHIELD);
-		}
-
-		//PSG with lightsaber resistance only
-		ManagedReference<ArmorObject*> psg = CombatManager::instance()->getPSGArmor(victimRef);
-		if (psg != nullptr && !psg->isVulnerable(SharedWeaponObjectTemplate::LIGHTSABER)) {
-			float armorReduction =  CombatManager::instance()->getArmorObjectReduction(psg, SharedWeaponObjectTemplate::LIGHTSABER);
-
-		if (armorReduction > 0)
-			chokeDam *= 1.f - (armorReduction / 100.f);
-
 		}
 
 		CombatManager::instance()->broadcastCombatSpam(attackerRef, victimRef, nullptr, chokeDam, "cbt_spam", "forcechoke_hit", 1);

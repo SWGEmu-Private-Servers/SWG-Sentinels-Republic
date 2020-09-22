@@ -34,9 +34,9 @@ public:
 	}
 
 	friend void to_json(nlohmann::json& j, const DamageOverTimeList& l) {
-		const VectorMap<uint64, Vector<DamageOverTime> >& map = l;
+	const VectorMap<uint64, Vector<DamageOverTime> >& map = l;
 
-		to_json(j, map);
+	to_json(j, map);
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {

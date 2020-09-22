@@ -107,7 +107,7 @@ void BlueprintEntry::clearMatches() {
 
 bool BlueprintEntry::hasEnoughResources() {
 
-	if(inputHopper == nullptr)
+	if(inputHopper == NULL)
 		return false;
 
 	int count = 0;
@@ -115,7 +115,7 @@ bool BlueprintEntry::hasEnoughResources() {
 	for(int i = 0; i < matchingHopperItems.size(); ++i) {
 		TangibleObject* object = matchingHopperItems.get(i);
 
-		if (object == nullptr) {
+		if (object == NULL) {
 			matchingHopperItems.remove(i);
 			--i;
 			continue;
@@ -136,6 +136,7 @@ bool BlueprintEntry::hasEnoughResources() {
 }
 
 void BlueprintEntry::removeResources(FactoryObject* factory) {
+
 	int count = 0;
 
 	while(matchingHopperItems.size() > 0) {
@@ -144,7 +145,6 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 		Locker locker(object);
 
 		int useCount = object->getUseCount();
-
 		if(useCount == 0)
 			useCount = 1;
 
@@ -153,9 +153,11 @@ void BlueprintEntry::removeResources(FactoryObject* factory) {
 		if(useCount < amountNeeded) {
 			count += useCount;
 			matchingHopperItems.removeElement(object);
+
 			object->decreaseUseCount(useCount);
 			continue;
 		}
+
 
 		object->decreaseUseCount(amountNeeded, false);
 

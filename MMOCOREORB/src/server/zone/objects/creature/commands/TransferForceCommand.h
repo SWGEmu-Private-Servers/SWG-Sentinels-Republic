@@ -104,3 +104,4 @@ public:
 };
 
 #endif //TRANSFERFORCECOMMAND_H_
+

@@ -68,8 +68,12 @@ public:
 		RANDOM = 3
 	};
 
+  int playerGroupMax = 30;
+  int adminGroupMax = 70;
+
 private:
 	bool playerIsInvitingOwnPet(CreatureObject* inviter, CreatureObject* target);
+  bool canJoinGroup(GroupObject* group, CreatureObject* leader, CreatureObject* target);
 
 public:
 	GroupManager();

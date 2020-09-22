@@ -34,7 +34,7 @@ public:
 		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
 			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
 
-			if (buff != nullptr) {
+			if (buff != NULL) {
 				float percent = buff->getSkillModifierValue("heal_recovery");
 
 				delay = round(delay * (100.0f - percent) / 100.0f);
@@ -107,7 +107,7 @@ public:
 			return false;
 		}
 
-		if (woundPack == nullptr) {
+		if (woundPack == NULL) {
 			creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 			return false;
 		}
@@ -119,7 +119,7 @@ public:
 		} else {
 			// are we in a cantina? we have a private medical rating so either thats form a droid or camp or hospital
 			ManagedReference<SceneObject*> root = creature->getRootParent();
-			if (root != nullptr && root->isClientObject()) {
+			if (root != NULL && root->isClientObject()) {
 				uint32 gameObjectType = root->getGameObjectType();
 				switch (gameObjectType) {
 						case SceneObjectType::RECREATIONBUILDING:
@@ -200,7 +200,7 @@ public:
 
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (inventory != nullptr) {
+		if (inventory != NULL) {
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 				SceneObject* object = inventory->getContainerObject(i);
 
@@ -218,7 +218,7 @@ public:
 			}
 		}
 
-		return nullptr;
+		return NULL;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -230,11 +230,11 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != nullptr) {
+		if (object != NULL) {
 			if (!object->isCreatureObject()) {
 				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
 
-				if (tangibleObject != nullptr && tangibleObject->isAttackableBy(creature)) {
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else {
 					creature->sendSystemMessage("Target must be a player or a creature pet in order to heal wound.");
@@ -258,11 +258,11 @@ public:
 		if (creature->isPlayerCreature() && creatureTarget->getParentID() != 0 && creature->getParentID() != creatureTarget->getParentID()) {
 			Reference<CellObject*> targetCell = creatureTarget->getParent().get().castTo<CellObject*>();
 
-				if (targetCell != nullptr) {
+ 				if (targetCell != nullptr) {
 					if (!creatureTarget->isPlayerCreature()) {
-						auto perms = targetCell->getContainerPermissions();
+						ContainerPermissions* perms = targetCell->getContainerPermissions();
 
-						if (!perms->hasInheritPermissionsFromParent()) {
+ 						if (!perms->hasInheritPermissionsFromParent()) {
 							if (!targetCell->checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
 								creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
 								return GENERALERROR;
@@ -270,12 +270,12 @@ public:
 						}
 					}
 
-					ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
+ 					ManagedReference<SceneObject*> parentSceneObject = targetCell->getParent().get();
 
-					if (parentSceneObject != nullptr) {
+ 					if (parentSceneObject != nullptr) {
 						BuildingObject* buildingObject = parentSceneObject->asBuildingObject();
 
-						if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
+ 						if (buildingObject != nullptr && !buildingObject->isAllowedEntry(creature)) {
 							creature->sendSystemMessage("@combat_effects:cansee_fail"); // You cannot see your target.
 							return GENERALERROR;
 						}
@@ -288,16 +288,16 @@ public:
 
 		parseModifier(arguments.toString(), attribute, objectId);
 
-		ManagedReference<WoundPack*> woundPack = nullptr;
+		ManagedReference<WoundPack*> woundPack = NULL;
 
 		if (objectId != 0) {
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
-			if (inventory != nullptr) {
+			if (inventory != NULL) {
 				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
 			}
 
-			if (woundPack == nullptr) {
+			if (woundPack == NULL) {
 				creature->sendSystemMessage("@healing_response:healing_response_66"); // That item does not heal wounds.
 				return false;
 			}
@@ -315,7 +315,7 @@ public:
 		} else {
 			int searchAttribute = -1;
 
-			while (woundPack == nullptr) {
+			while (woundPack == NULL) {
 				searchAttribute += 1;
 				searchAttribute = findAttribute(creatureTarget, searchAttribute);
 

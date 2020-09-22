@@ -36,4 +36,3 @@ void ActiveAreaEvent::run() {
 
 	setTaskName(newName.toString().toCharArray());
 }
-

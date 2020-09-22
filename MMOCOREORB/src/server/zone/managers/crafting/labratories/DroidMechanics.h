@@ -36,6 +36,10 @@ public:
 			maxHam = 1400;
 			minHam = 1200;
 		}
+		if (droidType == DroidObject::DROIDECA) {
+			maxHam = 6500;
+			minHam = 1500;
+		}
 		float hamValue = quality * (float)maxHam;
 		if (hamValue < minHam) {
 			hamValue = minHam;
@@ -49,6 +53,8 @@ public:
 			return 1.0 - (( 1.0 - ((3200.0 - ham)/800.0))/4.0);
 		if (droidType == DroidObject::LE_REPAIR)
 			return 2.0 - (( 1.0 - ((6000.0 - ham)/1500.0))/2.0);
+		if (droidType == DroidObject::DROIDECA)
+			return 1.0 - (( 1.0 - ((6000.0 - ham)/1500.0))/4.0);
 		return 0.0;
 	}
 	static float determineHit(int droidType, float ham) {
@@ -58,33 +64,34 @@ public:
 			return 0.33 + (0.08*(1.0 - ((6000.0-ham)/1500.0)));
 		if(droidType == DroidObject::DZ70 || droidType == DroidObject::PROBOT)
 			return 0.33 + (0.08*(1.0 - ((3200.0-ham)/800.0)));
-
+		if(droidType == DroidObject::DROIDECA)
+			return 1.00 + (0.08*(1.0 - ((6000.0-ham)/1500.0)));
 		return 0.0;
 	}
 	static float determineMinDamage(int droidType, int rating) {
 		if (rating == 0)
 			return 1;
-		if (rating > 600)
-			rating = 600;
 		if(droidType == DroidObject::R_SERIES)
 			return ((int)((rating/600.0) * 80.0)) + 80;
 		if(droidType == DroidObject::LE_REPAIR)
 			return ((int)((rating/600.0) * 45.0)) + 45;
 		if(droidType == DroidObject::PROBOT || droidType == DroidObject::DZ70)
 			return ((int)((rating/600.0) * 95.0)) + 95;
+		if(droidType == DroidObject::DROIDECA)
+			return ((int)((rating/600.0) * 225.0)) + 225;
 		return 1;
 	}
 	static float determineMaxDamage(int droidType, int rating) {
 		if (rating == 0)
 			return 1;
-		if (rating > 600)
-			rating = 600;
 		if(droidType == DroidObject::R_SERIES)
 			return ((int)((rating/600.0) * 85.0)) + 85;
 		if(droidType == DroidObject::LE_REPAIR)
 			return ((int)((rating/600.0) * 55.0)) + 55;
 		if(droidType == DroidObject::PROBOT || droidType == DroidObject::DZ70)
 			return ((int)((rating/600.0) * 100.0)) + 100;
+		if(droidType == DroidObject::DROIDECA)
+			return ((int)((rating/600.0) * 235.0)) + 235;
 		return 1;
 	}
 	/** Used to determine harvest droid and trap droid skill mod*/

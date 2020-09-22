@@ -2,7 +2,7 @@
 #define AUCTIONSEARCHTASK_H_
 
 #include "server/zone/managers/auction/AuctionManager.h"
-
+ 
 namespace server {
 namespace zone {
 namespace managers {

@@ -74,6 +74,7 @@
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
+#include "server/zone/objects/tangible/deed/familiar/FamiliarPetDeed.h"
 #include "server/zone/objects/tangible/deed/droid/DroidDeed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
@@ -130,5 +131,7 @@
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
+
+#include "server/zone/objects/tangible/misc/SeaRemovalFuel.h"
 
 #endif /* OBJECTS_H_ */

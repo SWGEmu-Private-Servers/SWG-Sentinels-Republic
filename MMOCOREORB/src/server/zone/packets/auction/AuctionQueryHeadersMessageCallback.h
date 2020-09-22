@@ -67,3 +67,4 @@ public:
 };
 
 #endif /* AUCTIONQUERYHEADERSMESSAGECALLBACK_H_ */
+

@@ -29,7 +29,8 @@ class FsCsObject extends TangibleObject {
 		// Remove after wipe
 		phaseDuration = 0;
 
-		newPhaseDuration = 1814400000; // 3 week default
+		//newPhaseDuration = 1814400000; // 3 week default
+		newPhaseDuration = 302400000; // 1 week phase times on SR
 	}
 
 	// Not needed after a wipe
@@ -38,7 +39,8 @@ class FsCsObject extends TangibleObject {
 
 		if (phaseDuration != 0) {
 			phaseDuration = 0;
-			newPhaseDuration = 1814400000;
+			//newPhaseDuration = 1814400000;
+			newPhaseDuration = 302400000;
 		}
 	}
 

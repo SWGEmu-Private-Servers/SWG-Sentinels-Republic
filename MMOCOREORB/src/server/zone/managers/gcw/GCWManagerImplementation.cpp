@@ -82,8 +82,6 @@ void GCWManagerImplementation::loadLuaConfig() {
 	racialPenaltyEnabled = lua->getGlobalInt("racialPenaltyEnabled");
 	initialVulnerabilityDelay = lua->getGlobalInt("initialVulnerabilityDelay");
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
-	crackdownScansEnabled = lua->getGlobalBoolean("crackdownScansEnabled");
-	crackdownScanPrivilegedPlayers = lua->getGlobalBoolean("crackdownScanPrivilegedPlayers");
 
 	LuaObject nucleotides = lua->getGlobalObject("dnaNucleotides");
 	if (nucleotides.isValidTable()) {
@@ -380,11 +378,9 @@ void GCWManagerImplementation::updateWinningFaction() {
 	}
 
 	int scaling = 0;
-	if (score > 0) {
-		for (int i = 0; i < difficultyScalingThresholds.size(); i++) {
-			if (score >= difficultyScalingThresholds.get(i)) {
-				scaling++;
-			}
+	for (int i = 0; i < difficultyScalingThresholds.size(); i++) {
+		if (score >= difficultyScalingThresholds.get(i)) {
+			scaling++;
 		}
 	}
 	winnerDifficultyScaling = scaling;
@@ -1677,7 +1673,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 void GCWManagerImplementation::startAbortSequenceDelay(BuildingObject* building, CreatureObject* creature, SceneObject* hqTerminal) {
 	if (!creature->checkCooldownRecovery("declare_overt_cooldown")) {
 		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response41"); // You have recently joined Special Forces. Before issuing the shutdown command, you must wait %TO
-		const Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
+		Time* cooldownTimer = creature->getCooldownTime("declare_overt_cooldown");
 		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
 		params.setTO(String::valueOf(minutes) + " minutes.");
 		creature->sendSystemMessage(params);
@@ -1734,8 +1730,7 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 
 	Locker clock(building, creature);
 
-	debug() << "Resetting vulnerability timer";
-
+	//info("Resetting vulnerability timer",true);
 	baseData->setLastResetTime(Time());
 
 	Time nextTime = Time();
@@ -2136,7 +2131,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	TemplateManager* templateManager = TemplateManager::instance();
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
 	Reference<SharedObjectTemplate*> minefieldTemplate = nullptr;
-	const ChildObject* child = nullptr;
+	ChildObject* child = nullptr;
 
 	int currentMinefieldIndex = 0;
 
@@ -2217,7 +2212,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
 
 	Reference<SharedObjectTemplate*> turretTemplate = nullptr;
-	const ChildObject* child = nullptr;
+	ChildObject* child = nullptr;
 	int currentTurretIndex = 0;
 
 	Locker block(building,creature);
@@ -2288,10 +2283,10 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	}
 }
 
-uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, const ChildObject* child, CreatureObject* creature, Deed* deed) {
+uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, ChildObject* child, CreatureObject* creature, Deed* deed) {
 	Vector3 position = building->getPosition();
 
-	const Quaternion* direction = building->getDirection();
+	Quaternion* direction = building->getDirection();
 	Vector3 childPosition = child->getPosition();
 	float angle = direction->getRadians();
 
@@ -2580,16 +2575,12 @@ int GCWManagerImplementation::isStrongholdCity(String& city) {
 }
 
 void GCWManagerImplementation::runCrackdownScan(AiAgent* scanner, CreatureObject* player) {
-	if (!crackdownScansEnabled || !player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
-		return;
-	}
-
-	if (!crackdownScanPrivilegedPlayers && player->isPlayerObject() && player->getPlayerObject()->isPrivileged()) {
+	if (!player->isPlayerCreature() || !scanner->isInRange(player, 16) || !CollisionManager::checkLineOfSight(scanner, player)) {
 		return;
 	}
 
 	if (scanner->checkCooldownRecovery("crackdown_scan") && player->checkCooldownRecovery("crackdown_scan")) {
-		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player, getWinningFaction(), getWinningFactionDifficultyScaling());
+		ContrabandScanSession* contrabandScanSession = new ContrabandScanSession(scanner, player);
 		contrabandScanSession->initializeSession();
 	}
 }
@@ -2694,3 +2685,4 @@ void GCWManagerImplementation::despawnBaseTerminals(BuildingObject* bldg) {
 	baseData->clearBaseTerminals();
 	baseData->setTerminalsSpawned(false);
 }
+

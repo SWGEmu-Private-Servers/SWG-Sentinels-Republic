@@ -33,6 +33,7 @@ public:
 		NOAIAGGRO               = 0x1000,
 		SCANNING_FOR_CONTRABAND = 0x2000,
 		IGNORE_FACTION_STANDING	= 0x4000,
+		FAMILIAR_PET			= 0x8000,
 
 		CARNIVORE               = 0x01,
 		HERBIVORE               = 0x02

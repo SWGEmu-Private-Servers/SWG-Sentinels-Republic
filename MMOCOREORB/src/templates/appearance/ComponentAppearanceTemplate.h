@@ -85,7 +85,7 @@ public:
 
 			AppearanceTemplate* templ = TemplateManager::instance()->getAppearanceTemplate("appearance/" + meshFile);
 
-			if (templ == nullptr) {
+			if (templ == NULL) {
 				System::out << "Template not found appearance/" << meshFile;
 				continue;
 			}
@@ -173,7 +173,8 @@ public:
 	virtual Vector<Reference<MeshData* > > getTransformedMeshData(const Matrix4& parentTransform) const {
 		Vector<Reference<MeshData*> > transformedMeshData;
 		for(int i=0; i<meshes.size(); i++) {
-			const ComponentMeshAppearanceTemplate *mesh = meshes.get(i);
+
+			ComponentMeshAppearanceTemplate *mesh = meshes.get(i);
 
 			Matrix4 newMat = mesh->getTransform();
 			newMat.swapLtoR();

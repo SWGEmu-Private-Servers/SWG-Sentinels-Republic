@@ -53,9 +53,9 @@ public:
 	}
 
 	virtual ~SpawnAreaMap() {
-		if (lua != nullptr) {
+		if (lua != NULL) {
 			delete lua;
-			lua = nullptr;
+			lua = NULL;
 		}
 	}
 
@@ -71,3 +71,4 @@ public:
 
 
 #endif /* SPAWNAREAMAP_H_ */
+

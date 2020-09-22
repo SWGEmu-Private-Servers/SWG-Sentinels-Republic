@@ -10,8 +10,8 @@ import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.buffs.SingleUseBuff;
 
-@json
-class SingleUseBuffObserver extends Observer {
+ @json
+ class SingleUseBuffObserver extends Observer {
 	@weakReference
 	protected SingleUseBuff buff;
 

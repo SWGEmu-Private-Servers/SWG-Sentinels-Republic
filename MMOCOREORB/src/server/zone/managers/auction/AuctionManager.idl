@@ -18,7 +18,6 @@ include server.zone.managers.auction.TerminalListVector;
 include server.zone.managers.auction.AuctionEventsMap;
 include system.util.SynchronizedVectorMap;
 
-@dirty
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
 
@@ -33,16 +32,16 @@ class AuctionManager extends ManagedService implements Logger {
 	@dereferenced
 	protected VectorMap<SceneObject, string> pendingOldUIDUpdates;
 
-	public final static int MAXBAZAARPRICE = 20000;
+	public final static int MAXBAZAARPRICE = 30000;
 	public final static int MAXSALES = 25; // this only apply to bazaars
-	public final static int SALESFEE = 20;
+	public final static int SALESFEE = 10;
 	public final static int CHECKEVERY = 60; // Minutes
 
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;
 
-	public final static int VENDOREXPIREPERIOD = 2592000; // Seconds
-	public final static int COMMODITYEXPIREPERIOD = 604800;
+	public final static int VENDOREXPIREPERIOD = 7776000; // Seconds
+	public final static int COMMODITYEXPIREPERIOD = 2592000;
 
 	// Location Types
 	public final static int LT_GALAXY = 0;
@@ -123,12 +122,9 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native string getVendorUID(SceneObject vendor);
 
-	@local
-	public native Logger getLogger();
-
 	public synchronized void updateVendorUID(SceneObject vendor, final string oldUID, final string newUID) {
 
-		if(!auctionMap) {
+		if(auctionMap == null) {
 			pendingUIDUpdates.put(vendor, newUID);
 			pendingOldUIDUpdates.put(vendor, oldUID);
 			return;
@@ -146,7 +142,7 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native void expireAuction(AuctionItem item);
 
-	public native void deleteExpiredSale(AuctionItem item, boolean sendMail = true);
+	public native void deleteExpiredSale(AuctionItem item);
 
 	public boolean isMarketEnabled() {
 		return marketEnabled == true;
@@ -171,4 +167,3 @@ class AuctionManager extends ManagedService implements Logger {
 		return zoneServer;
 	}
 }
-

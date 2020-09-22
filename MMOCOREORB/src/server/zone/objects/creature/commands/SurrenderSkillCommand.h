@@ -6,6 +6,7 @@
 #define SURRENDERSKILLCOMMAND_H_
 
 #include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 class SurrenderSkillCommand : public QueueCommand {
 public:
@@ -22,6 +23,21 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+			
+		if (arguments.toString() == "combat_bountyhunter_master" || arguments.toString() == "combat_commando_master" || arguments.toString() == "outdoors_squadleader_master" || arguments.toString() == "outdoors_ranger_master"){
+			Lua* lua = DirectorManager::instance()->getLuaInstance();
+			LuaFunction runMethod(lua->getLuaState(), "srCustomChecks", "checkMandalorianArmor", 1);
+			runMethod << creature;
+
+			runMethod.callFunction();
+
+			int result = lua_tointeger(lua->getLuaState(), -1);
+
+			lua_pop(lua->getLuaState(), 1);
+
+			if (result == 0)
+				return INVALIDSTATE;
+		}
 
 		SkillManager* skillManager = SkillManager::instance();
 		skillManager->surrenderSkill(arguments.toString(), creature, true);

@@ -28,7 +28,7 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer == nullptr || !creature->checkCooldownRecovery("mount_dismount"))
+		if (zoneServer == NULL || !creature->checkCooldownRecovery("mount_dismount"))
 			return GENERALERROR;
 
 		if (creature->isRidingMount()) {
@@ -43,7 +43,7 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if (object == nullptr) {
+		if (object == NULL) {
 			return INVALIDTARGET;
 		}
 
@@ -66,8 +66,18 @@ public:
 		if (!vehicle->isInRange(creature, 5))
 			return GENERALERROR;
 
-		if (creature->getParent() != nullptr || vehicle->getParent() != nullptr)
+		if (creature->getParent() != NULL || vehicle->getParent() != NULL)
 			return GENERALERROR;
+
+		if (creature->getScreenPlayState("sr_holoCostume:costumeApplied") != 0) {
+			creature->sendSystemMessage("You can't mount a vehicle or creature while wearing a holo costume.");
+			return GENERALERROR;
+		}
+
+		if (creature->getScreenPlayState("halloween_holoCostume:costumeApplied") != 0) {
+			creature->sendSystemMessage("You can't mount a vehicle or creature while wearing a holo costume.");
+			return GENERALERROR;
+		}
 
 		if (vehicle->isDisabled()) {
 			creature->sendSystemMessage("@pet/pet_menu:cant_mount_veh_disabled");
@@ -92,8 +102,6 @@ public:
 
 			return GENERALERROR;
 		}
-
-		creature->synchronizeCloseObjects();
 		creature->setState(CreatureState::RIDINGMOUNT);
 		creature->clearState(CreatureState::SWIMMING);
 
@@ -130,7 +138,7 @@ public:
 				ManagedReference<Buff*> gallop = vehicle->getBuff(gallopCRC);
 				Locker blocker(gallop, vehicle);
 
-				if (gallop != nullptr) {
+				if (gallop != NULL) {
 					gallop->applyAllModifiers();
 				}
 			}, "AddGallopModsLambda");
@@ -154,7 +162,7 @@ public:
 		if (vehicle->isMount()) {
 			PetManager* petManager = server->getZoneServer()->getPetManager();
 
-			if (petManager != nullptr) {
+			if (petManager != NULL) {
 				newSpeed = petManager->getMountedRunSpeed(vehicle);
 			}
 		}
@@ -178,9 +186,11 @@ public:
 		creature->setTurnScale(newTurn, true);
 		creature->setAccelerationMultiplierMod(newAccel, true);
 		creature->addMountedCombatSlow();
+		creature->updateVehiclePosition(true);
 
 		return SUCCESS;
 	}
 };
 
 #endif //MOUNTCOMMAND_H_
+

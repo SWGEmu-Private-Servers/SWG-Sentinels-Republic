@@ -21,6 +21,9 @@ protected:
 	int junkMinValue;
 	int junkMaxValue;
 
+	int minimumLevel;
+	int maximumLevel;
+
 	ValuesMap craftingValues;
 	bool suppressSerialNumber;
 
@@ -44,6 +47,11 @@ public:
 		junkDealerTypeNeeded = 0;
 		junkMinValue = 0;
 		junkMaxValue = 0;
+
+		// Added by Tyclo
+		minimumLevel = 0;
+		maximumLevel = -1;
+
 		suppressSerialNumber = false;
 	}
 
@@ -55,6 +63,10 @@ public:
 		junkDealerTypeNeeded = templateData->getIntField("junkDealerTypeNeeded");
 		junkMinValue = templateData->getIntField("junkMinValue");
 		junkMaxValue = templateData->getIntField("junkMaxValue");
+
+		// Added by Tyclo
+		minimumLevel = templateData->getIntField("minimumLevel");
+		maximumLevel = templateData->getIntField("maximumLevel");
 
 		//TODO: At this point, we should go ahead and pull in the tangible objects stats
 
@@ -186,63 +198,67 @@ public:
 
 	}
 
-	const String& getTemplateName() const {
+	String& getTemplateName() {
 		return templateName;
 	}
 
-	const String& getDirectObjectTemplate() const {
+	String& getDirectObjectTemplate() {
 		return directObjectTemplate;
 	}
 
-	const String& getCustomObjectName() const {
+	String& getCustomObjectName() {
 		return customObjectName;
 	}
 
-	const Vector<String>* getCustomizationStringNames() const {
+	Vector<String>* getCustomizationStringNames() {
 		return &customizationStringNames;
 	}
 
-	const Vector<Vector<int> >* getCustomizationValues() const {
+	Vector<Vector<int> >* getCustomizationValues() {
 		return &customizationValues;
 	}
 
-	bool getSuppressSerialNumber() const {
-		return suppressSerialNumber;
-	}
+	bool getSuppressSerialNumber() {
+	return suppressSerialNumber;
+}
 
-	ValuesMap getValuesMapCopy() const {
+ValuesMap getValuesMapCopy() {
 		return craftingValues;
 	}
 
-	const VectorMap<String, int>* getSkillMods() const {
+	VectorMap<String, int>* getSkillMods() {
 		return &skillMods;
 	}
 
-	float getRandomDotChance() const {
+	float getRandomDotChance() {
 		return randomDotChance;
 	}
 
-	float getStaticDotChance() const {
+	float getStaticDotChance() {
 		return staticDotChance;
 	}
 
-	int getStaticDotType() const {
+	int getStaticDotType() {
 		return staticDotType;
 	}
 
-	int getJunkDealerTypeNeeded() const {
+	int getJunkDealerTypeNeeded() {
 		return junkDealerTypeNeeded;
 	}
-
-	int getJunkMinValue() const {
+	int getJunkMinValue() {
 		return junkMinValue;
 	}
-
-	int getJunkMaxValue() const {
+	int getJunkMaxValue() {
 		return junkMaxValue;
 	}
-
-	const VectorMap<String, SortedVector<int> >* getStaticDotValues() const {
+	// Added by Tyclo
+	int getMinimumLevel() {
+		return minimumLevel;
+	}
+	int getMaximumLevel() {
+		return maximumLevel;
+	}
+	VectorMap<String, SortedVector<int> >* getStaticDotValues() {
 		return &staticDotValues;
 	}
 };

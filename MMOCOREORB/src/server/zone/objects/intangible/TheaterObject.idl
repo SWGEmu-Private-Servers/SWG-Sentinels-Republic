@@ -13,8 +13,8 @@ import server.zone.QuadTreeEntry;
 include system.thread.atomic.AtomicInteger;
 include engine.log.Logger;
 
-@json
-class TheaterObject extends IntangibleObject {
+ @json
+ class TheaterObject extends IntangibleObject {
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayersInRange;
 	protected boolean despawnOnNoPlayersInRange;
@@ -90,7 +90,7 @@ class TheaterObject extends IntangibleObject {
 	}
 
 	public void activateDespawnEvent() {
-		if (despawnEvent)
+		if (despawnEvent != null)
 			return;
 
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
@@ -98,7 +98,7 @@ class TheaterObject extends IntangibleObject {
 	}
 
 	public void clearDespawnEvent() {
-		if (!despawnEvent)
+		if (despawnEvent == null)
 			return;
 
 		despawnEvent.cancel();

@@ -23,7 +23,7 @@ class AiAwarenessEvent : public Task {
 	uint64 mtime;
 	float avgSpeed;
 
-	Mutex guard;
+Mutex guard;
 
 public:
 	AiAwarenessEvent(AiAgent* pl) : Task(1000) {

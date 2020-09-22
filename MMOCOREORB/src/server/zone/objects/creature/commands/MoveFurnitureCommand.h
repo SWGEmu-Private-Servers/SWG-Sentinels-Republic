@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class MoveFurnitureCommand : public QueueCommand {
 public:
@@ -30,44 +31,43 @@ public:
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		if (ghost == nullptr)
+		if (ghost == NULL)
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (obj == nullptr || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
+		if (obj == NULL || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
 			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
 		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
-
-		if (creatureParent == nullptr || !creatureParent->isBuildingObject()) {
-			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
-			return GENERALERROR;
-		}
-
+		
 		if (obj->isVendor()) {
 			creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again at the new location.
 			return GENERALERROR;
 		}
-
-		BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
-
-		if (buildingObject == nullptr || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
-			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
-			return GENERALERROR;
-		}
-
-		if (!buildingObject->isOnAdminList(creature)) {
-			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
-			return GENERALERROR;
-		}
-
-		if (buildingObject->isGCWBase()) {
-			creature->sendSystemMessage("@player_structure:no_move_hq"); // You may not move or rotate objects inside a factional headquarters.
-			return GENERALERROR;
+		
+		int adminLevelCheck = ghost->getAdminLevel();
+		if (adminLevelCheck != 14) {
+			BuildingObject* buildingObject = cast<BuildingObject*>( creatureParent.get());
+			if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
+				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+				return GENERALERROR;
+			}
+			if (buildingObject == NULL || rootParent != buildingObject || buildingObject->containsChildObject(obj)) {
+				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
+				return GENERALERROR;
+			}
+			if (buildingObject->isGCWBase()) {
+				creature->sendSystemMessage("@player_structure:no_move_hq"); // You may not move or rotate objects inside a factional headquarters.
+				return GENERALERROR;
+			}
+			if (!buildingObject->isOnAdminList(creature)) {
+				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+				return GENERALERROR;
+			}
 		}
 
 		String dir;
@@ -132,7 +132,7 @@ public:
 		obj->incrementMovementCounter();
 
 		ManagedReference<SceneObject*> objParent = obj->getParent().get();
-		if (objParent != nullptr)
+		if (objParent != NULL)
 			obj->teleport(x, z, y, objParent->getObjectID());
 		else
 			obj->teleport(x, z, y);

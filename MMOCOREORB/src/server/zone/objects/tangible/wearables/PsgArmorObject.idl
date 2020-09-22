@@ -9,15 +9,14 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
-@json
-class PsgArmorObject extends ArmorObject {
+ @json
+ class PsgArmorObject extends ArmorObject {
 	public PsgArmorObject() {
 		Logger.setLoggingName("PsgArmorObject");
 	}
 
 	public native void initializeTransientMembers();
 
-	@dirty
 	public boolean isPsgArmorObject() {
 		return true;
 	}

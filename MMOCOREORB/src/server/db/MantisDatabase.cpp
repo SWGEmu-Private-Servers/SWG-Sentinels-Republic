@@ -46,3 +46,4 @@ MantisDatabase::MantisDatabase(ConfigManager* configManager) {
 
 MantisDatabase::~MantisDatabase() {
 }
+

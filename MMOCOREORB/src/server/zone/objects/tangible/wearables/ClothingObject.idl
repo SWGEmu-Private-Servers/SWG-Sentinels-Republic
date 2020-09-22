@@ -7,8 +7,8 @@ package server.zone.objects.tangible.wearables;
 import server.zone.objects.tangible.wearables.WearableObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
-@json
-class ClothingObject extends WearableObject {
+ @json
+ class ClothingObject extends WearableObject {
 	public ClothingObject() {
 		Logger.setLoggingName("ClothingObject");
 	}
