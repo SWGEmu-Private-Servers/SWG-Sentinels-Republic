@@ -51,7 +51,6 @@ object_tangible_item_quest_crowd_pleaser_music_reward = object_tangible_item_que
 	xpType = "music",
 	xpAmount = 400000,
 	noTrade = 1,
-	noRemove = true
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_crowd_pleaser_music_reward, "object/tangible/item/quest/crowd_pleaser/music_reward.iff")

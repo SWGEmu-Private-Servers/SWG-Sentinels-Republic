@@ -1,5 +1,5 @@
 qa = {
-	level = 13,
+	level = 7,
 	name = "qa",
 	tag = "SWGEmu-QA",
 	skills = {

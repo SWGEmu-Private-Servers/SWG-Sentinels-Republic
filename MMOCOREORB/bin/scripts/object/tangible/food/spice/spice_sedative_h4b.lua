@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_sedative_h4b = object_tangible_food_spice_shared_spice_sedative_h4b:new {
 	templateType = CONSUMABLE,
 
-	duration = 600,
+	duration = 180,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_sedative_h4b = object_tangible_food_spice_share
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "health" , 400, "constitution" , 300, "mind", -100, "focus", -100 },
+	modifiers = { "health" , 1250, "action", 1250, "mind", 1250},
 
 	buffName = "sedative_h4b",
 	buffCRC = 0,

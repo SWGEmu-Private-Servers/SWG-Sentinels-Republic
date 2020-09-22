@@ -51,4 +51,3 @@ ForceCurePoisonCommand = {
 }
 
 AddCommand(ForceCurePoisonCommand)
-

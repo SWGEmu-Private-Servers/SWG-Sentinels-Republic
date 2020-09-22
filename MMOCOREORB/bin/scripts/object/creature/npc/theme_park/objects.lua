@@ -40,6 +40,13 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+object_creature_npc_theme_park_shared_rodian_shuttle = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_rodian_shuttle.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_rodian_shuttle, "object/creature/npc/theme_park/shared_rodian_shuttle.iff")
+
 
 object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemplate:new {
 	clientTemplateFileName = "object/creature/npc/theme_park/shared_event_transport.iff"

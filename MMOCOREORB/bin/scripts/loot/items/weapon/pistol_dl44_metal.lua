@@ -2,7 +2,7 @@
 
 pistol_dl44_metal = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_dl44_metal.iff",
 	craftingValues = {

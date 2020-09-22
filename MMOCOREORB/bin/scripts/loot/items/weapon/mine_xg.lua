@@ -1,6 +1,6 @@
 mine_xg = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/mine/wp_mine_xg.iff",
 	craftingValues = {

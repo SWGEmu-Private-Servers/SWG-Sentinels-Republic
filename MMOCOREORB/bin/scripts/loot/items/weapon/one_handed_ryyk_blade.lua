@@ -1,7 +1,7 @@
 
 one_handed_ryyk_blade = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/sword/sword_blade_ryyk.iff",
 	craftingValues = {

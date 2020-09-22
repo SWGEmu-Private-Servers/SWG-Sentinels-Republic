@@ -1,5 +1,5 @@
 womp_rat = Creature:new {
-	objectName = "@mob/creature_names:womprat",
+	objectName = "@mob/creature_names:womp_rat",
 	socialGroup = "rat",
 	faction = "",
 	level = 10,

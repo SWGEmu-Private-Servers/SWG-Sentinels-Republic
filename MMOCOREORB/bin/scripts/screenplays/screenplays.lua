@@ -30,6 +30,9 @@ require("sui.custom.SuiReceiverPuzzle")
 includeFile("helperfuncs.lua")
 includeFile("playerTriggers.lua")
 
+-- Custom Requires (Mindsoft Added)
+includeFile("../custom_scripts/requires.lua")
+
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -669,5 +672,9 @@ includeFile("tests/tests.lua")
 -- Server Event Automation
 includeFile("events/ServerEventAutomation.lua")
 
--- Custom content - Loads last to allow for overrides
+--Custom_content
+includeFile("custom_content/screenplays.lua")
+--includeFile("dren/myscreenplay.lua")
+
+-- Custom content
 includeFile("../custom_scripts/screenplays/screenplays.lua")

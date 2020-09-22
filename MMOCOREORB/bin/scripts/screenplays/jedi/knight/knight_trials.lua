@@ -32,7 +32,7 @@ function KnightTrials:startNextKnightTrial(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-
+	
 	local playerFaction = CreatureObject(pPlayer):getFaction()
 	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
 
@@ -224,7 +224,7 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 	if (trialData.trialType ~= TRIAL_HUNT and trialData.trialType ~= TRIAL_HUNT_FACTION) then
 		return 1
 	end
-
+	
 	local playerFaction = CreatureObject(pPlayer):getFaction()
 	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
 
@@ -232,7 +232,7 @@ function KnightTrials:notifyKilledHuntTarget(pPlayer, pVictim)
 		self:giveWrongFactionWarning(pPlayer, playerCouncil)
 		return 0
 	end
-
+	
 	local huntTarget = readScreenPlayData(pPlayer, "JediTrials", "huntTarget")
 	local targetCount = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetCount"))
 	local targetGoal = tonumber(readScreenPlayData(pPlayer, "JediTrials", "huntTargetGoal"))
@@ -330,7 +330,7 @@ function KnightTrials:showCurrentTrial(pPlayer)
 		self:sendCouncilChoiceSui(pPlayer)
 		return
 	end
-
+	
 	local playerFaction = CreatureObject(pPlayer):getFaction()
 	local playerCouncil = JediTrials:getJediCouncil(pPlayer)
 

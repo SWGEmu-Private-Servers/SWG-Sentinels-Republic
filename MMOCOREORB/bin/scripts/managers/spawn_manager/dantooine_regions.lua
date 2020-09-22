@@ -201,3 +201,4 @@ dantooine_regions = {
 	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"dantooine_world", "global_hard"}, 2048},
 	{"worship_area", 6092, -6475, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA}
 }
+

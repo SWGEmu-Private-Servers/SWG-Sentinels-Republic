@@ -44,20 +44,19 @@
 StunAttackCommand = {
 	name = "stunattack",
 	combatSpam = "attack",
-	animation = "creature_attack_special_2", 
+	animation = "creature_attack_special_2",
 	animType = GENERATE_INTENSITY,
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		85, 
-		0, 
-		10 
+		85,
+		0,
+		10
 	  )
 	}
 }
 
 AddCommand(StunAttackCommand)
-

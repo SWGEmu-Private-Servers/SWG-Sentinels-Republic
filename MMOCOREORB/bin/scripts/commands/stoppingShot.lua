@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 StoppingShotCommand = {
-        name = "stoppingshot",
+  name = "stoppingshot",
 
 	damageMultiplier = 5.0,
 	speedMultiplier = 2.5,
@@ -53,15 +53,26 @@ StoppingShotCommand = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "stoppingshot",
-	
+
+  stateEffects = {
+	  StateEffect(
+		STUN_EFFECT,
+		{},
+		{ "stun_defense" },
+		{ "jedi_state_defense", "resistance_states" },
+		100,
+		0,
+		45
+	  )
+	},
+
 	weaponType = PISTOLWEAPON,
 
 	range = -1
 }
 
 AddCommand(StoppingShotCommand)
-

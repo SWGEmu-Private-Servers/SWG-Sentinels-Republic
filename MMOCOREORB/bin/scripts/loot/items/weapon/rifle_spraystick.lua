@@ -2,7 +2,7 @@
 
 rifle_spraystick = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/rifle/rifle_spraystick.iff",
 	craftingValues = {

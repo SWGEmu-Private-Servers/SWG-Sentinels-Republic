@@ -55,37 +55,36 @@ FlushingShot2Command = {
 	coneAction = true,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
-		{ "jedi_state_defense", "resistance_states" }, 
-		100, 
-		0, 
+		{ "jedi_state_defense", "resistance_states" },
+		100,
+		0,
 		35
 	  ),
-	  StateEffect( 
-		POSTUREUP_EFFECT, 
-		{ "postureUpRecovery" }, 
-		{ "posture_change_up_defense" }, 
-		{}, 
-		100, 
-		0, 
-		0 
+	  StateEffect(
+		POSTUREUP_EFFECT,
+		{ "postureUpRecovery" },
+		{ "posture_change_up_defense" },
+		{},
+		100,
+		0,
+		0
 	  )
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_area", 
+	animation = "fire_area",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "flushingvolley",
-	
+
 	weaponType = RIFLEWEAPON,
 
 	range = -1
 }
 
 AddCommand(FlushingShot2Command)
-

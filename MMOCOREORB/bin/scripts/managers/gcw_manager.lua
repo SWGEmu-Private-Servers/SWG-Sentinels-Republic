@@ -46,11 +46,8 @@ maxBasesPerPlayer = 3
 -- xp bonus for faction controlling a planet
 bonusXP = 15
 
--- Crackdown settings
-crackdownScansEnabled = false
 -- thresholds for scaling crackdown npc's difficulty, first threshold should always be 0.
 difficutlyScalingThresholds = {0, 64}
-crackdownScanPrivilegedPlayers = false
 
 -- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
 
@@ -95,22 +92,33 @@ HQValues = {
 -- raceid found in creatureobject
 --HUMAN = 0; RODIAN = 1; TRANDOSHAN = 2; MONCAL = 3; WOOKIE = 4; BOTHAN = 5; TWILEK = 6; ZABRAK = 7; ITHORIAN = 0x21; SULLUSTAN = 0x31;
 imperial_racial_penalty = {
-	{0, 1},
-	{1, 3}, --rodian
-	{2, 2}, -- trando
-	{3, 3}, -- moncal
-	{4, 3}, -- wookie
-	{5, 2},  -- bothan
-	{6, 1.5}, -- twilek
-	{7, 2},  -- zabrack
-	{33, 2}, --ithorian
-	{49, 2}, -- sullustan
-
+		{0, 1},
+		{1, 1.2}, --rodian
+		{2, 1.15}, -- trando
+		{3, 1.2}, -- moncal
+		{4, 1.2}, -- wookie
+		{5, 1.15},  -- bothan
+		{6, 1.1}, -- twilek
+		{7, 1.15},  -- zabrack
+		{33, 1.15}, --ithorian
+		{49, 1.15}, -- sullustan
+		{9, 1.15}, -- aqualish
+		{12, 1.2}, -- bith
+		{17, 1.15}, -- devaronian
+		{27, 1.15}, -- gotal
+		{28, 1.15}, -- gran
+		{31, 1.2}, -- hutt
+		{32, 1.2}, -- ishi_tib
+		{42, 1.2}, -- nikto
+		{46, 1.2}, -- quarren
+		{50, 1.2}, -- talz
+		{55, 1.15}, -- weequay
+		-- missing: chiss, nautolan, nightsister, smc
 }
 
 strongholdCities = {
-	imperial = {"bela_vistal", "deeja_peak", "bestine"},
-	rebel = {"vreni_island", "moenia", "anchorhead"}
+		imperial = {"bela_vistal", "deeja_peak", "bestine"},
+		rebel = {"vreni_island", "moenia", "anchorhead"}
 }
 
 terminalTemplates = {
@@ -166,21 +174,21 @@ terminalSpawns = {
 	-- Rebel Field Hospital
 	{ "hq_s02_rebel",
 		{
-			{ -5.15, 0.3, 3.25, 0, 0.707, 0, 0.707, 2 },
-			{ -2.79, -6.8, -10.35, 0, 0, 0, 1, 5 },
-			{ -9.29, -6.8, -4.9, 0, 0, 0, 1, 5 },
-			{ -6.71, -6.8, -12, 0, 0, 0, 1, 6 },
-			{ 7.4, -6.8, -12, 0, 0, 0, 1, 6 },
-			{ 1.67, -6.8, -8.98, 0, 0.707, 0, 0.707, 7 },
-			{ 5.16, -13.8, -13.13, 0, -0.707, 0, 0.707, 9 },
-			{ -10.16, -13.8, -13.13, 0, 0.707, 0, 0.707, 9 },
-			{ 3.82, -13.8, -3.5, 0, -0.707, 0, 0.707, 9 },
+				{ -5.15, 0.3, 3.25, 0, 0.707, 0, 0.707, 2 },
+				{ -2.79, -6.8, -10.35, 0, 0, 0, 1, 5 },
+				{ -9.29, -6.8, -4.9, 0, 0, 0, 1, 5 },
+				{ -6.71, -6.8, -12, 0, 0, 0, 1, 6 },
+				{ 7.4, -6.8, -12, 0, 0, 0, 1, 6 },
+				{ 1.67, -6.8, -8.98, 0, 0.707, 0, 0.707, 7 },
+				{ 5.16, -13.8, -13.13, 0, -0.707, 0, 0.707, 9 },
+				{ -10.16, -13.8, -13.13, 0, 0.707, 0, 0.707, 9 },
+				{ 3.82, -13.8, -3.5, 0, -0.707, 0, 0.707, 9 },
 		}
 	},
 	-- Imperial Tactical Center
 	{ "hq_s03_imp",
 		{
-			{ -0.8, 0.25, 1.58, 0, 0, 0, 1, 2 },
+			{ 0.8, 0.25, 1.58, 0, 0, 0, 1, 2 },
 			{ 3.47, 0.25, -5.7, 0, 0, 0, 1, 3 },
 			{ -0.11, 0.25, -2.82, 0, 1, 0, 0, 3 },
 			{ 4.54, -13.75, 1.95, 0, 0.707, 0, -0.707, 6 },
@@ -234,4 +242,3 @@ terminalSpawns = {
 		}
 	}
 }
-

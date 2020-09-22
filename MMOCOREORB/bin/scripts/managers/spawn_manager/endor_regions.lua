@@ -131,3 +131,4 @@ endor_regions = {
 	{"yawari_cliffs_8", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"yawari_cliffs_9", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA}
 }
+

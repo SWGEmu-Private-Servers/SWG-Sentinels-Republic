@@ -8,6 +8,7 @@ lok_racetrack_screenplay = RaceTrack:new {
 		planetName = "lok", -- The planet the Track is on
 		badgeToAward=BDG_RACING_LOK_MARATHON,  -- Badge to be awarded for best daily time
 		trackName="LOKRT",  -- Internal trackname , should be unique to the track
+		BARCComponent="object/tangible/loot/collectible/collectible_parts/vehicle/barc_reactor_shielding.iff",  -- BARC Component to be awarded
 		className="lok_racetrack_screenplay", -- Class name of this class
 		trackCheckpoint="@theme_park/racing/racing:lok_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:lok_laptime_checkpoint", -- System message sent at each waypoint

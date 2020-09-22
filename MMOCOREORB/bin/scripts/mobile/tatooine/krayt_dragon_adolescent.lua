@@ -2,15 +2,15 @@ krayt_dragon_adolescent = Creature:new {
 	objectName = "@mob/creature_names:krayt_dragon_adolescent",
 	socialGroup = "krayt",
 	faction = "",
-	level = 336,
+	level = 300,
 	chanceHit = 30,
-	damageMin = 2270,
-	damageMax = 4250,
-	baseXp = 28549,
-	baseHAM = 410000,
-	baseHAMmax = 501000,
+	damageMin = 2040,
+	damageMax = 3825,
+	baseXp = 25694,
+	baseHAM = 369000,
+	baseHAMmax = 451000,
 	armor = 3,
-	resists = {195,195,195,195,165,195,195,195,-1},
+	resists = {185,185,185,185,150,185,185,185,105},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_bristley",
@@ -30,14 +30,16 @@ krayt_dragon_adolescent = Creature:new {
 	scale = 0.7;
 	lootGroups = {
 		{
-	        groups = {
-				{group = "krayt_tissue_rare", chance = 2000000},
-				{group = "krayt_dragon_common", chance = 2500000},
+	    groups = {
+				{group = "krayt_tissue_common", chance = 2500000},
+				{group = "krayt_tissue_uncommon", chance = 1500000},
+				{group = "krayt_tissue_rare", chance = 750000},
 				{group = "krayt_pearls", chance = 1500000},
-				{group = "armor_all", chance = 2000000},
-				{group = "weapons_all", chance = 2000000},
+				{group = "krayt_pearls_lesser", chance = 2000000},
+				{group = "armor_attachments", chance = 875000},
+				{group = "clothing_attachments", chance = 875000}
 			},
-			lootChance = 7720000
+			lootChance = 8000000
 		}
 	},
 	weapons = {},

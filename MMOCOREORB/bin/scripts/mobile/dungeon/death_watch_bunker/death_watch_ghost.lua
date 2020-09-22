@@ -4,7 +4,7 @@ death_watch_ghost = Creature:new {
 	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
-	level = 152,
+	level = 172,
 	chanceHit = 8.5,
 	damageMin = 895,
 	damageMax = 1500,
@@ -32,12 +32,13 @@ death_watch_ghost = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners",   chance = 6300000},
+				{group = "death_watch_bunker_commoners",   chance = 5000000},
 				{group = "death_watch_bunker_lieutenants", chance = 3500000},
-				{group = "death_watch_bunker_ingredient_protective",  chance = 100000},
-				{group = "death_watch_bunker_ingredient_binary",  chance = 100000}
+				{group = "death_watch_bunker_ingredient_protective",  chance = 500000},
+				{group = "death_watch_bunker_ingredient_binary",  chance = 500000},
+				{group = "power_crystals",  chance = 500000},
 			},
-			lootChance = 1500000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

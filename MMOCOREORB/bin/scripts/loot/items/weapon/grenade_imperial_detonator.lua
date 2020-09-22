@@ -1,6 +1,6 @@
 grenade_imperial_detonator = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/grenade/grenade_imperial_detonator.iff",
 	craftingValues = {

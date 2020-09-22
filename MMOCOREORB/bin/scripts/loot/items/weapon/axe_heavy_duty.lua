@@ -2,7 +2,7 @@
 
 axe_heavy_duty = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/axe/axe_heavy_duty.iff",
 	craftingValues = {
@@ -27,7 +27,7 @@ axe_heavy_duty = {
 	randomDotChance = 750,
 	junkDealerTypeNeeded = JUNKARMS,
 	junkMinValue = 25,
-	junkMaxValue = 45 
+	junkMaxValue = 45
 
 }
 

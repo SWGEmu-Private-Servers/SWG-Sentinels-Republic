@@ -52,14 +52,14 @@ LegShot2Command = {
 	accuracyBonus = 25,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		85, 
-		0, 
-		45 
+		85,
+		0,
+		45
 	  )
 	},
 
@@ -68,7 +68,7 @@ LegShot2Command = {
 	animation = "test_homing",
 
 	combatSpam = "legshot",
-	
+
 	weaponType = CARBINEWEAPON,
 
 	range = -1
@@ -76,4 +76,3 @@ LegShot2Command = {
 }
 
 AddCommand(LegShot2Command)
-

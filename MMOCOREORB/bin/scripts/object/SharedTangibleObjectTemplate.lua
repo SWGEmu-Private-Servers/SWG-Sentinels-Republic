@@ -112,7 +112,9 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	pvpStatusBitmask = 0,
 	objectMenuComponent = "TangibleObjectMenuComponent",
 
-	sliceable = 0
+	sliceable = 0,
+
+	nameType = 0 --Mindsoft added
 }
 
 function SharedTangibleObjectTemplate:addRangedIntCustomizationVariables(rangedIntCustomizationVariable)

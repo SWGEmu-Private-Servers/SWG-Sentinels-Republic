@@ -52,21 +52,21 @@ Melee1hBlindHit1Command = {
         accuracyBonus = 25,
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		30 
+		100,
+		0,
+		30
 	  )
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 	weaponType = ONEHANDMELEEWEAPON,
 
-	animation = "combo_4b", 
+	animation = "combo_4b",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "blindingstab",
@@ -75,4 +75,3 @@ Melee1hBlindHit1Command = {
 }
 
 AddCommand(Melee1hBlindHit1Command)
-

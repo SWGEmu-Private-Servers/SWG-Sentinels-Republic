@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 CounterAttackCommand = {
-        name = "counterattack",
+	name = "counterattack",
 	damageMultiplier = 1,
 	speedMultiplier = 1,
 

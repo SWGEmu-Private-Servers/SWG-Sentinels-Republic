@@ -50,4 +50,3 @@ HealBattleFatigueSelf1Command = {
 }
 
 AddCommand(HealBattleFatigueSelf1Command)
-

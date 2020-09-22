@@ -32,8 +32,9 @@ enhanced_gaping_spider = Creature:new {
 		{
 			groups = {
 				{group = "fire_breathing_spider", chance = 10000000}
+			},
+			lootChance = 7500000
 			}
-		}
 	},
 	weapons = {"creature_spit_heavy_flame"},
 	conversationTemplate = "",

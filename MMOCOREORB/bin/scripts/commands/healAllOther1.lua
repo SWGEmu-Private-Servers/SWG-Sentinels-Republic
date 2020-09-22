@@ -52,4 +52,3 @@ HealAllOther1Command = {
 }
 
 AddCommand(HealAllOther1Command)
-

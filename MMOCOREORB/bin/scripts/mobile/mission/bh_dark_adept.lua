@@ -4,7 +4,7 @@ bh_dark_adept = Creature:new {
 	randomNameTag = true,
 	socialGroup = "dark_jedi",
 	faction = "",
-	level = 120,
+	level = 135,
 	chanceHit = 4.75,
 	damageMin = 945,
 	damageMax = 1600,
@@ -27,7 +27,7 @@ bh_dark_adept = Creature:new {
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
 
-	templates = {" dark_jedi" },
+	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -42,7 +42,7 @@ bh_dark_adept = Creature:new {
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000}
 			},
-			lootChance = 5400000
+			lootChance = 6000000
 		},
 		{
 			groups = {
@@ -57,7 +57,7 @@ bh_dark_adept = Creature:new {
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000}
 			},
-			lootChance = 5400000
+			lootChance = 6000000
 		},
 		{
 			groups = {
@@ -73,7 +73,13 @@ bh_dark_adept = Creature:new {
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000}
 			},
-			lootChance = 5400000
+			lootChance = 6000000
+		},
+		{
+			groups = {
+				{group = "g_statted_bh_necklace", chance = 10000000},
+			},
+			lootChance = 1000000
 		},
 	},
 	weapons = {"dark_jedi_weapons_gen2"},

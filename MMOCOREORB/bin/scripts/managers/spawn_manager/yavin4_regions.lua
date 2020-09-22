@@ -131,3 +131,4 @@ yavin4_regions = {
 	{"yunteh_mountains_1", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"yunteh_mountains_2", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA}
 }
+

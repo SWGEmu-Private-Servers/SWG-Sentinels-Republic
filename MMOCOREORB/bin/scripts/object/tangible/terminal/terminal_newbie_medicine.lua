@@ -1,48 +1,81 @@
---Copyright (C) 2010 <SWGEmu>
-
-
---This File is part of Core3.
-
---This program is free software; you can redistribute 
---it and/or modify it under the terms of the GNU Lesser 
---General Public License as published by the Free Software
---Foundation; either version 2 of the License, 
---or (at your option) any later version.
-
---This program is distributed in the hope that it will be useful, 
---but WITHOUT ANY WARRANTY; without even the implied warranty of 
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
---See the GNU Lesser General Public License for
---more details.
-
---You should have received a copy of the GNU Lesser General 
---Public License along with this program; if not, write to
---the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
---Linking Engine3 statically or dynamically with other modules 
---is making a combined work based on Engine3. 
---Thus, the terms and conditions of the GNU Lesser General Public License 
---cover the whole combination.
-
---In addition, as a special exception, the copyright holders of Engine3 
---give you permission to combine Engine3 program with free software 
---programs or libraries that are released under the GNU LGPL and with 
---code included in the standard release of Core3 under the GNU LGPL 
---license (or modified versions of such code, with unchanged license). 
---You may copy and distribute such a system following the terms of the 
---GNU LGPL for Engine3 and the licenses of the other code concerned, 
---provided that you include the source code of that other code when 
---and as the GNU LGPL requires distribution of source code.
-
---Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
---it is their choice whether to do so. The GNU Lesser General Public License 
---gives permission to release a modified version without this exception; 
---this exception also makes it possible to release a modified version 
-
-
 object_tangible_terminal_terminal_newbie_medicine = object_tangible_terminal_shared_terminal_newbie_medicine:new {
+	gameObjectType = 16400,
 
+	maxCondition = 0,
+
+	templateType = CHARACTERBUILDERTERMINAL,
+
+	itemList = {
+
+		"Life Day Items",
+				{
+				"Decorations",
+					{
+					"Presents", "object/tangible/event_perk/life_day_presents.iff",
+					"Holo Table", "object/tangible/event_perk/lifeday_holo_table.iff",
+					"Lamp", "object/tangible/furniture/decorative/event_lifeday07_lamp.iff",
+					"Hanging Orb", "object/tangible/furniture/decorative/event_lifeday07_orb.iff",
+					"Kachirho Banner", "object/tangible/furniture/lifeday/lifeday_banner_s01.iff",
+					"Cornucopia Banner", "object/tangible/furniture/lifeday/lifeday_banner_s02.iff",
+					"Orb Banner", "object/tangible/furniture/lifeday/lifeday_banner_s03.iff",
+					"Bunting", "object/tangible/furniture/lifeday/lifeday_bunting.iff",
+					"Incense Burner", "object/tangible/furniture/lifeday/lifeday_incense_burner.iff",
+					"Ornament", "object/tangible/furniture/lifeday/lifeday_ornament_2010.iff"
+					},
+				"Paintings",
+					{
+					"Pilgrimage", "object/tangible/furniture/decorative/event_lifeday05_painting_01.iff",
+					"Memories Past", "object/tangible/furniture/decorative/event_lifeday05_painting_02.iff",
+					"Triumph", "object/tangible/furniture/decorative/event_lifeday05_painting_03.iff",
+					"Ancient Life Day", "object/tangible/furniture/decorative/event_lifeday07_painting_01.iff",
+					"Red Robed Wookiee", "object/tangible/furniture/lifeday/lifeday_painting_s01.iff",
+					"Wookiee with Pups", "object/tangible/furniture/lifeday/lifeday_painting_s02.iff",
+					"Proud Wookiee", "object/tangible/furniture/lifeday/lifeday_painting_s03.iff",
+					"Gift Giving Wookiees", "object/tangible/furniture/lifeday/lifeday_painting_s04.iff",
+					"Kashyyyk at Night", "object/tangible/furniture/lifeday/lifeday_painting_s05.iff",
+					"Famly Bonds", "object/tangible/event_perk/lifeday_painting.iff"
+					},
+ 				"Trees",
+ 					{
+ 					"Wroshyr Tree", "object/tangible/furniture/decorative/event_wroshyr_tree.iff",
+ 					"Plain Life Day Tree", "object/tangible/event_perk/life_day_tree.iff",
+ 					"Decorated Life Day Tree", "object/tangible/event_perk/life_day_tree_dressed.iff",
+ 					"Life Day Mini Tree", "object/tangible/furniture/lifeday/lifeday_mini_tree.iff"
+ 					},
+				"Wearables",
+					{"White Life Day Jacket", "object/tangible/wearables/jacket/jacket_lifeday_09_01.iff",
+					"Green Life Day Jacket", "object/tangible/wearables/jacket/jacket_lifeday_09_02.iff",
+					"Red Life Day Jacket", "object/tangible/wearables/jacket/jacket_lifeday_figrin_dan.iff"
+					},
+			},
+		"Moon Festival",
+				{
+				"Paintings",
+					{
+					"halloween10", "object/tangible/painting/halloween10.iff",
+					"halloween11", "object/tangible/painting/halloween11.iff",
+					"halloween12", "object/tangible/painting/halloween12.iff",
+					"halloween13", "object/tangible/painting/halloween13.iff",
+					"halloween14", "object/tangible/painting/halloween14.iff",
+					"halloween15", "object/tangible/painting/halloween15.iff",
+					"halloween16", "object/tangible/painting/halloween16.iff",
+					"halloween17", "object/tangible/painting/halloween17.iff",
+					"halloween18", "object/tangible/painting/halloween18.iff",
+					"halloween19", "object/tangible/painting/halloween19.iff",
+					"halloween20", "object/tangible/painting/halloween20.iff",
+					"halloween21", "object/tangible/painting/halloween21.iff",
+					"halloween22", "object/tangible/painting/halloween22.iff",
+					"halloween23", "object/tangible/painting/halloween23.iff",
+					"halloween3", "object/tangible/painting/halloween3.iff",
+					"halloween4", "object/tangible/painting/halloween4.iff",
+					"halloween5", "object/tangible/painting/halloween5.iff",
+					"halloween6", "object/tangible/painting/halloween6.iff",
+					"halloween7", "object/tangible/painting/halloween7.iff",
+					"halloween8", "object/tangible/painting/halloween8.iff",
+					"halloween9", "object/tangible/painting/halloween9.iff"
+					},
+			},
+		},
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_newbie_medicine, "object/tangible/terminal/terminal_newbie_medicine.iff")

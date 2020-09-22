@@ -14,7 +14,7 @@
 --See the GNU Lesser General Public License for
 --more details.
 
---You should have received a copy of the GNU Lesser General
+--You should have received a copy of the GNU Lesser Generals
 --Public License along with this program; if not, write to
 --the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
@@ -42,22 +42,31 @@
 --true = 1, false = 0
 
 DisarmingShot2Command = {
-        name = "disarmingshot2",
+  name = "disarmingshot2",
 
 	damageMultiplier = 2.75,
 	speedMultiplier = 2.0,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 1.0,
 	mindCostMultiplier = 0.5,
-        accuracyBonus = 50,
+  accuracyBonus = 50,
 
-	coneAngle = 15,
-	coneAction = true,
-
-	animation = "fire_3_single", 
+	animation = "fire_3_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "disarmblast",
+
+	stateEffects = {
+	  StateEffect(
+		INTIMIDATE_EFFECT,
+		{},
+		{},
+		{},
+		50,
+		0,
+		30
+	  )
+	},
 
 	weaponType = PISTOLWEAPON,
 
@@ -65,4 +74,3 @@ DisarmingShot2Command = {
 }
 
 AddCommand(DisarmingShot2Command)
-

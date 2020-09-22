@@ -47,7 +47,7 @@ UnarmedBlind1Command = {
 	damageMultiplier = 1.5,
 	speedMultiplier = 2.0,
 	accuracyBonus = 15,
-	
+
 	healthCostMultiplier = 1.5,
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
@@ -57,21 +57,20 @@ UnarmedBlind1Command = {
 	combatSpam = "aryxslash",
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		50 
+		100,
+		0,
+		50
 	  )
 	},
-	
+
 	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }
 
 AddCommand(UnarmedBlind1Command)
-

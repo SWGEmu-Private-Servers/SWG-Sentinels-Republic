@@ -52,4 +52,3 @@ HealActionSelf1Command = {
 }
 
 AddCommand(HealActionSelf1Command)
-

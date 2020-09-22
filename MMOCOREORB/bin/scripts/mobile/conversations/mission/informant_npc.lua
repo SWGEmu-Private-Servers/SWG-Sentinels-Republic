@@ -21,3 +21,4 @@ end
 createInformantTemplate("1")
 createInformantTemplate("2")
 createInformantTemplate("3")
+createInformantTemplate("4")

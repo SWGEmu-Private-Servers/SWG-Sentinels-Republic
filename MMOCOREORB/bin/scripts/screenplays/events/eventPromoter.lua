@@ -105,7 +105,7 @@ function eventPromoterScreenplay:handleSuiPurchase(pPlayer, pSui, eventIndex, ar
 	if (perkData == nil or purchaseIndex < 1 or purchaseIndex > #perkData) then
 		return
 	end
-
+	
 	local deedData = perkData[purchaseIndex]
 	deleteStringData(playerID .. ":event_promoter_purchase")
 	self:giveItem(pPlayer, deedData)

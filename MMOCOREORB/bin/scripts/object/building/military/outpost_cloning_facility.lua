@@ -46,7 +46,10 @@ object_building_military_outpost_cloning_facility = object_building_military_sha
 	facilityType = CLONER_STANDARD,
 
 	skillMods = {
-		{"private_medical_rating", 100}
+		{"private_medical_rating", 100},
+		{"private_med_wound_mind", 20},
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
 	},
 
 	childObjects = {

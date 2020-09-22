@@ -42,8 +42,10 @@
 
 
 object_tangible_mission_quest_item_warren_inquisitor_letter = object_tangible_mission_quest_item_shared_warren_inquisitor_letter:new {
-	objectName = "@theme_park/warren/warren_system_messages:inq_letter_name",
+
+  objectName = "@theme_park/warren/warren_system_messages:inq_letter_name",
 	objectMenuComponent = "WarrenLootableMenuComponent"
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_quest_item_warren_inquisitor_letter, "object/tangible/mission/quest_item/warren_inquisitor_letter.iff")

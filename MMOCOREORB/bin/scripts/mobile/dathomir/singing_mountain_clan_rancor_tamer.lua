@@ -26,6 +26,7 @@ singing_mountain_clan_rancor_tamer = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_rancor_tamer.iff"},
 	lootGroups = {
@@ -40,8 +41,8 @@ singing_mountain_clan_rancor_tamer = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_uncommon", chance = 500000},
-				{group = "tailor_components", chance = 500000}
+				{group = "tailor_components", chance = 500000},
+				{group = "g_smc_clothing", chance = 500000}
 			}
 		}
 	},

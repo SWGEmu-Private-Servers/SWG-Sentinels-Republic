@@ -7,10 +7,10 @@ krayt_dragon_grand = Creature:new {
 	damageMin = 2270,
 	damageMax = 4250,
 	baseXp = 28549,
-	baseHAM = 410000,
-	baseHAMmax = 501000,
+	baseHAM = 460000,
+	baseHAMmax = 551000,
 	armor = 3,
-	resists = {195,195,195,195,165,195,195,195,-1},
+	resists = {195,195,195,195,165,195,195,195,105},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_bristley",
@@ -30,14 +30,29 @@ krayt_dragon_grand = Creature:new {
 	scale = 1.1;
 	lootGroups = {
 		{
-	        groups = {
-				{group = "krayt_tissue_rare", chance = 2000000},
-				{group = "krayt_dragon_common", chance = 2500000},
-				{group = "krayt_pearls", chance = 1500000},
-				{group = "armor_all", chance = 2000000},
-				{group = "weapons_all", chance = 2000000},
+	    groups = {
+				{group = "krayt_tissue_common", chance = 2500000}, --25%
+				{group = "krayt_tissue_uncommon", chance = 2000000}, --20%
+				{group = "krayt_tissue_rare", chance = 1500000}, --15%
+				{group = "krayt_pearls", chance = 1500000}, --15%
+				{group = "armor_attachments", chance = 500000}, --5%
+				{group = "clothing_attachments", chance = 500000}, --5%
+				{group = "improved_skill_buffs", chance = 1500000}, --15%
 			},
-			lootChance = 7720000
+			lootChance = 10000000,
+		},
+		{
+	    groups = {
+				{group = "krayt_tissue_common", chance = 1500000}, --15%
+				{group = "krayt_tissue_uncommon", chance = 1250000}, --12.5%
+				{group = "krayt_tissue_rare", chance = 750000}, --7.5%
+				{group = "armor_all", chance = 1250000}, --12.5%
+				{group = "weapons_all", chance = 1500000}, --15%
+				{group = "wearables_all", chance = 500000}, --5%
+				{group = "advanced_skill_buffs", chance = 2250000}, --22.5%
+				{group = "experimental_skill_buffs", chance = 1000000}, --10%
+			},
+			lootChance = 4500000,
 		}
 	},
 	weapons = {},

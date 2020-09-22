@@ -52,4 +52,3 @@ HealActionWoundOther2Command = {
 }
 
 AddCommand(HealActionWoundOther2Command)
-

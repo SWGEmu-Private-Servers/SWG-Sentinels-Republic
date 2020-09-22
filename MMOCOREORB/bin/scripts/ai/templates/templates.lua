@@ -5,6 +5,7 @@ includeAiFile("templates/stationarynoleash.lua")
 includeAiFile("templates/follow.lua")
 includeAiFile("templates/wait.lua")
 includeAiFile("templates/idlewander.lua")
+includeAiFile("templates/idlewander_attacking.lua")
 includeAiFile("templates/idlewait.lua")
 includeAiFile("templates/idlepet.lua")
 includeAiFile("templates/gettargetreactive.lua")
@@ -43,6 +44,7 @@ idle = {
 	{CREATURE_PET, "idlepetc"},
 	{DROID_PET, "idlepetd"},
 	{FACTION_PET, "idlepetf"},
+	{FAMILIAR_PET, "idlepetc"},
 	{STATIC + WANDER, "idlewanderstatic"},
 	{STATIC, "idlewait"},
 	{PACK, "idlewanderpack"},
@@ -53,6 +55,7 @@ addAiBehavior("Composite")
 addAiBehavior("Wait")
 addAiBehavior("Wait10")
 addAiBehavior("Move")
+addAiBehavior("PatrolMove")
 addAiBehavior("Walk")
 addAiBehavior("CombatMove")
 addAiBehavior("GeneratePatrol")
@@ -64,6 +67,7 @@ addAiBehavior("CompositeDefault")
 addAiBehavior("WaitDefault")
 addAiBehavior("Wait10Default")
 addAiBehavior("MoveDefault")
+addAiBehavior("PatrolMoveDefault")
 addAiBehavior("WalkDefault")
 addAiBehavior("GeneratePatrolDefault")
 

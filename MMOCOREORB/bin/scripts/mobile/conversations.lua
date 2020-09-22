@@ -67,13 +67,6 @@ includeFile("conversations/events/bestine_election/victor_questp_hospital_conv.l
 includeFile("conversations/events/bestine_election/victor_questp_slums_conv.lua")
 includeFile("conversations/events/bestine_election/victor_visalis_conv.lua")
 
---Life Day
-includeFile("conversations/events/life_day/life_day_anarra_conv.lua")
-includeFile("conversations/events/life_day/life_day_kkatamk_conv.lua")
-includeFile("conversations/events/life_day/life_day_oraalarri_conv.lua")
-includeFile("conversations/events/life_day/life_day_radrrl_conv.lua")
-includeFile("conversations/events/life_day/life_day_tebeurra_conv.lua")
-
 --Coa2
 includeFile("conversations/events/coa/imperial_commander_conv.lua")
 includeFile("conversations/events/coa/imperial_coordinator_conv.lua")

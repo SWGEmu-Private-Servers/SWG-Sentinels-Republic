@@ -49,23 +49,23 @@ Saber1hHit2Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 1.5,
+	forceCostMultiplier = 1.35,
 	visMod = 25,
 
-	animation = "combo_jedi_2", 
+	animation = "combo_jedi_2",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saber1hhit2",
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		50, 
-		0, 
-		45 
+		50,
+		0,
+		45
 	  )
 	},
 
@@ -77,4 +77,3 @@ Saber1hHit2Command = {
 }
 
 AddCommand(Saber1hHit2Command)
-

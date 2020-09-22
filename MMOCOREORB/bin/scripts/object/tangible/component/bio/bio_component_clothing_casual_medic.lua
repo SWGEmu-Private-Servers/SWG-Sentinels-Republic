@@ -48,9 +48,9 @@ object_tangible_component_bio_bio_component_clothing_casual_medic = object_tangi
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 5, 3, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
-	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_healing_injury_treatment", "cat_skill_mod_bonus.@stat_n:healing_injury_treatment", "@obj_attr_n:bio_comp_healing_wound_treatment", "cat_skill_mod_bonus.@stat_n:healing_wound_treatment"},
-	experimentalMin = {0, 0, 30, 1000, 102, 1, 103, 1},
-	experimentalMax = {0, 0, 50, 1000, 102, 10, 103, 10},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_healing_ability", "cat_skill_mod_bonus.@stat_n:healing_ability", "@obj_attr_n:bio_comp_healing_wound_speed", "cat_skill_mod_bonus.@stat_n:healing_wound_speed"},
+	experimentalMin = {0, 0, 30, 1000, 102, 2, 103, 2},
+	experimentalMax = {0, 0, 50, 1000, 102, 10, 103, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1, 1, 1},
 }

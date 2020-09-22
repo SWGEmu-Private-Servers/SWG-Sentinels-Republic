@@ -52,4 +52,3 @@ HealAllSelf2Command = {
 }
 
 AddCommand(HealAllSelf2Command)
-

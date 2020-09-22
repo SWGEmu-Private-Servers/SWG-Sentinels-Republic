@@ -42,6 +42,7 @@
 
 
 object_tangible_loot_quest_carved_stone = object_tangible_loot_quest_shared_carved_stone:new {
+
 noTrade = 1
 }
 

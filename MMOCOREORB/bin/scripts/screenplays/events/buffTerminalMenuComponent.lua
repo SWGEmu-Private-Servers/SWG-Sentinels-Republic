@@ -46,3 +46,4 @@ function buffTerminalMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer,
 
 	return 0
 end
+

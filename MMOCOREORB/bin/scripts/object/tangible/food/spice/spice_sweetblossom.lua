@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_sweetblossom = object_tangible_food_spice_shared_spice_sweetblossom:new {
 	templateType = CONSUMABLE,
 
-	duration = 600,
+	duration = 300,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_sweetblossom = object_tangible_food_spice_share
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "health" , 100, "constitution" , 600, "action", -100, "quickness", -100, "focus", -200 },
+	modifiers = { "health" , 750, "strength", 450, "constitution", 450 },
 
 	buffName = "sweetblossom",
 	buffCRC = 0,

@@ -2,7 +2,7 @@
 
 corsec_cdef_pistol = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_cdef_corsec.iff",
 	craftingValues = {

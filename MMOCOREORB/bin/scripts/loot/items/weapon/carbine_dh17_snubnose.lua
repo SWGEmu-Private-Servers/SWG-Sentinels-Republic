@@ -2,7 +2,7 @@
 
 carbine_dh17_snubnose = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/carbine/carbine_dh17_snubnose.iff",
 	craftingValues = {

@@ -39,6 +39,7 @@ inventor = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/junk_dealer_generic:s_6d53d062", "shipment"}, -- Why don't you just get some of the special components?
+		{"@conversation/junk_dealer_generic:kit_types", "kit_types"}, -- I know those kits, what types do you have?
 	}
 }
 junkDealerGenericConvoTemplate:addScreen(inventor);
@@ -84,7 +85,8 @@ junkDealerGenericConvoTemplate:addScreen(not_taking_one);
 
 kit_types = ConvoScreen:new {
 	id = "kit_types",
-	leftDialog = "@conversation/junk_dealer_generic:s_3fc7eb45", -- Well let's see here. I have one that makes an orange rug, one that makes a blue rug, one that can make a Nabooian sculpture, one that makes a table, and one that make some sort of model gong. I will only give you one kit at a time so if you want another you are going to have to get rid of the one you currently have first.
+--	leftDialog = "@conversation/junk_dealer_generic:s_3fc7eb45", -- Well let's see here. I have one that makes an orange rug, one that makes a blue rug, one that can make a Nabooian sculpture, one that makes a table, and one that make some sort of model gong. I will only give you one kit at a time so if you want another you are going to have to get rid of the one you currently have first.
+	leftDialog = "@conversation/junk_dealer_generic:lootkits", -- Well let's see. I have ones that makes an orange rug, a blue rug, a Nabooian sculpture, a table, some sort of model gong and a schematic for a Civilian BARC Speeder. I will only give you one kit at a time so if you want another you are going to have to get rid of the one you currently have.
 	stopConversation = "false",
 	options = {
 		{"@conversation/junk_dealer_generic:s_ee977dee", "give_orange"}, -- Let me have one of those orange rug kits.

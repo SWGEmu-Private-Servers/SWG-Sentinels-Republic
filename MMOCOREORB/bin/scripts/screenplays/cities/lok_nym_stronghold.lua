@@ -328,4 +328,7 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	self:setMoodString(pNpc, "conversation")
 	pNpc = spawnMobile("lok", "vixur_webb", 60, -13.2, -0.9, -20.2, 22, 8145383)
 	self:setMoodString(pNpc, "npc_sitting_chair")
+	
+	-- Level 4 BH informant
+	spawnMobile("endor", "informant_npc_lvl_4", 300, 39.8796, 0.104999, 3.057, 0, 8145376)
 end

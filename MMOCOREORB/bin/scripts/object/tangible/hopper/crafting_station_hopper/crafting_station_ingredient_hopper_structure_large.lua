@@ -42,7 +42,8 @@
 
 
 object_tangible_hopper_crafting_station_hopper_crafting_station_ingredient_hopper_structure_large = object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large:new {
-	delayedContainerLoad = 1
+
+delayedContainerLoad = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_crafting_station_ingredient_hopper_structure_large, "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_structure_large.iff")

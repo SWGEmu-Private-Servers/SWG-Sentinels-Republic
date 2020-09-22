@@ -52,26 +52,25 @@ UnarmedDizzy1Command = {
         accuracyBonus = 15,
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		30 
+		100,
+		0,
+		30
 	  )
 	},
 
-	animation = "attack_special_wookiee_slap", 
+	animation = "attack_special_wookiee_slap",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "gundarkslap",
-	
+
 	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }
 
 AddCommand(UnarmedDizzy1Command)
-

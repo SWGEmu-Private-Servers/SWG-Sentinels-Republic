@@ -117,3 +117,5 @@ includeFile("draft_schematic/item/item_twelve_sided_dice.lua")
 includeFile("draft_schematic/item/item_twenty_sided_dice.lua")
 includeFile("draft_schematic/item/item_weapon_station.lua")
 includeFile("draft_schematic/item/item_weapon_tool.lua")
+includeFile("draft_schematic/item/life_day_presents.lua")
+

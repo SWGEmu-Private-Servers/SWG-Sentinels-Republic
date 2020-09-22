@@ -1,6 +1,6 @@
 mine_drx55 = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/mine/wp_mine_drx55.iff",
 	craftingValues = {

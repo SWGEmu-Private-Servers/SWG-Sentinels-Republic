@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_droid_lube = object_tangible_food_spice_shared_spice_droid_lube:new {
 	templateType = CONSUMABLE,
 
-	duration = 600,
+	duration = 180,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_droid_lube = object_tangible_food_spice_shared_
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "health" , 250, "strength" , 250, "constitution", 250 },
+	modifiers = { "willpower", 1250 },
 
 	buffName = "droid_lube",
 	buffCRC = 0,

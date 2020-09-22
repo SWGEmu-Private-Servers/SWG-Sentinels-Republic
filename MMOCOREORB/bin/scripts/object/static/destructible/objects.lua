@@ -41,6 +41,12 @@
 --which carries forward this exception.
 
 
+object_static_destructible_shared_destructible_lifeday_presents = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_lifeday_presents.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_lifeday_presents, "object/static/destructible/shared_destructible_lifeday_presents.iff")
+
 object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/static/destructible/shared_destructible_cave_wall_damprock.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

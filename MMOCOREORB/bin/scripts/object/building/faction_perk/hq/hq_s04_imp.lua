@@ -42,27 +42,27 @@
 
 
 object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_shared_hq_s04_imp:new {
-	lotSize = 0,
-	containerComponent = "GCWBaseContainerComponent",
-	zoneComponent = "StructureZoneComponent",
-	maintenanceCost = 0,
-	baseMaintenanceRate = 0,
-	faction = "imperial",
-	pvpFaction = "imperial",
-	pvpStatusBitmask = 0,
-	dataObjectComponent = "DestructibleBuildingDataComponent",
-	allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
-	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
-	length = 7,
-	width = 6,
-	alwaysPublic = 1,
-	factionBaseType = 1,
+		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		faction = "imperial",
+		pvpFaction = "imperial",
+		pvpStatusBitmask = 0,
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		alwaysPublic = 1,
+		factionBaseType = 1,
 
-	skillMods = {
-		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5},
-		{"private_medical_rating", 100},
-	},
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_med_battle_fatigue", 5},
+			{"private_medical_rating", 100},
+		},
 
 	childObjects = {
 		{ templateFile = "object/static/structure/military/military_wall_med_imperial_16_style_01.iff", x = -17.99, z = 0, y = 9.01, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = -1, containmentType = -1 },

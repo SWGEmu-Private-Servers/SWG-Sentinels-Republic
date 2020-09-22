@@ -49,7 +49,7 @@ Saber2hBodyHit3Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 1.75,
+	forceCostMultiplier = 1.575,
 	visMod = 25,
 
 	animation = "combo_4a", 

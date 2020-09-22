@@ -51,29 +51,28 @@ UnarmedHit3Command = {
 	mindCostMultiplier = 2,
         accuracyBonus = 15,
 
-	animation = "combo_5a", 
+	animation = "combo_5a",
 	animType = GENERATE_INTENSITY,
 
 
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		40, 
-		0, 
+		40,
+		0,
 		30
 	  )
 	},
-	
+
 	combatSpam = "spittingrawl",
-	
-	weaponType = UNARMEDWEAPON,	
+
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }
 
 AddCommand(UnarmedHit3Command)
-

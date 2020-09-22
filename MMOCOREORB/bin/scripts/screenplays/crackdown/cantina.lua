@@ -1,5 +1,4 @@
 CrackdownCantina = ScreenPlay:new {
-	isEnabled = false,
 	cantinaPlanets = { "corellia", "naboo", "tatooine" },
 
 	cantinaOids = {
@@ -14,10 +13,6 @@ CrackdownCantina = ScreenPlay:new {
 registerScreenPlay("CrackdownCantina", true)
 
 function CrackdownCantina:start()
-	if (not isEnabled) then
-		return
-	end
-	
 	for i = 1, #self.cantinaPlanets, 1 do
 		local planetName = self.cantinaPlanets[i]
 

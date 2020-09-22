@@ -52,34 +52,33 @@ UnarmedKnockdown2Command = {
         accuracyBonus = 15,
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		75, 
-		0, 
-		40 
+		75,
+		0,
+		40
 	  ),
-	  StateEffect( 
-		KNOCKDOWN_EFFECT, 
-		{ "knockdownRecovery", "lastKnockdown" }, 
-		{ "knockdown_defense" }, 
+	  StateEffect(
+		KNOCKDOWN_EFFECT,
+		{ "knockdownRecovery", "lastKnockdown" },
+		{ "knockdown_defense" },
 		{},
-		100, 
-		0, 
-		0 
+		100,
+		0,
+		0
 	  )
 	},
 
 	animation = "knockdown_unarmed_3",
 
 	combatSpam = "chargingwampa",
-	
+
 	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }
 
 AddCommand(UnarmedKnockdown2Command)
-

@@ -38,11 +38,11 @@
 --to grant this special exception for their modified versions;
 --it is their choice whether to do so. The GNU Lesser General Public License
 --gives permission to release a modified version without this exception;
---this exception also makes it possible to release a modified version
+--this exception also makes it possible to release a modified version 
 
 
 object_tangible_terminal_terminal_dark_enclave_challenge = object_tangible_terminal_shared_terminal_dark_enclave_challenge:new {
-	objectMenuComponent = "EnclaveTerminalMenuComponent",
+	--objectMenuComponent = "EnclaveTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_dark_enclave_challenge, "object/tangible/terminal/terminal_dark_enclave_challenge.iff")

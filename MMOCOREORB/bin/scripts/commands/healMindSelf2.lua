@@ -52,4 +52,3 @@ HealMindSelf2Command = {
 }
 
 AddCommand(HealMindSelf2Command)
-

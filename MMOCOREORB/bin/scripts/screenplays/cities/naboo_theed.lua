@@ -41,6 +41,7 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4830.96, 6, 4141.53, 0, math.rad(-140) )
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4886.07, 6, 4188.23, 0, math.rad(-140) )
+	 
 end
 
 function NabooTheedScreenPlay:spawnMobiles()
@@ -178,8 +179,8 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile(self.planet, "explorer",60,-5127.71,6,4336.34,0,0)
 	spawnMobile(self.planet, "explorer",60,-4870.86,6,4179.63,0,0)
 	spawnMobile(self.planet, "gungan_hunter",300,-5138.49,6,4229.36,180.005,0)
-	pNpc = spawnMobile(self.planet, "gungan_outcast",300,-5827.81,6,4172.98,0,0)
-	self:setMoodString(pNpc, "conversation")
+	--pNpc = spawnMobile(self.planet, "gungan_outcast",300,-5827.81,6,4172.98,0,0)
+	--self:setMoodString(pNpc, "conversation")
 	spawnMobile(self.planet, "imperial_recruiter",0,-4928,6,4231,174,0)
 	spawnMobile(self.planet, "imperial_recruiter",0,-4936,6,4231,174,0)
 	spawnMobile(self.planet, "informant_npc_lvl_1",0,-4833,6,4134,0,0)

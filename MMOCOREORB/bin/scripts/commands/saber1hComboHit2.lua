@@ -49,7 +49,7 @@ Saber1hComboHit2Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 1.75,
+	forceCostMultiplier = 1.575,
 	visMod = 25,
 
 	animation = "combo_5b", 
@@ -60,7 +60,7 @@ Saber1hComboHit2Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
-		{},
+		{}, 
 		40, 
 		0, 
 		0 

@@ -2,7 +2,7 @@
 
 axe_vibroaxe = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/axe/axe_vibroaxe.iff",
 	craftingValues = {

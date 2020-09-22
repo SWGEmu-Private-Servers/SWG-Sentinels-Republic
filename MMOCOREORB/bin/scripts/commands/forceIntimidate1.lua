@@ -45,8 +45,8 @@ ForceIntimidate1Command = {
 	name = "forceintimidate1",
 
 	damageMultiplier = 0,
-	speed = 4.0,
-	forceCost = 300,
+	speed = 2.0,
+	forceCost = 60,
 	accuracySkillMod = "forceintimidate_accuracy",
 	coneAngle = 30,
 	coneAction = true,
@@ -75,4 +75,3 @@ ForceIntimidate1Command = {
 }
 
 AddCommand(ForceIntimidate1Command)
-

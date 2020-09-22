@@ -44,11 +44,10 @@
 object_building_player_city_cloning_tatooine = object_building_player_city_shared_cloning_tatooine:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {"dantooine", "lok", "tatooine"},
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
 	length = 5,
 	width = 5,
 	planetMapCategory = "cloningfacility",
-	facilityType = CLONER_PLAYER_CITY,
 	cityRankRequired = 3,
 	uniqueStructure = true,
 	cityMaintenanceBase = 20000,

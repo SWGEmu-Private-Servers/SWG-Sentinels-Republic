@@ -79,6 +79,7 @@ function RaceTrack:finalWaypoint(pActiveArea, pPlayer)
 	end
 
 	CreatureObject(pPlayer):playMusicMessage("sound/music_combat_bfield_vict.snd")
+	self:awardBARCComponent(pPlayer)
 	self:checkPersonalTime(pPlayer)
 	self:checkServerRecordTime(pPlayer)
 	clearScreenPlayData(pPlayer,self.trackConfig.trackName )
@@ -92,6 +93,19 @@ function RaceTrack:getLaptime(pObject)
 	return seconds
 end
 
+
+function RaceTrack:awardBARCComponent(pPlayer)
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	
+	if self.trackConfig.BARCComponent ~= nil then
+	  if SceneObject(pInventory):isContainerFullRecursive() then
+	    CreatureObject(pPlayer):sendSystemMessage("You do not have enough inventory space.")
+	  else
+	    giveItem(pInventory, self.trackConfig.BARCComponent, -1)
+	    CreatureObject(pPlayer):sendSystemMessage("You have been awarded a component that can be used to create a Civilian BARC Speeder.")	
+	  end
+	end
+end
 
 function RaceTrack:checkPersonalTime(pPlayer)
 	local seconds = self:getLaptime(pPlayer)

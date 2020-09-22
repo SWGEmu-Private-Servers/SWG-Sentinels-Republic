@@ -52,14 +52,14 @@ LastDitchCommand = {
 	accuracyBonus = 50,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
-		{ "stun_defense", }, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
+		{ "stun_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		30 
+		100,
+		0,
+		30
 	  )
 	},
 
@@ -67,15 +67,14 @@ LastDitchCommand = {
 		{"pistol_accuracy",10},
 	},
 
-	animation = "fire_1_special_single", 
+	animation = "fire_1_special_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "lastditch",
-	
+
 	weaponType = PISTOLWEAPON,
 
 	range = -1
 }
 
 AddCommand(LastDitchCommand)
-

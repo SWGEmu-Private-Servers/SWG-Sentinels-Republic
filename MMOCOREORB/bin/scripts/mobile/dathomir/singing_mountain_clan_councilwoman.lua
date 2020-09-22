@@ -26,6 +26,7 @@ singing_mountain_clan_councilwoman = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_councilwoman.iff"},
 	lootGroups = {
@@ -40,7 +41,7 @@ singing_mountain_clan_councilwoman = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_rare", chance = 500000}
+				{group = "g_smc_clothing", chance = 500000}
 			}
 		}
 	},

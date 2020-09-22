@@ -51,4 +51,3 @@ HealAllSelf1Command = {
 }
 
 AddCommand(HealAllSelf1Command)
-

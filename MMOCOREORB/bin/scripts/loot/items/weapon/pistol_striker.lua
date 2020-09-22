@@ -2,7 +2,7 @@
 
 pistol_striker = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_striker.iff",
 	craftingValues = {

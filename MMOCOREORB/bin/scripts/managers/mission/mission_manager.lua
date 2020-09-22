@@ -18,7 +18,12 @@ bh_target_zones = {
 	"rori",
 	"talus",
 	"tatooine",
-	"yavin4"
+	"yavin4",
+	"kaas",
+	"taanab",
+	"chandrila",
+	"mandalore",
+	"hoth",
 }
 
 bh_targets_at_mission_level = {
@@ -35,7 +40,7 @@ bh_targets_at_mission_level = {
 		"bh_bodyguard_zabrak_female", --level 18
 		"bh_assassin_twilek_mate", --level 18
 		"bh_pirate_captain", --level 20
-		"bh_brigand_leader" --level 20
+		"bh_brigand_leader", --level 20
 	},
 	level2 = { --level 21 - 50
 		"bh_bounty_hunter_thug", --level 24
@@ -47,7 +52,7 @@ bh_targets_at_mission_level = {
 		"bh_canyon_corsair_captain", --level 50
 		"bh_tusken_death_hunter" --level 50
 	},
-	level3 = { --level 51 - 200 (current highest is 120, probe droids will only have a 5% chance to find targets over level 190)
+	level3 = { --level 51 - 120
 		"bh_tusken_warlord", --level 62
 		"bh_untrained_wielder_of_the_dark_side", --level 65
 		"bh_mercenary_sentry", --level 66
@@ -60,7 +65,24 @@ bh_targets_at_mission_level = {
 		"bh_feral_force_wielder", --level 115
 		"bh_force_crystal_hunter", --level 115
 		"bh_tusken_carnage_champion", --level 116
-		"bh_dark_adept" --level 120
+	},
+	level4 = { --level 51 - 200 (current highest is 135, probe droids will only have a 5% chance to find targets over level 190)
+		"bh_tusken_warlord", --level 62
+		"bh_untrained_wielder_of_the_dark_side", --level 65
+		"bh_mercenary_sentry", --level 66
+		"bh_nightsister_outcast", --level 81
+		"bh_force_trained_archaist", --level 90
+		"bh_force_sensitive_crypt_crawler", --level 95
+		"bh_nightsister_spell_weaver", --level 107
+		"bh_singing_mountain_clan_arch_witch", --level 107
+		"bh_spiderclan_auspex", --level 107
+		"bh_feral_force_wielder", --level 115
+		"bh_force_crystal_hunter", --level 115
+		"bh_tusken_carnage_champion", --level 116
+		"bh_rogue_bounty_hunter", -- level 131
+		"bh_black_sun_pilot", -- level 132
+		"bh_mandalorian_mercenary", -- level 133
+		"bh_dark_adept" --level 135
 	}
 }
 
@@ -74,21 +96,4 @@ enable_same_account_bounty_missions = "false"
 
 playerBountyKillBuffer = 30 * 60 * 1000 -- Buffer before player bounty can be put back on terminal after target is killed, set 0 to disable
 
-playerBountyDebuffLength = 3 * 24 * 60 * 60 * 1000 -- Time before their bounty resets from the minimum amount
-
--- Destroy Mission Configuration
--- Distance calculated as: 
---    <BaseDistance> + <DifficultyDistanceFactor> * <difficultyLevel> + 
---    rand(<RandomDistance>) + rand(<DifficutlyRandomDistance * <difficultyLevel>)
-destroyMissionBaseDistance = 1000
-destroyMissionDifficultyDistanceFactor = 0
-destroyMissionRandomDistance = 1000
-destroyMissionDifficultyRandomDistance = 0
-
--- Mission payout calculated as: 
---    <BaseReward> + <DifficultyRewardFactor> * <difficultyLevel> + 
---    rand(<RandomReward>) + rand(<DifficutlyRandomReward * <difficultyLevel>)
-destroyMissionBaseReward = 0
-destroyMissionDifficultyRewardFactor = 375
-destroyMissionRandomReward = 0
-destroyMissionDifficultyRandomReward = 15
+playerBountyDebuffLength = 3 * 24 * 60 * 60 * 1000 -- Time before their bounty resets from the minimum amoun

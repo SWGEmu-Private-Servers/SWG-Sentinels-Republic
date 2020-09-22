@@ -42,7 +42,8 @@
 
 
 object_tangible_crafting_crafting_components_container = object_tangible_crafting_shared_crafting_components_container:new {
-	delayedContainerLoad = 1
+
+delayedContainerLoad = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_crafting_components_container, "object/tangible/crafting/crafting_components_container.iff")

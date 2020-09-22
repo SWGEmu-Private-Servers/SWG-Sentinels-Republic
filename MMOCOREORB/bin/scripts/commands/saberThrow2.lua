@@ -49,7 +49,7 @@ SaberThrow2Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 2.0,
+	forceCostMultiplier = 1.8,
 	visMod = 25,
 
 	stateEffects = {
@@ -57,7 +57,7 @@ SaberThrow2Command = {
 		KNOCKDOWN_EFFECT, 
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
-		{},
+		{}, 
 		100, 
 		0, 
 		0

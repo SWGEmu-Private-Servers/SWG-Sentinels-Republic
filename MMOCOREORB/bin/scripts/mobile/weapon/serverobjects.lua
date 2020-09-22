@@ -1,3 +1,5 @@
+includeFile("custom_content/ttp/weapon_groups/serverobjects.lua")
+
 -- weapon group templates
 
 -- creature default attack

@@ -40,6 +40,11 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+object_tangible_medicine_base_shared_base_stimpack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/base/shared_base_stimpack.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_medicine_base_shared_base_stimpack, "object/tangible/medicine/base/shared_base_stimpack.iff")
 
 object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/medicine/base/shared_base_medicine.iff"

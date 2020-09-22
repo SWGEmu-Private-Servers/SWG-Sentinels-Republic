@@ -51,4 +51,3 @@ StopBleedingCommand = {
 }
 
 AddCommand(StopBleedingCommand)
-

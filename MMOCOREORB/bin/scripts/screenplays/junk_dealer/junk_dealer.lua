@@ -115,7 +115,7 @@ function JunkDealer:sellAllItems(pPlayer, pSui, pInventory)
 		if pItem ~= nil then
 			local value = TangibleObject(pItem):getJunkValue()
 			createEvent(10, "JunkDealer", "destroyItem", pItem, "")
-			
+
 			amount = amount + value
 		end
 	end
@@ -132,8 +132,8 @@ function JunkDealer:destroyItem(pItem)
 	if (pItem == nil) then
 		return
 	end
-	
-	SceneObject(pItem):destroyObjectFromWorld()
+
+ 	SceneObject(pItem):destroyObjectFromWorld()
 	SceneObject(pItem):destroyObjectFromDatabase()
 end
 

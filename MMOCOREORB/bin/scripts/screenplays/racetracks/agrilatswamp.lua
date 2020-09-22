@@ -8,6 +8,7 @@ agrilatswamp_racetrack_screenplay = RaceTrack:new {
 		planetName = "corellia", -- The planet the Track is on
 		badgeToAward=BDG_RACING_AGRILAT_SWAMP,  -- Badge to be awarded for best daily time
 		trackName="AGSWRT",  -- Internal trackname , should be unique to the track
+		BARCComponent="object/tangible/loot/collectible/collectible_parts/vehicle/barc_armor_plating.iff",  -- BARC Component to be awarded
 		className="agrilatswamp_racetrack_screenplay", -- Class name of this class
 		trackCheckpoint="@theme_park/racing/racing:agrilat_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:agrilat_laptime_checkpoint", -- System message sent at each waypoint

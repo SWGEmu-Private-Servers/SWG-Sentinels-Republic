@@ -52,12 +52,14 @@ function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		return convoTemplate:getScreen("mirla_start")
 	end
 
-	if (PlayerObject(pGhost):hasBadge(38)) then -- Compassion
-		if (PlayerObject(pGhost):hasBadge(39)) then -- Hero
+	if (PlayerObject(pGhost):hasBadge(39)) then
+		if (PlayerObject(pGhost):hasBadge(38)) then -- only return mirla_done if both badges obtained
 			return convoTemplate:getScreen("mirla_done")
 		else
-			return convoTemplate:getScreen("mirla_get_teraud")
+			return convoTemplate:getScreen("mirla_2") -- they've handed into Theed first then come back to the widow
 		end
+	elseif (PlayerObject(pGhost):hasBadge(38)) then
+		return convoTemplate:getScreen("mirla_get_teraud")
 	end
 
 	return convoTemplate:getScreen("mirla_start")

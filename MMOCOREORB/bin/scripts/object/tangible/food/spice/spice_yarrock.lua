@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_yarrock = object_tangible_food_spice_shared_spice_yarrock:new {
 	templateType = CONSUMABLE,
 
-	duration = 600,
+	duration = 1200,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_yarrock = object_tangible_food_spice_shared_spi
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "mind" , 200, "focus" , 100, "willpower", 100 },
+	modifiers = { "mind" , 300, "focus", 300, "willpower", 300 },
 
 	buffName = "yarrock",
 	buffCRC = 0,

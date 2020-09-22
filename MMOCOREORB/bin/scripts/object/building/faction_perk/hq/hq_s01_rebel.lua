@@ -42,21 +42,21 @@
 
 
 object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_shared_hq_s01_rebel:new {
-	lotSize = 0,
-	containerComponent = "GCWBaseContainerComponent",
-	zoneComponent = "StructureZoneComponent",
-	maintenanceCost = 0,
-	baseMaintenanceRate = 0,
-	faction = "rebel",
-	pvpFaction = "rebel",
-	pvpStatusBitmask = 0,
-	dataObjectComponent = "DestructibleBuildingDataComponent",
-	allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
-	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
-	length = 7,
-	width = 6,
-	alwaysPublic = 1,
-	factionBaseType = 1,
+		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		pvpStatusBitmask = 0,
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		alwaysPublic = 1,
+		factionBaseType = 1,
 
 	childObjects = {
 		{ templateFile = "object/static/structure/military/military_wall_weak_rebl_style_01.iff", x = 9.97, z = 0, y = 4.14, ox = 0, oy = -0.383, oz = 0, ow = 0.924, cellid = -1, containmentType = -1 },
@@ -86,7 +86,7 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 	},
 
 	childCreatureObjects = {
-		{ mobile = "fbase_rebel_corporal", x = 0, z = 0, y = 32.5, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "at_xt", x = 0, z = 0, y = 32.5, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_command_security_guard", x = -2.5, z = 0, y = 30, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_sergeant", x = 2.5, z = 0, y = 30, cellid = -1, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_medic", x = -2.5, z = 0, y = 35, cellid = -1, respawn = 300, containmentType = -1, heading = 0},

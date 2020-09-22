@@ -42,30 +42,30 @@
 
 
 object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_hq_shared_hq_s04_rebel_pvp:new {
-	lotSize = 0,
-	faction = "rebel",
-	pvpFaction = "rebel",
-	pvpStatusBitmask = OVERT,
-	maintenanceCost = 0,
-	baseMaintenanceRate = 0,
-	dataObjectComponent = "DestructibleBuildingDataComponent",
-	zoneComponent = "StructureZoneComponent",
-	allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
-	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
-	length = 7,
-	width = 6,
-	containerComponent = "GCWBaseContainerComponent",
-	planetMapCategory = "rebel_hq",
-	factionBaseType = 1,
+		lotSize = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		pvpStatusBitmask = OVERT,
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		zoneComponent = "StructureZoneComponent",
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		containerComponent = "GCWBaseContainerComponent",
+		planetMapCategory = "rebel_hq",
+		factionBaseType = 1,
 
-	skillMods = {
-		{"private_buff_mind", 100},
-		--{"private_faction_buff_mind", 25},
-		{"private_med_battle_fatigue", 5},
-		--{"private_faction_mind_heal", 10},
-		{"private_medical_rating", 100},
-		--{"private_faction_medical_rating", 25},
-	},
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_faction_buff_mind", 25},
+			{"private_med_battle_fatigue", 5},
+			{"private_faction_mind_heal", 10},
+			{"private_medical_rating", 100},
+			{"private_faction_medical_rating", 25},
+		},
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/poi_all_rebl_corral_64x64_s01.iff", x = -0.04, z = 0, y = 13.95, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
@@ -76,13 +76,15 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18.28, z = 0, y = -5.18, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -15.55, z = 0, y = 31.08, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 15.55, z = 0, y = 31.08, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 0, z = 0, y = -16.5,  ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
-		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = -1.9, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = -0.9, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = 0.1, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
-		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.75, z = 0, y = 1.1, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.5, z = 0, y = -2.25, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.5, z = 0, y = -1.2, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.5, z = 0, y = -0.25, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.5, z = 0, y = 0.7, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
+		{ templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x = 2.5, z = 0, y = 1.65, ox = 0, oy = 0.707, oz = 0, ow = 0.707, cellid = 2, containmentType = -1 },
 
 		{ templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x = 0, z = 0, y = 38, ox = 0, oy = .7, oz = 0, ow = .7, cellid = -1, containmentType = -1 },
 

@@ -30,7 +30,8 @@ admin_player_management_02 = {
 		"setLastName",
 		"setPlayerAppearance",
 		"setPlayerState",
-		"unCityBan"
+		"unCityBan",
+		"srStaffTools",
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

@@ -2,7 +2,7 @@
 
 polearm_staff_janta = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/polearm/lance_staff_janta.iff",
 	craftingValues = {

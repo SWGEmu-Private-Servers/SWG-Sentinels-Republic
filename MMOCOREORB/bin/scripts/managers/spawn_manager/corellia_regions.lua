@@ -170,3 +170,4 @@ corellia_regions = {
 	{"western_plains", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"corellia_world", "global"}, 2048}
 }
+

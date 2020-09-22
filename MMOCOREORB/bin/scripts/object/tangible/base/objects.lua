@@ -41,6 +41,12 @@
 --which carries forward this exception.
 
 
+object_tangible_base_shared_retrieve_quest_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/base/shared_retrieve_quest_base.iff"
+
+}
+ObjectTemplates:addClientTemplate(object_tangible_base_shared_retrieve_quest_base, "object/tangible/base/shared_retrieve_quest_base.iff")
+
 object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/base/shared_tangible_base.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

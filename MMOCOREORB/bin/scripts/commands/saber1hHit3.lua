@@ -43,39 +43,38 @@
 
 Saber1hHit3Command = {
         name = "saber1hhit3",
-        
-                           
+
+
     damageMultiplier = 2.5,
 	speedMultiplier = 2.5,
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 2.0,
+	forceCostMultiplier = 1.8,
 	visMod = 25,
 
-	animation = "combo_jedi_3", 
+	animation = "combo_jedi_3",
 	animType = GENERATE_INTENSITY,
-	
+
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		75, 
-		0, 
-		90 
+		75,
+		0,
+		90
 	  )
 	},
 
 	combatSpam = "saber1hhit3",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }
 
 AddCommand(Saber1hHit3Command)
-

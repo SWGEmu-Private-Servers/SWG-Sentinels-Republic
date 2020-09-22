@@ -2,7 +2,7 @@
 
 pistol_dx2 = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_dx2.iff",
 	craftingValues = {

@@ -51,35 +51,25 @@ PolearmHit3Command = {
 	accuracyBonus = 10,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		75, 
-		0, 
-		45 
+		75,
+		0,
+		45
 	  ),
-	  StateEffect( 
-		POSTUREDOWN_EFFECT, 
-		{ "postureDownRecovery" }, 
-		{ "posture_change_down_defense" }, 
-		{},
-		100, 
-		0, 
-		0 
-	  )
 	},
 
-	animation = "combo_5a", 
+	animation = "combo_5a",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "bonebreaker",
-	
+
 	weaponType = POLEARMWEAPON,
 
 	range = -1
 }
 
 AddCommand(PolearmHit3Command)
-

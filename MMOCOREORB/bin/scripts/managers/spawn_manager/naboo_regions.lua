@@ -141,3 +141,4 @@ naboo_regions = {
 	{"western_forest", 0, 0, {CIRCLE, 0}, UNDEFINEDAREA},
 	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"naboo_world", "global"}, 2048}
 }
+

@@ -3567,6 +3567,16 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02 = Shared
 
 ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_large_s02.iff")
 
+object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s01.iff"
+}
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s01, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s01.iff")
+
+object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s02.iff"
+}
+ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s02, "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s02.iff")
+
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03 = SharedStaticObjectTemplate:new {
 	clientTemplateFileName = "object/static/structure/naboo/shared_nboo_imprv_pristine_wall_sml_s03.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

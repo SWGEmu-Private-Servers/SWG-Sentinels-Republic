@@ -152,7 +152,7 @@ function SuiRadiationSensor:giveSensor(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	if (self:hasSensor(pPlayer)) then
 		self:removeSensor(pPlayer)
 	end

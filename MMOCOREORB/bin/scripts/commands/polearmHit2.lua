@@ -52,26 +52,25 @@ PolearmHit2Command = {
 	accuracyBonus = 10,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		75, 
-		0, 
-		45 
+		75,
+		0,
+		45
 	  )
 	},
 
-	animation = "combo_3a", 
+	animation = "combo_3a",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "bonesmasher",
-	
+
 	weaponType = POLEARMWEAPON,
 
 	range = -1
 }
 
 AddCommand(PolearmHit2Command)
-

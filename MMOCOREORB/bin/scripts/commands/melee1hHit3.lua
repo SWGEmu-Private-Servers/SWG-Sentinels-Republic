@@ -51,27 +51,26 @@ Melee1hHit3Command = {
 	mindCostMultiplier = 2.0,
         accuracyBonus = 25,
 
-	animation = "combo_5a", 
+	animation = "combo_5a",
 	animType = GENERATE_INTENSITY,
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		40, 
-		0, 
-		30 
+		40,
+		0,
+		30
 	  )
 	},
 
 	combatSpam = "chomok",
-	
+
 	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }
 
 AddCommand(Melee1hHit3Command)
-

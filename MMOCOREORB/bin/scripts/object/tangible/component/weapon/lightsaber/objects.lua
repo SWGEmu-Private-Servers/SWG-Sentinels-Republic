@@ -689,3 +689,68 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")
+
+object_tangible_component_weapon_lightsaber_shared_lightsaber_module_end_game_crystal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_end_game_crystal.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_end_game_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_end_game_crystal.iff")
+
+
+object_tangible_component_weapon_lightsaber_shared_lightsaber_module_generic_pearl = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_generic_pearl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
+	appearanceFilename = "appearance/dragon_pearl.apt",
+	arrangementDescriptorFilename = "",
+
+	certificationsRequired = {},
+	clearFloraRadius = 0,
+	clientDataFile = "",
+	clientGameObjectType = 262156,
+	collisionActionBlockFlags = 0,
+	collisionActionFlags = 51,
+	collisionActionPassFlags = 1,
+	collisionMaterialBlockFlags = 0,
+	collisionMaterialFlags = 1,
+	collisionMaterialPassFlags = 0,
+	containerType = 0,
+	containerVolumeLimit = 1,
+	customizationVariableMapping = {},
+
+	detailedDescription = "@craft_weapon_ingredients_d:generic_pearl",
+
+	gameObjectType = 262156,
+
+	locationReservationRadius = 0,
+	lookAtText = "@weapon_lookat:generic_pearl",
+
+	noBuildRadius = 0,
+
+	objectName = "@craft_weapon_ingredients_n:generic_pearl",
+	onlyVisibleInTools = 0,
+
+	paletteColorCustomizationVariables = {},
+	portalLayoutFilename = "",
+
+	rangedIntCustomizationVariables = {},
+
+	scale = 1,
+	scaleThresholdBeforeExtentTest = 0.5,
+	sendToClient = 1,
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
+	snapToTerrain = 1,
+	socketDestinations = {},
+	structureFootprintFileName = "",
+	surfaceType = 0,
+
+	targetable = 1,
+	totalCellNumber = 0,
+
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2322379839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
+]]
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_generic_pearl, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_generic_pearl.iff")

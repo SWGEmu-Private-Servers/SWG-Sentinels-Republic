@@ -50,4 +50,3 @@ HealStatesSelfCommand = {
 }
 
 AddCommand(HealStatesSelfCommand)
-

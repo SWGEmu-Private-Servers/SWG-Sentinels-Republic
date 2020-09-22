@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_thruster_head = object_tangible_food_spice_shared_spice_thruster_head:new {
 	templateType = CONSUMABLE,
 
-	duration = 400,
+	duration = 300,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_thruster_head = object_tangible_food_spice_shar
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "mind", 600, "focus" , 200 },
+	modifiers = { "mind", 750, "focus", 450, "willpower", 450},
 
 	buffName = "thruster_head",
 	buffCRC = 0,

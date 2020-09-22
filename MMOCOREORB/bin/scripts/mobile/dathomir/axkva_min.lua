@@ -6,7 +6,7 @@ axkva_min = Creature:new {
 	chanceHit = 30,
 	damageMin = 1645,
 	damageMax = 3000,
-	specialDamageMult = 7.5,
+	specialDamageMult = 2,
 	baseXp = 28549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
@@ -25,6 +25,7 @@ axkva_min = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_axkva.iff"},
 	lootGroups = {
@@ -38,7 +39,7 @@ axkva_min = Creature:new {
 				{group = "melee_weapons", chance = 2000000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
-				{group = "wearables_rare", chance = 500000}
+				{group = "g_ns_clothing", chance = 500000}
 			}
 		},
 		{

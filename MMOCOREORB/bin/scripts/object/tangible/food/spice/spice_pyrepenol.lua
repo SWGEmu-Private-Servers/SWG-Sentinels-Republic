@@ -44,7 +44,7 @@
 object_tangible_food_spice_spice_pyrepenol = object_tangible_food_spice_shared_spice_pyrepenol:new {
 	templateType = CONSUMABLE,
 
-	duration = 600,
+	duration = 300,
 	filling = 0,
 	nutrition = 0,
 
@@ -59,7 +59,7 @@ object_tangible_food_spice_spice_pyrepenol = object_tangible_food_spice_shared_s
 	quantityMin = 0,
 	quantityMax = 0,
 
-	modifiers = { "strength" , 300, "quickness", -100, "focus", -50 },
+	modifiers = { "action", 750, "stamina", 450, "quickness", 450 },
 
 	buffName = "pyrepenol",
 	buffCRC = 0,

@@ -123,15 +123,18 @@ end
 
 --Check to ensure force skill prerequisites are maintained
 function VillageJediManager:canSurrenderSkill(pPlayer, skillName)
-
-	if skillName == "force_title_jedi_rank_02" or skillName == "force_title_jedi_novice" then
-		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:revoke_force_title")
+	if skillName == "force_title_jedi_novice" and CreatureObject(pPlayer):getForceSensitiveSkillCount(true) > 0 then
 		return false
 	end
-
-	if string.find(skillName, "force_sensitive_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02") and CreatureObject(pPlayer):getForceSensitiveSkillCount(false) <= 24 then
-		CreatureObject(pPlayer):sendSystemMessage("@jedi_spam:revoke_force_sensitive")
-		return false
+	
+	if (CreatureObject(pPlayer):getScreenPlayState("ttp_fs_quest") == 1) then
+		if string.find(skillName, "force_sensitive_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02") and CreatureObject(pPlayer):getForceSensitiveSkillCount(false) <= 0 then
+			return false
+		end
+	else
+		if string.find(skillName, "force_sensitive_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_02") and CreatureObject(pPlayer):getForceSensitiveSkillCount(false) <= 24 then
+			return false
+		end
 	end
 
 	if string.find(skillName, "force_discipline_") and CreatureObject(pPlayer):hasSkill("force_title_jedi_rank_03") and not CreatureObject(pPlayer):villageKnightPrereqsMet(skillName) then
@@ -162,11 +165,12 @@ function VillageJediManager:onSkillRevoked(pPlayer, pSkill)
 	if (pPlayer == nil) then
 		return
 	end
-
+	
 	if (JediTrials:isOnPadawanTrials(pPlayer) or JediTrials:isOnKnightTrials(pPlayer)) then
 		JediTrials:droppedSkillDuringTrials(pPlayer, pSkill)
 	end
 end
+
 
 registerScreenPlay("VillageJediManager", true)
 

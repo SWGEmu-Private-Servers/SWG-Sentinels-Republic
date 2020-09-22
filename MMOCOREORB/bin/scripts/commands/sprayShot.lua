@@ -80,7 +80,7 @@ SprayShotCommand = {
 	  )
 	},
 
-	animation = "fire_7_single", 
+	animation = "fire_7_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "sprayshot",
@@ -90,4 +90,3 @@ SprayShotCommand = {
 }
 
 AddCommand(SprayShotCommand)
-

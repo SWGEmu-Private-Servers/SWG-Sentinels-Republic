@@ -42,26 +42,26 @@
 
 
 object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_shared_hq_s03_rebel:new {
-	lotSize = 0,
-	containerComponent = "GCWBaseContainerComponent",
-	zoneComponent = "StructureZoneComponent",
-	maintenanceCost = 0,
-	baseMaintenanceRate = 0,
-	faction = "rebel",
-	pvpFaction = "rebel",
-	dataObjectComponent = "DestructibleBuildingDataComponent",
-	allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
-	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
-	length = 7,
-	width = 6,
-	alwaysPublic = 1,
-	factionBaseType = 1,
+		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		alwaysPublic = 1,
+		factionBaseType = 1,
 
-	skillMods = {
-		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5},
-		{"private_medical_rating", 100},
-	},
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_med_battle_fatigue", 5},
+			{"private_medical_rating", 100},
+		},
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/poi_all_rebl_corral_64x64_s01.iff", x = 0.28, z = 0, y = 7.35, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
@@ -85,8 +85,8 @@ object_building_faction_perk_hq_hq_s03_rebel = object_building_faction_perk_hq_s
 	},
 
 	childCreatureObjects = {
-		{ mobile = "fbase_rebel_master_sergeant_hard", x = 10, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_command_security_guard_hard", x = 10, z = 0, y = 10, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
+		{ mobile = "at_xt", x = 10, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
+		{ mobile = "at_xt", x = 10, z = 0, y = 10, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 
 		{ mobile = "fbase_rebel_sharpshooter_hard", x = -10, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_recruit_hard", x = -10, z = 0, y = 10, cellid = -1, respawn = 360, containmentType = -1, heading = 0},

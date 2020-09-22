@@ -1,44 +1,44 @@
 --[[
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 --]]
 
@@ -79,7 +79,7 @@ CitizensPerRank = {2, 4, 6, 8, 10}
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
 RadiusPerRank = {150, 200, 300, 400, 450}
 
--- Maximum for each rank.  ex. rank 1 = DecorationsPerRank * 1, rank 5 = DecorationsPerRank * 5
+-- Maximum for each rank.  ex. rank 1 = DecorationsPerRank * 1, rank 5 = DecorationsPerRank * 5
 DecorationsPerRank = 10
 TrainersPerRank = 3
 MissionTerminalsPerRank = 3
@@ -90,21 +90,27 @@ maintenanceDiscount = 1.0
 --[[
 	CITIES ALLOWED PER PLANET
 	-------------------------
-	
+
 	This is the number of cities allowed per planet, per rank. (Outpost, Village, Township, City, Metropolis)
 	The maximum amount of cities per rank is 255.
 --]]
 CitiesAllowed = {
-	{"corellia", {20, 20, 15, 10, 10}},
-	{"dantooine", {50, 50, 30, 20, 20}},
+	{"corellia", {25, 25, 20, 15, 15}},
+	{"dantooine", {25, 25, 20, 15, 15}},
 	{"dathomir", {0, 0, 0, 0, 0}},
 	{"endor", {0, 0, 0, 0, 0}},
-	{"lok", {50, 50, 30, 20, 20}},
-	{"naboo", {20, 20, 15, 10, 10}},
-	{"rori", {50, 50, 30, 20, 20}},
-	{"talus", {50, 50, 30, 20, 20}},
-	{"tatooine", {20, 20, 15, 10, 10}},
-	{"yavin4", {0, 0, 0, 0, 0}}
+	{"lok", {25, 25, 20, 15, 15}},
+	{"naboo", {25, 25, 20, 15, 15}},
+	{"rori", {25, 25, 20, 15, 15}},
+	{"talus", {25, 25, 20, 15, 15}},
+	{"tatooine", {25, 25, 20, 15, 15}},
+	{"yavin4", {0, 0, 0, 0, 0}},
+	{"taanab", {25, 25, 20, 15, 15}},
+	{"mandalore", {0, 0, 0, 0, 0}},
+	{"chandrila", {25, 25, 20, 15, 15}},
+	{"hutta", {0, 0, 0, 0, 0}},
+	{"kaas", {25, 25, 20, 15, 15}},
+	{"moraband", {0, 0, 0, 0, 0}}
 }
 
 
@@ -112,7 +118,7 @@ CitiesAllowed = {
 --[[
 	CITY TAX SETTINGS
 	-----------------
-	
+
 	WARNING: Do not change the number or order of tax entries below. You may only safely modify the entries.
 	min: The minimum value of the tax.
 	max: The maximum value of the tax.
@@ -199,11 +205,45 @@ CitySpecializations = {
 			{"private_spec_assembly", 10}
 		}
 	},
+	{--Research Center
+		name = "@city/city:city_spec_research",
+		cost = 125000,
+		skillMods = {
+			{"private_spec_experimentation", 15}
+		}
+	},
+	{--Industrial Complex
+		name = "@city/city:city_spec_master_manufacturing",
+		cost = 200000,
+		skillMods = {
+			{"private_spec_samplesize", 20},
+			{"private_spec_samplerate", 10},
+			{"private_spec_assembly", 10},
+			{"private_spec_experimentation", 15}
+		}
+	},
 	{--Medical Center
 		name = "@city/city:city_spec_doctor",
 		cost = 80000,
 		skillMods = {
 			{"private_medical_rating", 10}
+		}
+	},
+	{--Entertainment District
+		name = "@city/city:city_spec_entertainer",
+		cost = 80000,
+		skillMods = {
+			{"private_spec_entertainer", 10},
+			{"increase_entertainer_buff", 60}
+		}
+	},
+	{--Enhancement Center
+		name = "@city/city:city_spec_master_healing",
+		cost = 200000,
+		skillMods = {
+			{"private_medical_rating", 10},
+			{"private_spec_entertainer", 10},
+			{"increase_entertainer_buff", 60}
 		}
 	},
 	{--Clone Lab
@@ -213,13 +253,6 @@ CitySpecializations = {
 			{"private_spec_cloning", 20}
 		}
 	},
-	{--Research Center
-		name = "@city/city:city_spec_research",
-		cost = 125000,
-		skillMods = {
-			{"private_spec_experimentation", 15}
-		}
-	},
 	{--Improved Job Market
 		name = "@city/city:city_spec_missions",
 		cost = 80000,
@@ -227,18 +260,20 @@ CitySpecializations = {
 			{"private_spec_missions", 15}
 		}
 	},
-	{--Entertainment District
-		name = "@city/city:city_spec_entertainer",
-		cost = 80000,
-		skillMods = {
-			{"private_spec_entertainer", 10}
-		}
-	},
 	{--Stronghold
 		name = "@city/city:city_spec_stronghold",
 		cost = 150000,
 		skillMods = {
 			{"private_defense", 90}
+		}
+	},
+	{--Citadel
+		name = "@city/city:city_spec_master_stronghold",
+		cost = 200000,
+		skillMods = {
+			{"private_defense", 90},
+			{"private_spec_cloning", 20},
+			{"private_spec_missions", 15}
 		}
 	},
 }

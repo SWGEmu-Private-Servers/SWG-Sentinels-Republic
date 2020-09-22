@@ -59,21 +59,20 @@ Melee1hSpinAttack2Command = {
 	areaRange = 16,
 
 	stateEffects = {
-	  StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
 		{ "blind_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		40, 
-		0, 
-		30 
+		40,
+		0,
+		30
 	  )
 	},
-	
+
 	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }
 
 AddCommand(Melee1hSpinAttack2Command)
-

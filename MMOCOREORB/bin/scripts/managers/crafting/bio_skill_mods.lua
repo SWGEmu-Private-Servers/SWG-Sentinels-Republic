@@ -13,4 +13,18 @@ bioSkillMods = {
 	"tame_aggro",
 	"tame_non_aggro",
 	"warcry",
+	"healing_ability",
+	"healing_wound_speed",
+	"healing_dance_shock",
+	"healing_music_shock",
+	"creature_harvesting",
+	"camp",
+	"dizzy_defense",
+	"droid_find_speed",
+	"droid_find_chance",
+	"healing_range",
+	"ranged_defense",
+	"block",
+	"dodge",
+	
 }

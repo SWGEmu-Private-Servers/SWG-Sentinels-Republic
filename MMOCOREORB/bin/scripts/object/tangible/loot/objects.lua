@@ -40,3 +40,18 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+-- base/loot_base
+object_tangible_loot_base_shared_loot_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/base/shared_loot_base.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_loot_base_shared_loot_base, "object/tangible/loot/base/shared_loot_base.iff")
+
+-- creature_loot/collections/base_collection
+object_tangible_loot_creature_loot_collections_shared_base_collection = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/creature_loot/collections/shared_base_collection.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_loot_creature_loot_collections_shared_base_collection, "object/tangible/loot/creature_loot/collections/shared_base_collection.iff")

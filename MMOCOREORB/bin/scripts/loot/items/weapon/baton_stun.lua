@@ -2,7 +2,7 @@
 
 baton_stun = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/baton/baton_stun.iff",
 	craftingValues = {

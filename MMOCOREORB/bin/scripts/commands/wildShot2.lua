@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 WildShot2Command = {
-        name = "wildshot2",
+  name = "wildshot2",
 
 	damageMultiplier = 3.0,
 	speedMultiplier = 2.0,
@@ -51,32 +51,40 @@ WildShot2Command = {
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 25,
 
-	animation = "fire_7_single", 
+	animation = "fire_7_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "widewildshot",
-	
+
 	coneAngle = 30,
 	coneAction = true,
 
 	stateEffects = {
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
-		{ "stun_defense" }, 
-		{ "jedi_state_defense", "resistance_states" },
-		50, 
-		0, 
-		30 
-	  )
+	  StateEffect(
+  		STUN_EFFECT,
+  		{},
+  		{ "stun_defense" },
+  		{ "jedi_state_defense", "resistance_states" },
+  		50,
+  		0,
+  		30
+    ),
+    StateEffect(
+      INTIMIDATE_EFFECT,
+      {},
+      {},
+      {},
+      30,
+      0,
+      20
+    )
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = CARBINEWEAPON,
 
-	range = -1
+	range = 24
 }
 
 AddCommand(WildShot2Command)
-

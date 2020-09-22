@@ -51,28 +51,27 @@ Melee1hDizzyHit1Command = {
 	mindCostMultiplier = 0.625,
         accuracyBonus = 25,
 
-	animation = "combo_2b", 
+	animation = "combo_2b",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "skullstab",
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
-		{ "jedi_state_defense", "resistance_states" }, 
-		100, 
-		0, 
-		30 
+		{ "jedi_state_defense", "resistance_states" },
+		100,
+		0,
+		30
 	  )
 	},
 
 	weaponType = ONEHANDMELEEWEAPON,
-	
+
 	range = -1
 
 }
 
 AddCommand(Melee1hDizzyHit1Command)
-

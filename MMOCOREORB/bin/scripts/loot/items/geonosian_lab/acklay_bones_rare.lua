@@ -3,7 +3,7 @@
 acklay_bones_rare = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "",
+	customObjectName = "Sharpened Acklay Bones",
 	directObjectTemplate = "object/tangible/component/weapon/acklay_bone_reinforcement_core.iff",
 	craftingValues = {
 		{"mindamage",100,225,0},

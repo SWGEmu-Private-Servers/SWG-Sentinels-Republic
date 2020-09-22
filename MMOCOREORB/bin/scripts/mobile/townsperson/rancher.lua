@@ -23,6 +23,7 @@ rancher = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
+	optionsBitmask = 264,
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 

@@ -158,3 +158,4 @@ rori_regions = {
 	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"rori_world", "global"}, 2048},
 	{"wrecked_outpost", 5085, 4674, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA}
 }
+

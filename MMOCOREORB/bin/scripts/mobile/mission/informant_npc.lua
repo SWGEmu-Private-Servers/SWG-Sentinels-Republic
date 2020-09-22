@@ -1,6 +1,6 @@
 function createInformantNPC(lvl)
 	informant_npc = Creature:new {
-		objectName = "@mob/creature_names:spynet_operative",
+		objectName = "@mob/creature_names:spynet_operative_lvl_" .. lvl,
 		socialGroup = "",
 		faction = "",
 		level = 100,
@@ -25,7 +25,7 @@ function createInformantNPC(lvl)
 		creatureBitmask = NONE,
 		optionsBitmask = INVULNERABLE + CONVERSABLE,
 		diet = HERBIVORE,
-	
+
 		templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 		lootGroups = {},
 		weapons = {},
@@ -33,10 +33,11 @@ function createInformantNPC(lvl)
 		attacks = {
 		}
 	}
-	
+
 	CreatureTemplates:addCreatureTemplate(informant_npc, "informant_npc_lvl_" .. lvl)
 end
 
 createInformantNPC("1")
 createInformantNPC("2")
 createInformantNPC("3")
+createInformantNPC("4")

@@ -162,3 +162,4 @@ lok_regions = {
 	{"wind_farm", -2883, -236, {CIRCLE, 75}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{"world_spawner", 0, 0, {CIRCLE, -1}, SPAWNAREA + WORLDSPAWNAREA, {"lok_world", "global_hard"}, 2048}
 }
+

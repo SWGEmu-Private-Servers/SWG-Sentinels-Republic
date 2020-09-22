@@ -48,9 +48,9 @@ object_tangible_component_bio_bio_component_clothing_field_defense = object_tang
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 5, 3, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
-	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_stun_defense", "cat_skill_mod_bonus.@stat_n:stun_defense", "@obj_attr_n:bio_comp_melee_defense", "cat_skill_mod_bonus.@stat_n:melee_defense"},
-	experimentalMin = {0, 0, 30, 1000, 115, 1, 116, 1},
-	experimentalMax = {0, 0, 50, 1000, 115, 10, 116, 3},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_stun_defense", "cat_skill_mod_bonus.@stat_n:stun_defense", "@obj_attr_n:bio_comp_ranged_defense", "cat_skill_mod_bonus.@stat_n:ranged_defense"},
+	experimentalMin = {0, 0, 30, 1000, 115, 3, 116, 2},
+	experimentalMax = {0, 0, 50, 1000, 115, 20, 116, 5},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1, 1, 1},
 }

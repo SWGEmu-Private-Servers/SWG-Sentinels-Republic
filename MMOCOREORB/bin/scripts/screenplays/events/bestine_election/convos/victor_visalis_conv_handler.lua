@@ -152,7 +152,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		BestineElection:giveCampaignReward(pPlayer, BestineElection.VICTOR)
 	elseif (screenID == "released_from_mission") then
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
+		
 		if (pGhost ~= nil) then
 			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:tuskenWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)

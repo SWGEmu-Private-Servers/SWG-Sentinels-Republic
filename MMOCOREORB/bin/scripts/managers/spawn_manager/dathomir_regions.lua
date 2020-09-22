@@ -171,3 +171,4 @@ dathomir_regions = {
 	{ "fs_cs_omega", 1369, 1217, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 	{ "fs_cs_zed", 3076, 2174, {CIRCLE, 50}, NOSPAWNAREA + NOBUILDZONEAREA},
 }
+

@@ -42,4 +42,7 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	spawnMobile("endor", "noble", 60, -829.243, 76, 1567.61, 95.886, 0)
 	pNpc = spawnMobile("endor", "r3",60,-950.705,73,1542.69,331.775,0)
 	self:setMoodString(pNpc, "neutral")
+	
+	-- Level 4 BH informant
+	spawnMobile("endor", "informant_npc_lvl_4", 300, -873.853, 80.0215, 1571.83, 272, 0)
 end

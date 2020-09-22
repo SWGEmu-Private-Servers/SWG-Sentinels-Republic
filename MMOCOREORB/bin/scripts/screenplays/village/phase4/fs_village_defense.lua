@@ -71,10 +71,10 @@ function FsVillageDefense:checkHealerList(pCreature)
 			local pQuest
 
 			if (QuestManager.hasActiveQuest(pPlayer, QuestManager.quests.FS_COMBAT_HEALING_2)) then
-				healReq = 100
+				healReq = 10
 				pQuest = getQuestInfo("fs_combat_healing_2")
 			else
-				healReq = 50
+				healReq = 5
 				pQuest = getQuestInfo("fs_combat_healing_1")
 			end
 
@@ -258,7 +258,7 @@ function FsVillageDefense:canAcceptRangedQuest(pPlayer)
 end
 
 function FsVillageDefense:canAcceptMeleeQuest(pPlayer)
-	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and not VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer)
+	return not QuestManager.hasCompletedQuest(pPlayer, QuestManager.quests.FS_DEFEND_WAIT_02) and not VillageJediManagerCommon.hasActiveQuestThisPhase(pPlayer) and not VillageJediManagerCommon.hasCompletedQuestThisPhase(pPlayer) 
 end
 
 function FsVillageDefense:hasActiveSarguilloQuest(pPlayer)

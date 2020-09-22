@@ -42,9 +42,9 @@
 
 
 object_building_player_player_house_tatooine_medium_style_01 = object_building_player_shared_player_house_tatooine_medium_style_01:new {
-	lotSize = 2,
+	lotSize = 3,
 	baseMaintenanceRate = 34,
-	allowedZones = {"dantooine", "lok", "tatooine"},
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
 	childObjects = {
 		{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = -2, z = 2.25, y = 12.5, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 6.94, z = 0.489743, y = 7.98, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1},
@@ -55,6 +55,10 @@ object_building_player_player_house_tatooine_medium_style_01 = object_building_p
 		{templateFile = "object/tangible/sign/player/shop_sign_s02.iff", x = -11.4, z = 0.5, y = 15.59, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1, requiredSkill = "crafting_merchant_management_02", suiItem = "@player_structure:shop_sign2"},
 		{templateFile = "object/tangible/sign/player/shop_sign_s03.iff", x = -11.4, z = 0.5, y = 15.59, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1, requiredSkill = "crafting_merchant_management_03", suiItem = "@player_structure:shop_sign3"},
 		{templateFile = "object/tangible/sign/player/shop_sign_s04.iff", x = -11.4, z = 0.5, y = 15.59, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1, requiredSkill = "crafting_merchant_management_04", suiItem = "@player_structure:shop_sign4"},
+		{templateFile = "object/tangible/sign/player/house_address_halloween_sign.iff", x = -2, z = 2.25, y = 12.5, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1, requiredSkill = "sign_gmf_hanging", suiItem = "@player_structure:halloween_hanging_sign"},
+		{templateFile = "object/tangible/sign/player/shop_sign_halloween_sign.iff", x = -11.4, z = 0.5, y = 15.59, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1, requiredSkill = "sign_gmf_standing", suiItem = "@player_structure:halloween_standing_sign"},		
+		{templateFile = "object/tangible/sign/player/efol_hanging_sign_01.iff", x = -2, z = 2.25, y = 12.5, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1, requiredSkill = "sign_efol_hanging", suiItem = "@player_structure:efol_sign_hanging"},
+		{templateFile = "object/tangible/sign/player/efol_standing_sign_01.iff", x = -11.4, z = 0.5, y = 15.59, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1, requiredSkill = "sign_efol_standing", suiItem = "@player_structure:efol_sign_standing"},		
 	},
 	constructionMarker = "object/building/player/construction/construction_player_house_tatooine_medium_style_01.iff",
 	length = 5,

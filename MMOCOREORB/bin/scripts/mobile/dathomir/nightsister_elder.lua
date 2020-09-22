@@ -26,6 +26,7 @@ nightsister_elder = Creature:new {
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_elder.iff"},
 	lootGroups = {
@@ -40,7 +41,7 @@ nightsister_elder = Creature:new {
 				{group = "rifles", chance = 800000},
 				{group = "carbines", chance = 900000},
 				{group = "melee_weapons", chance = 2000000},
-				{group = "wearables_scarce", chance = 500000}
+				{group = "g_ns_clothing", chance = 500000}
 			}
 		}
 	},

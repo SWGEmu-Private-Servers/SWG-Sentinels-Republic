@@ -2,7 +2,7 @@
 
 carbine_laser = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/carbine/carbine_laser.iff",
 	craftingValues = {

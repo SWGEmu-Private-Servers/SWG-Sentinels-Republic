@@ -2,7 +2,7 @@
 
 two_handed_sword_katana = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_katana.iff",
 	craftingValues = {

@@ -26,6 +26,7 @@ singing_mountain_clan_sentry = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_sentry.iff"},
 	lootGroups = {
@@ -40,8 +41,8 @@ singing_mountain_clan_sentry = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_uncommon", chance = 500000},
-				{group = "tailor_components", chance = 500000}
+				{group = "tailor_components", chance = 500000},
+				{group = "g_smc_clothing", chance = 500000}
 			}
 		}
 	},

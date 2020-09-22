@@ -51,20 +51,20 @@ Melee2hHit3Command = {
         accuracyBonus = 10,
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		50, 
-		0, 
-		30 
+		50,
+		0,
+		30
 	  )
 	},
-	
+
 	weaponType = TWOHANDMELEEWEAPON,
 
-	animation = "combo_4a", 
+	animation = "combo_4a",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "viciousstrike",
@@ -73,4 +73,3 @@ Melee2hHit3Command = {
 }
 
 AddCommand(Melee2hHit3Command)
-

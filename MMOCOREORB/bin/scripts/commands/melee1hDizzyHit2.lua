@@ -54,27 +54,26 @@ Melee1hDizzyHit2Command = {
 	areaRange = 16,
 	areaAction = true,
 
-	animation = "combo_4a", 
+	animation = "combo_4a",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "skullslash",
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		50 
+		100,
+		0,
+		50
 	  )
 	},
-	
+
 	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }
 
 AddCommand(Melee1hDizzyHit2Command)
-

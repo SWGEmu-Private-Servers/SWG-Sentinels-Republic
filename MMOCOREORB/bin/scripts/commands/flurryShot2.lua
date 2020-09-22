@@ -55,28 +55,27 @@ FlurryShot2Command = {
 	coneAction = true,
 
 	stateEffects = {
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
 		{ "dizzy_defense" }, 
 		{ "jedi_state_defense", "resistance_states" },
-		100, 
-		0, 
-		30 
+		100,
+		0,
+		30
 	  )
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_area", 
+	animation = "fire_area",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "flurry",
-	
+
 	weaponType = RIFLEWEAPON,
 
 	range = -1
 }
 
 AddCommand(FlurryShot2Command)
-

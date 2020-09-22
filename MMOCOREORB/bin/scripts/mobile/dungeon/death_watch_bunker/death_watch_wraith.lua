@@ -4,7 +4,7 @@ death_watch_wraith = Creature:new {
 	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
-	level = 178,
+	level = 220,
 	chanceHit = 12.25,
 	damageMin = 1020,
 	damageMax = 1750,
@@ -32,12 +32,13 @@ death_watch_wraith = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners",   chance = 6300000},
+				{group = "death_watch_bunker_commoners",   chance = 5000000},
 				{group = "death_watch_bunker_lieutenants", chance = 3500000},
-				{group = "death_watch_bunker_ingredient_protective",  chance = 100000},
-				{group = "death_watch_bunker_ingredient_binary",  chance = 100000}
+				{group = "death_watch_bunker_ingredient_protective",  chance = 600000},
+				{group = "death_watch_bunker_ingredient_binary",  chance = 600000},
+				{group = "power_crystals",  chance = 300000},
 			},
-			lootChance = 1500000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

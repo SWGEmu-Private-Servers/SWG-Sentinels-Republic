@@ -61,6 +61,7 @@ function JediManager:onSkillRevoked(pCreatureObject, pSkill)
 	-- Default behaviour for the onPlayerLoggedOut event, do nothing.
 end
 
+
 -- Default handling of the useItem event.
 -- @param pSceneObject pointer to the item object.
 -- @param itemType the type of item that is used.

@@ -8,6 +8,7 @@ narmle_racetrack_screenplay = RaceTrack:new {
 		planetName = "rori", -- The planet the Track is on
 		badgeToAward=BDG_RACING_NARMLE_MEMORIAL,  -- Badge to be awarded for best daily time
 		trackName="NARMLERT",  -- Internal trackname , should be unique to the track
+		BARCComponent="object/tangible/loot/collectible/collectible_parts/vehicle/barc_reactor_fuel.iff",  -- BARC Component to be awarded
 		className="narmle_racetrack_screenplay", -- Class name of this class
 		trackCheckpoint="@theme_park/racing/racing:narmle_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:narmle_laptime_checkpoint", -- System message sent at each waypoint

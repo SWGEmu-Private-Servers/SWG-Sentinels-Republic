@@ -41,6 +41,13 @@
 --which carries forward this exception.
 
 
+object_static_base_shared_static_flagpole_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/base/shared_static_flagpole_base.iff"
+
+}
+
+ObjectTemplates:addClientTemplate(object_static_base_shared_static_flagpole_base, "object/static/base/shared_static_flagpole_base.iff")
+
 object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 	clientTemplateFileName = "object/static/base/shared_static_base.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

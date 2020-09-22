@@ -23,6 +23,7 @@ admin_general_admin_03 = {
 	commands = {
 		"object",
 		"searchCorpse",
+		"createEventLoot",
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

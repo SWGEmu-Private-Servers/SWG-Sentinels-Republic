@@ -44,7 +44,40 @@
 object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_rifle_acid_beam:new {
 	
 	playerRaces = { "object/creature/player/bothan_male.iff",
+				"object/creature/player/smc_female.iff",
+				"object/creature/player/smc_male.iff",
+				"object/creature/player/talz_male.iff",
+				"object/creature/player/talz_female.iff",
+				"object/creature/player/togruta_female.iff",
+				"object/creature/player/togruta_male.iff",
+				"object/creature/player/weequay_male.iff",
+				"object/creature/player/weequay_female.iff",
+				"object/creature/player/nautolan_male.iff",
+				"object/creature/player/nautolan_female.iff",
+				"object/creature/player/nightsister_female.iff",
+				"object/creature/player/nightsister_male.iff",
+				"object/creature/player/nikto_male.iff",
+				"object/creature/player/nikto_female.iff",
+				"object/creature/player/quarren_male.iff",
+				"object/creature/player/quarren_female.iff",
+				"object/creature/player/ishi_tib_male.iff",
+				"object/creature/player/ishi_tib_female.iff",
+				"object/creature/player/hutt_female.iff",
+				"object/creature/player/hutt_male.iff",
+				"object/creature/player/gran_male.iff",
+				"object/creature/player/gran_female.iff",
+				"object/creature/player/gotal_male.iff",
+				"object/creature/player/gotal_female.iff",
+				"object/creature/player/aqualish_female.iff",
+				"object/creature/player/aqualish_male.iff",
+				"object/creature/player/bith_female.iff",
+				"object/creature/player/bith_male.iff",
+				"object/creature/player/chiss_female.iff",
+				"object/creature/player/chiss_male.iff",
+				"object/creature/player/devaronian_male.iff",
+				"object/creature/player/devaronian_female.iff",
 				"object/creature/player/bothan_female.iff",
+				"object/creature/player/bothan_male.iff",
 				"object/creature/player/human_male.iff",
 				"object/creature/player/human_female.iff",
 				"object/creature/player/ithorian_male.iff",
@@ -62,7 +95,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 				"object/creature/player/wookiee_male.iff",
 				"object/creature/player/wookiee_female.iff",
 				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
+"object/creature/player/zabrak_female.iff" },
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
@@ -73,7 +106,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	damageType = ACID,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = NONE,
+	armorPiercing = LIGHT,
 
 	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
@@ -83,7 +116,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_rifle_acid_beam" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
-	creatureAccuracyModifiers = { "heavy_rifle_acid_accuracy" },
+	creatureAccuracyModifiers = { "heavy_flame_thrower_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
@@ -92,7 +125,7 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 	defenderSecondaryDefenseModifiers = { "block" },
 
 	-- See http://www.ocdsoft.com/files/speed.xls
-	speedModifiers = { "heavy_rifle_acid_speed" },
+	speedModifiers = { "heavy_flame_thrower_speed" },
 
 	-- Leave blank for now
 	damageModifiers = {  },

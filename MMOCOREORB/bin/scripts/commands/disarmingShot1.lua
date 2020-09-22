@@ -42,24 +42,35 @@
 --true = 1, false = 0
 
 DisarmingShot1Command = {
-        name = "disarmingshot1",
+  name = "disarmingshot1",
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.75,
 	mindCostMultiplier = 0.5,
-        accuracyBonus = 50,
+  accuracyBonus = 50,
 
-	animation = "fire_3_single", 
+	animation = "fire_3_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "disarmshot",
-	
+
+	stateEffects = {
+	  StateEffect(
+		INTIMIDATE_EFFECT,
+		{},
+		{},
+		{},
+		30,
+		0,
+		15
+	  )
+	},
+
 	weaponType = PISTOLWEAPON,
 
 	range = -1
 }
 
 AddCommand(DisarmingShot1Command)
-

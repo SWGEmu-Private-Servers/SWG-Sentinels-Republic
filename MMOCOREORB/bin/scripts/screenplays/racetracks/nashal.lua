@@ -8,6 +8,7 @@ nashal_racetrack_screenplay = RaceTrack:new {
 		planetName = "talus", -- The planet the Track is on
 		badgeToAward=BDG_RACING_NASHAL_RIVER,  -- Badge to be awarded for best daily time
 		trackName="NASHALRT",  -- Internal trackname , should be unique to the track
+		BARCComponent="object/tangible/loot/collectible/collectible_parts/vehicle/barc_thruster_core.iff",  -- BARC Component to be awarded
 		className="nashal_racetrack_screenplay", -- Class name of this class
 		trackCheckpoint="@theme_park/racing/racing:nashal_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:nashal_laptime_checkpoint", -- System message sent at each waypoint

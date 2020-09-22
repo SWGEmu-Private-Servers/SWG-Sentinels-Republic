@@ -187,4 +187,3 @@ function RoriPoacherVsCreatureBattleScreenPlay:notifyVrobaletDead(pVrobalet, pKi
 
 	return 1
 end
-

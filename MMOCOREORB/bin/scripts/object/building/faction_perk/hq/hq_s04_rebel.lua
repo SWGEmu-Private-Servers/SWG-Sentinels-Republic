@@ -42,27 +42,27 @@
 
 
 object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_shared_hq_s04_rebel:new {
-	lotSize = 0,
-	faction = "rebel",
-	pvpFaction = "rebel",
-	pvpStatusBitmask = 0,
-	maintenanceCost = 0,
-	baseMaintenanceRate = 0,
-	dataObjectComponent = "DestructibleBuildingDataComponent",
-	zoneComponent = "StructureZoneComponent",
-	allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
-	constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
-	length = 7,
-	width = 6,
-	containerComponent = "GCWBaseContainerComponent",
-	factionBaseType = 1,
+		lotSize = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		pvpStatusBitmask = 0,
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		zoneComponent = "StructureZoneComponent",
+		allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine", "chandrila", "taanab", "kaas"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		containerComponent = "GCWBaseContainerComponent",
+		factionBaseType = 1,
 
-	skillMods = {
-		{"private_buff_mind", 100},
-		{"private_med_battle_fatigue", 5},
-		{"private_medical_rating", 100},
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_med_battle_fatigue", 5},
+			{"private_medical_rating", 100},
 
-	},
+		},
 
 	childObjects = {
 		{ templateFile = "object/static/structure/general/poi_all_rebl_corral_64x64_s01.iff", x = -0.04, z = 0, y = 13.95, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
@@ -73,6 +73,7 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 18.28, z = 0, y = -5.18, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = -15.55, z = 0, y = 31.08, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
 		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 15.55, z = 0, y = 31.08, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x = 0, z = 0, y = -16.5,  ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 
 		{ templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0.25, y = 1.86, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 
@@ -98,13 +99,13 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 		{ mobile = "fbase_rebel_soldier_hard", x = 15, z = 0, y = 15, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_soldier_hard", x = 15, z = 0, y = 11, cellid = -1, respawn = 360, containmentType = -1, heading = 3.14},
 
-		{ mobile = "fbase_rebel_commando_hard", x = 30, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
+		{ mobile = "fbase_at_xt", x = 30, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_commando_hard", x = 30, z = 0, y = 6, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_squad_leader_hard", x = 28, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_guard_captain_hard", x = 26, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_heavy_trooper_hard", x = 26, z = 0, y = 6, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 
-		{ mobile = "fbase_rebel_commando_hard", x = -30, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
+		{ mobile = "fbase_at_xt", x = -30, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_commando_hard", x = -30, z = 0, y = 6, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_grenadier_hard", x = -28, z = 0, y = 4, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_heavy_trooper_hard", x = -26, z = 0, y = 2, cellid = -1, respawn = 360, containmentType = -1, heading = 0},
@@ -156,7 +157,7 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 		{ mobile = "fbase_rebel_commando_hard", x = 12.7, z = -13.75, y = -0.8, cellid = 9, respawn = 300, containmentType = -1, heading = 0},
 
 		{ mobile = "fbase_rebel_colonel_hard", x = 16.1, z = -13.75, y = -16.8, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
-		{ mobile = "fbase_rebel_heavy_trooper_hard", x = 14.2, z = -13.75, y = -10, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
+		{ mobile = "fbase_rebel_heavy_trooper_extreme", x = 14.2, z = -13.75, y = -10, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "fbase_rebel_commando_hard", x = 15, z = -13.75, y = -4, cellid = 10, respawn = 300, containmentType = -1, heading = 0},
 		{ mobile = "rebel_recruiter", x = 11.5, z = -11.5, y = -21, cellid = 10, containmentType = -1, respawn = 60, heading = 1.59},
 

@@ -51,40 +51,40 @@ Saber1hFlurry2Command = {
 	mindCostMultiplier = 0,
 	areaRange = 16,
 	areaAction = true,
-	forceCostMultiplier = 3.0,
+	forceCostMultiplier = 2.7,
 	visMod = 25,
 
 		stateEffects = {
-	   StateEffect( 
-		BLIND_EFFECT, 
-		{}, 
-		{ "blind_defense" }, 
-		{ "jedi_state_defense", "resistance_states" }, 
-		85, 
-		0, 
+	   StateEffect(
+		BLIND_EFFECT,
+		{},
+		{ "blind_defense" },
+		{ "jedi_state_defense", "resistance_states" },
+		85,
+		0,
 		60
 	  ),
-	  StateEffect( 
-		DIZZY_EFFECT, 
-		{}, 
-		{ "dizzy_defense" }, 
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
+		{ "dizzy_defense" },
 		{ "jedi_state_defense", "resistance_states" },
-		85, 
-		0, 
+		85,
+		0,
 		30
 	  ),
-	  StateEffect( 
-		STUN_EFFECT, 
-		{}, 
+	  StateEffect(
+		STUN_EFFECT,
+		{},
 		{ "stun_defense" }, 
-		{ "jedi_state_defense", "resistance_states" }, 
-		85, 
-		0, 
+		{ "jedi_state_defense", "resistance_states" },
+		85,
+		0,
 		60
 	  )
 	},
 
-	animation = "combo_jedi_4", 
+	animation = "combo_jedi_4",
 	animType = GENERATE_INTENSITY,
 
 	combatSpam = "saber1hflurry2",
@@ -97,4 +97,3 @@ Saber1hFlurry2Command = {
 }
 
 AddCommand(Saber1hFlurry2Command)
-

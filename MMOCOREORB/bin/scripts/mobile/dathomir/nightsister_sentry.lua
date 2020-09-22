@@ -26,6 +26,7 @@ nightsister_sentry = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = AIENABLED,
 	diet = HERBIVORE,
+	srLoot = true,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_guardian.iff"},
 	lootGroups = {
@@ -40,8 +41,8 @@ nightsister_sentry = Creature:new {
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 500000},
-				{group = "tailor_components", chance = 500000}
+				{group = "tailor_components", chance = 500000},
+				{group = "g_ns_clothing", chance = 500000}
 			}
 		}
 	},

@@ -41,22 +41,19 @@
 --which carries forward this exception.
 --true = 1, false = 0
 
-FlameCone1Command = {
-        name = "flamecone1",
+FlameSingle2Command = {
+       name = "flamesingle2",
 
-	damageMultiplier = 5,
+	damageMultiplier = 8,
 	speedMultiplier = 4,
-	healthCostMultiplier = 1.5,
+	healthCostMultiplier = 2.0,
 	actionCostMultiplier = 0.5,
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 0,
 
-	coneAngle = 45,
-	coneAction = true,
-
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	animation = "fire_flame_thrower_cone_1", 
+	animation = "fire_flame_thrower_single_2", 
 	animType = GENERATE_INTENSITY,
 	combatSpam = "flamecone1",
 	dotEffects = {
@@ -79,5 +76,5 @@ FlameCone1Command = {
 	range = 16
 }
 
-AddCommand(FlameCone1Command)
+AddCommand(FlameSingle2Command)
 

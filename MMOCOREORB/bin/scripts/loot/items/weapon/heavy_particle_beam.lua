@@ -1,6 +1,6 @@
 heavy_particle_beam = {
 	minimumLevel = 0,
-	maximumLevel = -1,
+	maximumLevel = 200,
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/heavy/heavy_particle_beam.iff",
 	craftingValues = {

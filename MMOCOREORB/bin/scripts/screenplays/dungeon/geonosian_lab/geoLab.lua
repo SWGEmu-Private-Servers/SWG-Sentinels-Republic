@@ -422,6 +422,10 @@ function GeonosianLab:spawnMobiles()
 	spawnMobile("yavin4", "cavern_spider",180,13.4,-22.0,-337.3,-179,1627822)
 
 	-- largeendcave (1627823)
+	--[[
+		
+	Mindsoft Edited, Replaced with custom_scripts/screenplays/dungeon/dungeon_boss/geo_acklay_screenplay.lua
+
 	spawnMobile("yavin4", "acklay",7200,101.1,-34.3,-321.6,-136,1627823, true) --Randomized respawn
 	spawnMobile("yavin4", "enhanced_kwi",180,48.0,-34.0,-334.4,0,1627823)
 	spawnMobile("yavin4", "cavern_spider",180,91.2,-33.9,-347.9,5,1627823)
@@ -429,6 +433,8 @@ function GeonosianLab:spawnMobiles()
 	spawnMobile("yavin4", "enhanced_kliknik",180,120.2,-33.9,-330.6,-33,1627823)
 	spawnMobile("yavin4", "cavern_spider",180,85.0,-33.8,-309.1,143,1627823)
 	spawnMobile("yavin4", "cavern_spider",180,74.7,-34.1,-329.0,-90,1627823)
+
+	]]
 
 	-- spiralhallway (1627824)
 	spawnMobile("yavin4", "enhanced_kwi",180,9.5,-16.0,-27.9,89,1627824)
@@ -655,8 +661,35 @@ function GeonosianLab:notifyEnteredBunker(pBuilding, pPlayer)
 		return 0
 	end
 
+	--Mindsoft Added to control building permissions with instances
+	if not(CreatureObject(pPlayer):checkCooldownRecovery("SR:Instance:Exit")) then
+		return 0
+	else
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			--Ensure preserved permissions are removed on normal entry to building if they exist
+			if (PlayerObject(pGhost):hasPermissionGroup("GeoLabKeypad1")) then
+				for i = 1, #self.lockedCells, 1 do
+					self:removePermission(pPlayer, "GeoLabKeypad" .. i)
+				end
+			
+				local playerID = SceneObject(pPlayer):getObjectID()
+				deleteData(playerID .. ":geoEngineerState")
+				deleteData(playerID .. ":geoAssistantState")
+				deleteData(playerID .. ":geo_security_tech_talked")
+				CreatureObject(pPlayer):removeScreenPlayState(1, "geonosian_lab_tenloss")
+			end
+		end
+	end
+
 	for i = 1, #self.lockedCells, 1 do
-		BuildingObject(pBuilding):broadcastSpecificCellPermissions(self.lockedCells[i])
+		local adminLevel = getAdminLevel(pPlayer) -- Mindsoft Edited so admin/dev does not need to input codes for permissions
+		if (adminLevel > 13) then
+			self:givePermission(pPlayer, "GeoLabKeypad" .. i)
+		else
+			BuildingObject(pBuilding):broadcastSpecificCellPermissions(self.lockedCells[i])
+		end
 	end
 
 	return 0
@@ -664,6 +697,11 @@ end
 
 function GeonosianLab:notifyExitedBunker(pBuilding, pPlayer)
 	if pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature() then
+		return 0
+	end
+
+	--Mindsoft Added to control building permissions with instances
+	if not(CreatureObject(pPlayer):checkCooldownRecovery("SR:Instance:Enter")) then
 		return 0
 	end
 

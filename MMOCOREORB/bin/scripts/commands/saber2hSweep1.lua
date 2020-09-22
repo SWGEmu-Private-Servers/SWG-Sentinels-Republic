@@ -49,7 +49,7 @@ Saber2hSweep1Command = {
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-	forceCostMultiplier = 1.25,
+	forceCostMultiplier = 1.125,
 	visMod = 25,
 
 	stateEffects = {
@@ -57,7 +57,7 @@ Saber2hSweep1Command = {
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
-		{},
+		{}, 
 		100, 
 		0, 
 		0 

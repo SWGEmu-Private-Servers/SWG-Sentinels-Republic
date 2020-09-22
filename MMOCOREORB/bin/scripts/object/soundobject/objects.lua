@@ -40,7 +40,18 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
+object_soundobject_shared_soundobject_lifeday_whovillage = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/soundobject/shared_soundobject_lifeday_whovillage.iff"
+}
 
+ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_lifeday_whovillage, "object/soundobject/shared_soundobject_lifeday_whovillage.iff")
+------------------------------------------
+object_soundobject_shared_soundobject_lifeday_grinch_cave = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/soundobject/shared_soundobject_lifeday_grinch_cave.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_lifeday_grinch_cave, "object/soundobject/shared_soundobject_lifeday_grinch_cave.iff")
+------------------------------------------
 object_soundobject_shared_soundobject_cantina_large = SharedStaticObjectTemplate:new {
 	clientTemplateFileName = "object/soundobject/shared_soundobject_cantina_large.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups

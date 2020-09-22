@@ -10,7 +10,7 @@ canyon_krayt_dragon = Creature:new {
 	baseHAM = 321000,
 	baseHAMmax = 392000,
 	armor = 3,
-	resists = {160,160,160,160,120,160,160,160,-1},
+	resists = {160,160,160,160,120,160,160,160,105},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_bristley",
@@ -30,13 +30,15 @@ canyon_krayt_dragon = Creature:new {
 	scale = 0.9;
 	lootGroups = {
 		{
-	        groups = {
-				{group = "krayt_dragon_common", chance = 3500000},
-				{group = "krayt_tissue_uncommon", chance = 2500000},
-				{group = "armor_all", chance = 2000000},
-				{group = "weapons_all", chance = 2000000},
+	     groups = {
+				{group = "krayt_tissue_uncommon", chance = 400000},
+				{group = "krayt_tissue_common", chance = 3200000},
+				{group = "krayt_pearls_lesser", chance = 1500000},
+				{group = "weapons_all", chance = 3200000},
+				{group = "armor_attachments", chance = 850000},
+				{group = "clothing_attachments", chance = 850000}
 			},
-			lootChance = 6500000
+			lootChance = 7720000
 		}
 	},
 	weapons = {},

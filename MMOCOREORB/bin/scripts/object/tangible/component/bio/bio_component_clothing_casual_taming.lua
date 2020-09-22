@@ -48,9 +48,9 @@ object_tangible_component_bio_bio_component_clothing_casual_taming = object_tang
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 5, 3, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
-	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_tame_non_aggro", "cat_skill_mod_bonus.@stat_n:tame_non_aggro", "@obj_attr_n:bio_comp_tame_aggro", "cat_skill_mod_bonus.@stat_n:tame_aggro"},
-	experimentalMin = {0, 0, 30, 1000, 104, 1, 105, 1},
-	experimentalMax = {0, 0, 50, 1000, 104, 10, 105, 10},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_creature_harvesting", "cat_skill_mod_bonus.@stat_n:creature_harvesting", "@obj_attr_n:bio_comp_camp", "cat_skill_mod_bonus.@stat_n:camp"},
+	experimentalMin = {0, 0, 30, 1000, 104, 3, 105, 3},
+	experimentalMax = {0, 0, 50, 1000, 104, 20, 105, 20},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1, 1, 1},
 }

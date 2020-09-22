@@ -3342,5 +3342,4 @@ object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 ]]
 }
-
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_parts_shared_sculpture_structure_07, "object/tangible/loot/collectible/collectible_parts/shared_sculpture_structure_07.iff")
